@@ -1,8 +1,10 @@
 # PrestashopConnectorBundle
 Akeneo Prestashop Connector
 
-Work in progress. 
+Work in progress.
+
 Project started on 17 Jun 2015.
+
 This is a PORT from MagentoConnectorBundle to Prestashop.
 
 Based on *MagentoConnectorBundle* contributed by :
