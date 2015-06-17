@@ -1,0 +1,15 @@
+parameters:
+    pim_prestashop_connector.webservice.class:                        Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopWebService
+    pim_prestashop_connector.service.guzzle.client.class:             Guzzle\Service\Client
+    pim_prestashop_connector.debug:                                   false
+    pim_prestashop_connector.website:                                 http://prestashop.local
+    pim_prestashop_connector.key:                                     your_api_key
+
+services:
+    pim_prestashop_connector.webservice:
+      class: %pim_prestashop_connector.webservice.class%
+      arguments: [@service_container]
+    pim_prestashop_connector.web_client.guzzle:
+        class: '%pim_prestashop_connector.service.guzzle.client.class%'
+        tags:
+            - { name: guzzle.client }

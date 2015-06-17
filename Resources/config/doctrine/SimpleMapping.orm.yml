@@ -1,0 +1,20 @@
+Pim\Bundle\PrestashopConnectorBundle\Entity\SimpleMapping:
+    type: entity
+    table: pim_simple_connector_mapping
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        identifier:
+            type: text
+            length: 255
+            column: identifier
+        source:
+            type: text
+            length: 255
+            column: source
+        target:
+            type: text
+            length: 255
+            column: target

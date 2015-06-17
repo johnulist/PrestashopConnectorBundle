@@ -1,0 +1,48 @@
+attribute_groups:
+    marketing:
+        sort_order: 1
+        labels:
+            en_US: Marketing
+            fr_FR: Marketing
+
+    technical:
+        sort_order: 2
+        labels:
+            en_US: Technical
+            fr_FR: Technique
+
+    design:
+        sort_order: 3
+        labels:
+            en_US: Design
+            fr_FR: Style
+
+    manufacturing:
+        sort_order: 4
+        labels:
+            en_US: Manufacturing
+            fr_FR: Fabrication
+
+    color:
+        sort_order: 5
+        labels:
+            en_US: Color
+            fr_FR: Couleur
+
+    size:
+        sort_order: 6
+        labels:
+            en_US: Size
+            fr_FR: Taille
+
+    media:
+        sort_order: 7
+        labels:
+            en_US: Media
+            fr_FR: Media
+
+    other:
+        sort_order: 100
+        labels:
+            en_US: Other
+            fr_FR: Autre

@@ -1,0 +1,13 @@
+<script type="text/javascript">
+    require(
+        ['jquery', 'mapping-field'],
+        function ($, mappingField) {
+            'use strict';
+            $(function () {
+                $('.mapping-field').each(function () {
+                    mappingField($(this));
+                });
+            })
+        }
+    );
+</script>

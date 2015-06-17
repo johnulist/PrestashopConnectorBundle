@@ -1,0 +1,45 @@
+{
+    "name": "sdiaz/prestashop-connector-bundle",
+    "type": "symfony-bundle",
+    "description": "Akeneo PIM bundle to export to Prestashop platform.",
+    "keywords": ["pim", "akeneo", "ecommerce", "e-commerce", "prestashop", "connector", "rest", "api"],
+    "homepage": "http://github.com/sdiaz/PrestashopConnectorBundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name":     "Santi Díaz",
+            "email":    "santiago.diaz@me.com",
+            "homepage": "http://sdiaz.es/"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/akeneo/pim-community-dev.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/akeneo/platform.git"
+        }
+    ],
+    "require": {
+        "guzzle/service": ">=3.6.0,<3.8.0",
+        "akeneo/pim-community-dev": "~1.2@stable,<1.4"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "2.0.*@dev",
+        "henrikbjorn/phpspec-code-coverage": "1.0.*@dev",
+        "fabpot/php-cs-fixer": "@stable",
+        "squizlabs/php_codesniffer": "1.*",
+        "pdepend/pdepend": "1.1.*",
+        "phpmd/phpmd": "1.*"
+    },
+    "autoload": {
+        "psr-0": { "Pim\\Bundle\\PrestashopConnectorBundle\\": "" }
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "minimum-stability": "dev",
+    "target-dir": "Pim/Bundle/PrestashopConnectorBundle"
+}

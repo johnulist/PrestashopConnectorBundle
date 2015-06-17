@@ -1,0 +1,36 @@
+parameters:
+    pim_prestashop_connector.cleaner.product.class:                  Pim\Bundle\PrestashopConnectorBundle\Cleaner\ORM\ProductCleaner
+    pim_prestashop_connector.reader.delta_product.class:             Pim\Bundle\PrestashopConnectorBundle\Reader\ORM\DeltaProductReader
+    pim_prestashop_connector.reader.delta_product_association.class: Pim\Bundle\PrestashopConnectorBundle\Reader\ORM\DeltaProductAssociationReader
+    pim_prestashop_connector.reader.delta_configurable.class:        Pim\Bundle\PrestashopConnectorBundle\Reader\ORM\DeltaConfigurableReader
+
+services:
+    pim_prestashop_connector.reader.product_delta:
+        class: %pim_prestashop_connector.reader.delta_product.class%
+        parent: pim_base_connector.reader.doctrine.product
+        arguments:
+            - true
+            - '@pim_prestashop_connector.builder.table_name'
+
+    pim_prestashop_connector.reader.delta_product_association:
+        class: %pim_prestashop_connector.reader.delta_product_association.class%
+        parent: pim_base_connector.reader.doctrine.product
+        arguments:
+            - false
+            - '@pim_prestashop_connector.builder.table_name'
+
+    pim_prestashop_connector.reader.delta_configurable:
+        class: %pim_prestashop_connector.reader.delta_configurable.class%
+        parent: pim_base_connector.reader.doctrine.product
+        arguments:
+            - false
+            - '@pim_prestashop_connector.builder.table_name'
+
+    pim_prestashop_connector.cleaner.product:
+        class: %pim_prestashop_connector.cleaner.product.class%
+        parent: pim_prestashop_connector.item.prestashop_item_step
+        arguments:
+            - '@pim_prestashop_connector.guesser.prestashop_webservice'
+            - '@pim_prestashop_connector.webservice.prestashop_soap_client_parameters_registry'
+            - '@pim_catalog.manager.channel'
+            - '@pim_catalog.manager.product'

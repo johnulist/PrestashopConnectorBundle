@@ -1,0 +1,3 @@
+css:
+  pim_prestashop_connector:
+    - bundles/pimprestashopconnector/css/mapping-field.less

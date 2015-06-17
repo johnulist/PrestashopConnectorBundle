@@ -1,0 +1,33 @@
+parameters:
+    pim_prestashop_connector.validator.has_valid_credentials.class:    Pim\Bundle\PrestashopConnectorBundle\Validator\Constraints\HasValidCredentialsValidator
+    pim_prestashop_connector.validator.has_valid_currency.class:       Pim\Bundle\PrestashopConnectorBundle\Validator\Constraints\HasValidCurrencyValidator
+    pim_prestashop_connector.validator.has_valid_default_locale.class: Pim\Bundle\PrestashopConnectorBundle\Validator\Constraints\HasValidDefaultLocaleValidator
+    pim_prestashop_connector.checker.xml.class:                        Pim\Bundle\PrestashopConnectorBundle\Validator\Checks\XmlChecker
+
+services:
+    pim_prestashop_connector.validator.has_valid_credentials:
+        class: %pim_prestashop_connector.validator.has_valid_credentials.class%
+        arguments:
+            - '@pim_prestashop_connector.guesser.prestashop_webservice'
+            - '@pim_prestashop_connector.webservice.url_explorer'
+            - '@pim_prestashop_connector.checker.xml'
+            - '@pim_prestashop_connector.webservice.prestashop_rest_client_parameters_registry'
+        tags:
+            - { name: validator.constraint_validator, alias: has_valid_prestashop_credentials }
+
+    pim_prestashop_connector.validator.has_valid_currency:
+        class: %pim_prestashop_connector.validator.has_valid_currency.class%
+        arguments:
+            - '@pim_catalog.manager.channel'
+        tags:
+            - { name: validator.constraint_validator, alias: has_valid_currency }
+
+    pim_prestashop_connector.validator.has_valid_default_locale:
+        class: %pim_prestashop_connector.validator.has_valid_default_locale.class%
+        arguments:
+            - '@pim_catalog.manager.channel'
+        tags:
+            - { name: validator.constraint_validator, alias: has_valid_default_locale }
+
+    pim_prestashop_connector.checker.xml:
+        class: %pim_prestashop_connector.checker.xml.class%

@@ -1,0 +1,64 @@
+jobs:
+    prestashop_attribute_export:
+        connector: Prestashop Connector
+        alias:     prestashop_attribute_export
+        label:     Prestashop attribute export
+        type:      export
+        configuration:
+            soapUsername:             soap
+            soapApiKey:               prestashop1
+            prestashopUrl:               http://prestashop.local
+            wsdlUrl:                  /api/soap/?wsdl
+            defaultLocale:            en_US
+            website:                  base
+            storeviewMapping:         'fr_FR:fr_fr'
+            categoryMapping:          'master:2'
+            notInPimAnymoreAction:    'disable'
+            forceAttributeSetRemoval: false
+
+    prestashop_category_export:
+        connector: Prestashop Connector
+        alias:     prestashop_category_export
+        label:     Prestashop category export
+        type:      export
+        configuration:
+            channel:               mobile
+            soapUsername:          soap
+            soapApiKey:            prestashop1
+            prestashopUrl:            http://prestashop.local
+            wsdlUrl:               /api/soap/?wsdl
+            defaultLocale:         en_US
+            website:               base
+            storeviewMapping:      'fr_FR:fr_fr'
+            isAnchor:              false
+            urlKey:                false
+            categoryMapping:       'master:2'
+            notInPimAnymoreAction: 'disable'
+
+    prestashop_product_export_delta:
+        connector: Prestashop Connector
+        alias:     prestashop_product_export
+        label:     Prestashop product export delta
+        type:      export
+        configuration:
+            channel:                       mobile
+            soapUsername:                  soap
+            soapApiKey:                    prestashop1
+            prestashopUrl:                    http://prestashop.local
+            wsdlUrl:                       /api/soap/?wsdl
+            defaultLocale:                 en_US
+            website:                       base
+            enabled:                       true
+            storeviewMapping:              'fr_FR:fr_fr'
+            visibility:                    4
+            currency:                      EUR
+            urlKey:                        false
+            skuFirst:                      false
+            categoryMapping:               'master:2'
+            pimGrouped:                    'PACK'
+            pimUpSell:                     'UPSELL'
+            pimCrossSell:                  'X_SELL'
+            pimRelated:                    'SUBSTITUTION'
+            notCompleteAnymoreAction:      'disable'
+            notInPimAnymoreAction:         'disable'
+            removeProductsNotHandledByPim: false

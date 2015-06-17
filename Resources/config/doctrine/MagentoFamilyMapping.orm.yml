@@ -1,0 +1,28 @@
+Pim\Bundle\PrestashopConnectorBundle\Entity\PrestashopFamilyMapping:
+    type: entity
+    table: pim_prestashop_family_mapping
+    uniqueConstraints:
+        pim_prestashop_family_mapping_uc:
+            columns:
+                - family_id
+                - prestashop_url
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        prestashopUrl:
+            type: string
+            length: 255
+            column: prestashop_url
+        prestashopFamilyId:
+            type: integer
+            column: prestashop_family_id
+    manyToOne:
+        family:
+            targetEntity: Pim\Bundle\CatalogBundle\Entity\Family
+            inversedBy: prestashopFamilyMappings
+            joinColumn:
+                name: family_id
+                referencedColumnName: id
+                onDelete: 'CASCADE'

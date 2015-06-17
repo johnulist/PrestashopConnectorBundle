@@ -1,0 +1,180 @@
+pim_base_connector:
+    jobs:
+        prestashop_attribute_export:
+            title: Export des attributs vers Prestashop
+        prestashop_category_export:
+            title: Export des categories vers Prestashop
+        prestashop_product_export:
+            title: Export delta des produits vers Prestashop
+
+General properties.title: Proprietés générales
+History.title: Historique
+
+pim_prestashop_connector:
+    jobs:
+        product_export_delta.title: Export delta des produits vers Prestashop
+        category_export.title: Export catégories vers Prestashop
+        attribute_export.title: Export des attributs et jeux d'attributs vers Prestashop
+    steps:
+        simple_product_export.export.title: Export de produits simples
+        configurable_product_export.export.title: Export de produits configurables
+        association_product_export.export.title: Export des associations produits
+        simple_product_clean.clean.title: Nettoyage des produits
+        configurable_product_clean.clean.title: Nettoyage des produits configurables
+        category_export.export.title: Export des catégories
+        category_clean.clean.title: Nettoyage des catégories
+        attribute_export.export.title: Export des attributs
+        attribute_clean.clean.title: Nettoyage des attributs
+        option_export.export.title: Export des options
+        option_clean.clean.title: Nettoyage des options
+
+        product_processor.title: Processeur produit
+        attribute_processor.title: Processeur des attributs
+        category_processor.title: Processeur de catégorie
+        configurable_processor.title: Processeur de configurable
+        option_processor.title: "Processeur d'option"
+        product_association_processor.title: "Processeur d'association de produits"
+        attribute_writer.title: Service d'écriture d'attributs
+        category_writer.title: Service d'écriture de catégories
+        option_writer.title: Service d'écriture d'options
+        product_association_writer.title: Service d'écriture d'associations
+        product_writer.title: Service d'écritures de produits
+        attribute_cleaner.title: "Nettoyeur d'attribut"
+        category_cleaner.title: "Nettoyeur de catégorie"
+        configurable_cleaner.title: Nettoyeur de configurable
+        option_cleaner.title: "Nettoyeur d'options"
+        product_cleaner.title: Nettoyeur de produit
+        attributeset_export.export.title: Export de familles
+        family_clean.clean.title: Nettoyeur de famille
+        group_clean.clean.title: Nettoyeur de groupe
+        family_cleaner.title: Nettoyeur de famille
+    export:
+        soapUsername:
+            label: "Nom d'utilisateur soap"
+            help: Votre nom d'utilisateur soap Prestashop
+        soapApiKey:
+            label: Clé d'API Prestashop
+            help: Votre clé d'API soap Prestashop
+        prestashopUrl:
+            label: Url Prestashop
+            help: L'url de votre installation Prestashop
+        wsdlUrl:
+            label: Suffix wsdl
+            help: Vous pouvez personnaliser le suffixe wsdl de l'API Soap. Si vous ne savez pas à quoi correspond ce paramètre, laissez ce paramètre inchangé.
+        httpLogin:
+            label: "Nom d'utilisateur http"
+            help: "Si vous avez une authentification par http fournissez ici votre nom d'utilisateur de votre connection http"
+        httpPassword:
+            label: Mot de passe http
+            help: "Si vous avez une authentification par http fournissez ici le mot de passe de votre connection http"
+        defaultStoreView:
+            label: Vue boutique par défaut
+            help: Fournissez ici votre vue boutique par défaut
+        channel:
+            label: Canal
+            help:
+        defaultLocale:
+            label: Langue par défaut de votre Prestashop
+            help: Cette langue sera utilisé pour les valeurs du storeview par défaut.
+        enabled:
+            label: Statut des produits envoyés au Prestashop
+            help:
+        visibility:
+            label: Visibilité sur les produits Prestashop
+            help:
+        variant_member_visibility:
+            label: Visibilité des configurables
+            help:
+        website:
+            label: Website
+            help: Le website Prestashop vers lesquels les produits seront envoyés
+        currency:
+            label: Devise de Prestashop
+            help: La devise de votre installation Prestashop
+        storeviewMapping:
+            label: Correspondance des vues boutiques
+            help:  Vous pouvez faire la correspondance entre les langues de votre Akeneo et les boutiques de votre Prestashop
+        categoryMapping:
+            label: Correspondance de catégories
+            help:  Vous pouvez faire la correspondance entre les catégories de votre installation Akeneo et votre installation Prestashop
+        pimGrouped:
+            label: "Type d'association pour les produits groupés"
+            help:  Type d'association correspondant aux produits groupés
+        pimUpSell:
+            label: "Type d'association pour les produits de vente additionnelles"
+            help:  "Type d'association correspondant aux produits vente additionnelles"
+        pimCrossSell:
+            label: "Type d'association pour les produits de vente liées"
+            help:  "Type d'association correspondant aux produits vente liées"
+        pimRelated:
+            label: "Type d'association pour les produits liés"
+            help:  "Type d'association correspondant aux produits liés"
+        attributeCodeMapping:
+            label: Correspondance d'attributs
+            help:  Correspondance des attributs entre Akeneo PIM et Prestashop
+        notInPimAnymoreAction:
+            label: Action pour les items qui ne sont plus dans la PIM
+            help:  Que faire sur Prestashop si un item n'est plus dans la PIM ?
+        notCompleteAnymoreAction:
+            label: Action pour les items qui ne sont pas complet
+            help:  Que faire sur Prestashop si un item n'est pas complet dans Akeneo PIM ?
+        delete:
+            label: Les supprimer
+        do_nothing:
+            label: Ne rien faire
+        disable:
+            label: Les désactiver
+        validator:
+            url_syntax_not_valid: "La syntaxe de l'url n'est pas valide"
+            url_not_reachable: "L'url prestashop n'est pas joignable"
+            rest_url_not_valid: "L'url de l'api rest n'est pas valide"
+            xml_not_valid: "L'xml de prestashop n'est pas valide"
+            authentication_failed: "Le nom d'utilisateur fourni n'est pas valide ou l'utilisateur prestashop n'a pas les droits d'accéder à l'api soap de Prestashop"
+        smallImageAttribute:
+            label: Attribut petite image
+            help: Choisissez l'attribut Akeneo correspondant à la petite image du produit dans Prestashop
+        baseImageAttribute:
+            label: Attribut image de base
+            help: Choisissez l'attribut Akeneo correspondant à l'image de base du produit dans Prestashop
+        thumbnailAttribute:
+            label: Attribut image de vignette
+            help: Choisissez l'attribut Akeneo correspondant à l'image vignette (thumbnail) du produit dans Prestashop
+        isAnchor:
+            label: Attribut Is Anchor
+            help: Choisissez si les catégories sont encrées ou pas
+        forceAttributeSetRemoval:
+            label: Forcer la suppression du jeu d'attribut
+            help: Choississez si vous voulez effacer les jeux d'attributs contenant des produits et leurs produits, ou seulement les jeux d'attributs vides
+        urlKey:
+            label: Laisser Prestashop générer les url_key
+            help: Attention : si vous laissez Prestashop générer les url_key à la place d'Akeneo, vous risquez d'obtenir des doublons
+        removeProductsNotHandledByPim:
+            label: Effacer/désactiver les produits qui ne sont pas gérés par le PIM
+            help: Souhaitez-vous effacer/désactiver les produits qui ne sont gérés que par Prestashop (Virtual, Bundle, Downloadable) ?
+        skuFirst:
+            label: Placer le sku au début de l'url key
+            help: Le code produit (sku) sera placé au début de l'url key plutôt qu'à la fin
+
+job_execution.summary:
+    attribute_created:         Attributs créés
+    attribute_deleted:         Attributs effacées
+    attribute_updated:         Attributs mis à jour
+    category_created:          Categories créées
+    category_deleted:          Categories effacées
+    category_disabled:         Categories désactivées
+    category_moved:            Categories déplacées
+    category_translation_sent: Traductions des catégories envoyées
+    category_updated:          Categories mises à jour
+    family_created:            Familles créées
+    family_deleted:            Familles effacées
+    family_exists:             Familles déjà présentes dans Prestashop
+    option_created:            Options créées
+    option_deleted:            Options effacées
+    product_deleted:           Produits effacés
+    product_disabled:          Produits désactivés
+    product_not_removed:       Produits non supprimés de Prestashop
+    product_linked:            Produits liés
+    product_image_sent:        Images des produits envoyées
+    product_sent:              Produits envoyés
+    product_translation_sent:  Traduction des produits envoyées
+    displayed:                 Alertes

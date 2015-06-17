@@ -1,0 +1,13 @@
+<script type="text/javascript">
+    require(
+        ['jquery', 'mapping-view'],
+        function ($, mappingView) {
+            'use strict';
+            $(function () {
+                $('.mapping-view').each(function () {
+                    mappingView($(this));
+                });
+            })
+        }
+    );
+</script>

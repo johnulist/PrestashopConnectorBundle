@@ -1,0 +1,32 @@
+Pim\Bundle\PrestashopConnectorBundle\Entity\DeltaProductExport:
+    type: entity
+    table: pim_prestashop_delta_product_export
+    indexes:
+        searchcode_idx:
+            columns:
+                - id
+    uniqueConstraints:
+        searchunique_idx:
+            columns:
+                - id
+        product_job_idx:
+            columns: [ product_id, job_instance_id ]
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        lastExport:
+            type: datetime
+            column: last_export
+        productId:
+            type: string
+            column: product_id
+    manyToOne:
+        jobInstance:
+            targetEntity: Akeneo\Bundle\BatchBundle\Entity\JobInstance
+            joinColumns:
+                job_instance_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE

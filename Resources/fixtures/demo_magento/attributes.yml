@@ -1,0 +1,482 @@
+attributes:
+    sku:
+        labels:
+            en_US: SKU
+            fr_FR: SKU
+        type: pim_catalog_identifier
+        group: marketing
+        unique: true
+        useableAsGridFilter: true
+        sortOrder: 1
+    name:
+        labels:
+            en_US: Name
+            fr_FR: Nom
+        type: pim_catalog_text
+        group: marketing
+        localizable: true
+        useableAsGridFilter: true
+        sortOrder: 2
+    description:
+        labels:
+            en_US: Description
+            fr_FR: Description
+        type: pim_catalog_textarea
+        group: marketing
+        localizable: true
+        scopable: true
+        sortOrder: 3
+        wysiwyg_enabled: true
+        useableAsGridFilter: true
+    weight:
+        labels:
+            en_US: Weight
+            fr_FR: Poids
+        type: pim_catalog_metric
+        group: technical
+        sortOrder: 4
+        metricFamily: Weight
+        defaultMetricUnit: KILOGRAM
+        decimalsAllowed: true
+        useableAsGridFilter: true
+    maximum_scan_size:
+        labels:
+            en_US: 'Maximum scan size'
+            fr_FR: 'Surface maximal de numérisation'
+        type: pim_catalog_metric
+        group: technical
+        sortOrder: 5
+        metricFamily: Length
+        defaultMetricUnit: MILLIMETER
+        useableAsGridFilter: true
+    color_scanning:
+        labels:
+            en_US: 'Color scanning'
+            fr_FR: 'Numérisation couleur'
+        type: pim_catalog_boolean
+        group: technical
+        useableAsGridFilter: true
+        sortOrder: 6
+    power_requirements:
+        labels:
+            en_US: 'Power requirements'
+            fr_FR: 'Exigences d''alimentation'
+        type: pim_catalog_text
+        group: technical
+        useableAsGridFilter: true
+        sortOrder: 7
+    maximum_print_size:
+        labels:
+            en_US: 'Maximum print size'
+            fr_FR: 'Format d’impression maximale'
+        type: pim_catalog_simpleselect
+        group: technical
+        useableAsGridFilter: true
+        sortOrder: 8
+    sensor_type:
+        labels:
+            en_US: 'Sensor type'
+            fr_FR: 'Type de capteur'
+        type: pim_catalog_simpleselect
+        group: technical
+        useableAsGridFilter: true
+        sortOrder: 9
+    total_megapixels:
+        labels:
+            en_US: 'Total megapixels'
+            fr_FR: 'Total des megapixels'
+        type: pim_catalog_text
+        group: technical
+        useableAsGridFilter: true
+        sortOrder: 10
+        decimalsAllowed: true
+        negativeAllowed: false
+    optical_zoom:
+        labels:
+            en_US: 'Optical zoom'
+            fr_FR: 'Zoom optique'
+        type: pim_catalog_number
+        group: technical
+        useableAsGridFilter: true
+        sortOrder: 11
+        decimalsAllowed: true
+        negativeAllowed: false
+    image_stabilizer:
+        labels:
+            en_US: 'Image stabilizer'
+            fr_FR: 'Stabilisateur d''image'
+        type: pim_catalog_boolean
+        group: technical
+        useableAsGridFilter: true
+        sortOrder: 12
+    camera_type:
+        labels:
+            en_US: 'Camera type'
+            fr_FR: 'Type d''appareil photo'
+        type: pim_catalog_simpleselect
+        group: technical
+        useableAsGridFilter: true
+        sortOrder: 13
+    thd:
+        labels:
+            en_US: 'Total Harmonic Distortion (THD)'
+            fr_FR: 'DHT, distorsion harmonique totale'
+        type: pim_catalog_number
+        group: technical
+        useableAsGridFilter: true
+        sortOrder: 14
+        decimalsAllowed: false
+        negativeAllowed: false
+    snr:
+        labels:
+            en_US: 'Signal-to-Noise Ratio (SNR)'
+            fr_FR: 'Rapport de signal-à-bruit'
+        type: pim_catalog_number
+        group: technical
+        useableAsGridFilter: true
+        sortOrder: 21
+        decimalsAllowed: false
+        negativeAllowed: false
+    headphone_connectivity:
+        labels:
+            en_US: 'Headphone connectivity'
+            fr_FR: Casque
+        type: pim_catalog_simpleselect
+        group: technical
+        useableAsGridFilter: true
+        sortOrder: 16
+    maximum_video_resolution:
+        labels:
+            en_US: 'Maximum video resolution'
+            fr_FR: 'Résolution vidéo maximale'
+        type: pim_catalog_simpleselect
+        group: technical
+        useableAsGridFilter: true
+        sortOrder: 17
+    maximum_frame_rate:
+        labels:
+            en_US: 'Maximum frame rate'
+            fr_FR: 'Cadence maximale'
+        type: pim_catalog_number
+        group: technical
+        useableAsGridFilter: true
+        sortOrder: 18
+        decimalsAllowed: false
+        negativeAllowed: false
+    multifunctional_functions:
+        labels:
+            en_US: 'All-in-one functions'
+            fr_FR: 'Fonctions tout-en-un'
+        type: pim_catalog_multiselect
+        group: technical
+        useableAsGridFilter: true
+        sortOrder: 19
+    response_time:
+        labels:
+            en_US: 'Response time (ms)'
+            fr_FR: 'Temps de réponse (ms)'
+        type: pim_catalog_number
+        group: marketing
+        useableAsGridFilter: true
+        sortOrder: 20
+    display_srgb:
+        labels:
+            en_US: 'Display sRGB'
+            fr_FR: sRGB
+        type: pim_catalog_boolean
+        group: technical
+        useableAsGridFilter: true
+        sortOrder: 22
+    display_color:
+        labels:
+            en_US: Color
+            fr_FR: Couleur
+        type: pim_catalog_boolean
+        group: technical
+        useableAsGridFilter: true
+        sortOrder: 23
+        decimalsAllowed: true
+    display_diagonal:
+        labels:
+            en_US: 'Display diagonal'
+            fr_FR: 'Taille de l''écran'
+        type: pim_catalog_metric
+        group: technical
+        useableAsGridFilter: true
+        sortOrder: 24
+        metricFamily: Length
+        defaultMetricUnit: INCH
+    release_date:
+        labels:
+            en_US: 'Release date'
+            fr_FR: 'Date de sortie'
+        type: pim_catalog_date
+        group: marketing
+        scopable: true
+        useableAsGridFilter: true
+        sortOrder: 25
+    viewing_area:
+        labels:
+            en_US: 'Effective viewing area'
+            fr_FR: 'Zone d''affichage active'
+        type: pim_catalog_metric
+        group: technical
+        useableAsGridFilter: true
+        sortOrder: 24
+        metricFamily: Length
+        defaultMetricUnit: MILLIMETER
+    price:
+        labels:
+            en_US: Price
+            fr_FR: Prix
+        type: pim_catalog_price_collection
+        group: marketing
+        useableAsGridFilter: true
+        sortOrder: 25
+        decimalsAllowed: true
+    tax_class_id:
+        labels:
+             en_US: 'Tax classes'
+             fr_FR: 'Classes de taxe'
+        type: pim_catalog_number
+        group: marketing
+        sortOrder: 26
+        useableAsGridFilter: true
+    picture:
+        labels:
+            en_US: Picture
+            fr_FR: Photographie
+        type: pim_catalog_image
+        group: media
+        sortOrder: 27
+        allowedExtensions: 'jpg,jpeg,gif'
+    pdf_description:
+        labels:
+            en_US: PDF description
+            fr_FR: Description PDF
+        type: pim_catalog_file
+        group: media
+        sortOrder: 28
+        allowedExtensions: 'pdf'
+    container_material:
+        labels:
+            en_US: 'Container material'
+            fr_FR: 'Matériau du récipient'
+        type: pim_catalog_simpleselect
+        group: manufacturing
+        useableAsGridFilter: true
+        sortOrder: 29
+    main_color:
+        labels:
+            en_US: 'Main color'
+            fr_FR: 'Couleur principale'
+        type: pim_catalog_simpleselect
+        group: color
+        useableAsGridFilter: true
+        sortOrder: 30
+    secondary_color:
+        labels:
+            en_US: 'Secondary color'
+            fr_FR: 'Couleur secondaire'
+        type: pim_catalog_simpleselect
+        group: color
+        sortOrder: 31
+        useableAsGridFilter: true
+    clothing_size:
+        labels:
+            en_US: 'Clothing size'
+            fr_FR: 'Taille du vêtement'
+        type: pim_catalog_simpleselect
+        group: size
+        sortOrder: 32
+        useableAsGridFilter: true
+    tshirt_materials:
+        labels:
+            en_US: 'T-Shirt material'
+            fr_FR: 'Matière T-Shirt'
+        type: pim_catalog_simpleselect
+        group: manufacturing
+        sortOrder: 33
+        useableAsGridFilter: true
+    tshirt_style:
+        labels:
+            en_US: 'T-Shirt style'
+            fr_FR: 'Style du T-Shirt'
+        type: pim_catalog_multiselect
+        group: design
+        sortOrder: 34
+        useableAsGridFilter: true
+    camera_brand:
+        labels:
+            en_US: 'Brand'
+            fr_FR: 'Marque'
+        type: pim_catalog_simpleselect
+        group: technical
+        sortOrder: 35
+        useableAsGridFilter: true
+    camera_model_name:
+        labels:
+            en_US: 'Model name'
+            fr_FR: 'Modèle'
+        type: pim_catalog_text
+        group: technical
+        sortOrder: 35
+        useableAsGridFilter: true
+    short_description:
+        labels:
+            en_US: 'Short description'
+            fr_FR: 'Description courte'
+        type: pim_catalog_textarea
+        group: technical
+        sortOrder: 36
+        localizable: true
+        scopable: true
+        useableAsGridFilter: true
+    max_image_resolution:
+        labels:
+            en_US: 'Maximum image resolution'
+            fr_FR: 'Résolution maximum'
+        type: pim_catalog_text
+        group: technical
+        sortOrder: 37
+        useableAsGridFilter: true
+    image_resolutions:
+        labels:
+            en_US: 'Still image resolution(s)'
+            fr_FR: 'Résolution de la capture Photo'
+        type: pim_catalog_text
+        group: technical
+        sortOrder: 38
+        useableAsGridFilter: true
+    supported_aspect_ratios:
+        labels:
+            en_US: 'Supported aspect ratios'
+            fr_FR: 'Rapports d''aspect pris en charge'
+        type: pim_catalog_text
+        group: technical
+        sortOrder: 39
+        useableAsGridFilter: true
+    supported_image_format:
+        labels:
+            en_US: 'Supported image format'
+            fr_FR: 'Format d''image supportée'
+        type: pim_catalog_text
+        group: technical
+        sortOrder: 40
+        useableAsGridFilter: true
+    lens_mount_interface:
+        labels:
+            en_US: 'Lens mount interface'
+            fr_FR: 'Monture d''objectif d''interface'
+        type: pim_catalog_text
+        group: technical
+        sortOrder: 41
+        useableAsGridFilter: true
+    focus:
+        labels:
+            en_US: 'Focus'
+            fr_FR: 'Mise au point'
+        type: pim_catalog_text
+        group: technical
+        sortOrder: 42
+        useableAsGridFilter: true
+    focus_adjustement:
+        labels:
+            en_US: 'Focus adjustment'
+            fr_FR: 'Ajustement mise au point'
+        type: pim_catalog_text
+        group: technical
+        sortOrder: 43
+        localizable: true
+        useableAsGridFilter: true
+    auto_focus_modes:
+        labels:
+            en_US: 'Auto focus modes'
+            fr_FR: 'Auto focus modes'
+        type: pim_catalog_text
+        group: technical
+        sortOrder: 44
+        localizable: true
+        useableAsGridFilter: true
+    auto_focus_points:
+        labels:
+            en_US: 'Auto focus points'
+            fr_FR: 'Auto focus points'
+        type: pim_catalog_number
+        group: technical
+        sortOrder: 45
+        useableAsGridFilter: true
+    auto_focus_lock:
+        labels:
+            en_US: 'Auto focus lock'
+            fr_FR: 'Auto focus lock'
+        type: pim_catalog_boolean
+        group: technical
+        sortOrder: 46
+        useableAsGridFilter: true
+    auto_focus_assist_beam:
+        labels:
+            en_US: 'Auto focus beam'
+            fr_FR: 'Auto focus beam'
+        type: pim_catalog_boolean
+        group: technical
+        sortOrder: 47
+        useableAsGridFilter: true
+    iso_sensitivity:
+        labels:
+            en_US: 'Iso sensitivity'
+            fr_FR: 'Iso sensitivity'
+        type: pim_catalog_text
+        group: technical
+        sortOrder: 48
+        useableAsGridFilter: true
+    light_exposure_modes:
+         labels:
+             en_US: 'Light exposure modes'
+             fr_FR: 'Light exposure modes'
+         type: pim_catalog_text
+         group: technical
+         sortOrder: 49
+         localizable: true
+         useableAsGridFilter: true
+    light_exposure_corrections:
+         labels:
+             en_US: 'Light exposure corrections'
+             fr_FR: 'Light exposure corrections'
+         type: pim_catalog_text
+         group: technical
+         sortOrder: 50
+         useableAsGridFilter: true
+    light_metering:
+         labels:
+             en_US: 'Light metering'
+             fr_FR: 'Light metering'
+         type: pim_catalog_text
+         group: technical
+         sortOrder: 51
+         localizable: true
+         useableAsGridFilter: true
+    auto_exposure:
+        labels:
+            en_US: 'Auto exposure'
+            fr_FR: 'Auto exposure'
+        type: pim_catalog_boolean
+        group: technical
+        sortOrder: 52
+        useableAsGridFilter: true
+    iso_sensitivity_max:
+        labels:
+            en_US: 'ISO sensitivity (max)'
+            fr_FR: 'ISO sensitivity (max)'
+        type: pim_catalog_number
+        group: technical
+        sortOrder: 53
+        useableAsGridFilter: true
+    iso_sensitivity_min:
+        labels:
+            en_US: 'ISO sensitivity (min)'
+            fr_FR: 'ISO sensitivity (min)'
+        type: pim_catalog_number
+        group: technical
+        sortOrder: 54
+        useableAsGridFilter: true

@@ -1,0 +1,99 @@
+parameters:
+    pim_prestashop_connector.processor.product.class:             Pim\Bundle\PrestashopConnectorBundle\Processor\ProductProcessor
+    pim_prestashop_connector.processor.configurable.class:        Pim\Bundle\PrestashopConnectorBundle\Processor\ConfigurableProcessor
+    pim_prestashop_connector.processor.product_association.class: Pim\Bundle\PrestashopConnectorBundle\Processor\ProductAssociationProcessor
+    pim_prestashop_connector.processor.category.class:            Pim\Bundle\PrestashopConnectorBundle\Processor\CategoryProcessor
+    pim_prestashop_connector.processor.attribute.class:           Pim\Bundle\PrestashopConnectorBundle\Processor\AttributeProcessor
+    pim_prestashop_connector.processor.option.class:              Pim\Bundle\PrestashopConnectorBundle\Processor\OptionProcessor
+    pim_prestashop_connector.processor.family.class:              Pim\Bundle\PrestashopConnectorBundle\Processor\FamilyProcessor
+    pim_prestashop_connector.processor.mapping.class:             Pim\Bundle\PrestashopConnectorBundle\Processor\MappingProcessor
+
+services:
+    pim_prestashop_connector.processor.product:
+        class: %pim_prestashop_connector.processor.product.class%
+        parent: pim_prestashop_connector.item.prestashop_item_step
+        arguments:
+            - '@pim_prestashop_connector.guesser.prestashop_webservice'
+            - '@pim_prestashop_connector.guesser.prestashop_normalizer'
+            - '@pim_prestashop_connector.manager.locale'
+            - '@pim_prestashop_connector.merger.storeview_mapping'
+            - '@pim_prestashop_connector.manager.currency'
+            - '@pim_catalog.manager.channel'
+            - '@pim_prestashop_connector.merger.category_mapping'
+            - '@pim_prestashop_connector.merger.attribute_code_mapping'
+            - '@pim_transform.converter.metric'
+            - '@pim_prestashop_connector.manager.association_type'
+            - '@pim_prestashop_connector.webservice.prestashop_soap_client_parameters_registry'
+            - '@pim_prestashop_connector.manager.attribute'
+
+    pim_prestashop_connector.processor.configurable:
+        class: %pim_prestashop_connector.processor.configurable.class%
+        parent: pim_prestashop_connector.item.prestashop_item_step
+        arguments:
+            - '@pim_prestashop_connector.guesser.prestashop_webservice'
+            - '@pim_prestashop_connector.guesser.prestashop_normalizer'
+            - '@pim_prestashop_connector.manager.locale'
+            - '@pim_prestashop_connector.merger.storeview_mapping'
+            - '@pim_prestashop_connector.manager.currency'
+            - '@pim_catalog.manager.channel'
+            - '@pim_prestashop_connector.merger.category_mapping'
+            - '@pim_prestashop_connector.merger.attribute_code_mapping'
+            - '@pim_prestashop_connector.webservice.prestashop_soap_client_parameters_registry'
+            - '@pim_prestashop_connector.manager.attribute'
+            - '@pim_prestashop_connector.manager.association_type'
+            - '@pim_prestashop_connector.manager.group'
+            - '@pim_prestashop_connector.filters.exportable_product'
+
+    pim_prestashop_connector.processor.product_association:
+        class: %pim_prestashop_connector.processor.product_association.class%
+        parent: pim_prestashop_connector.item.prestashop_item_step
+        arguments:
+            - '@pim_prestashop_connector.guesser.prestashop_webservice'
+            - '@pim_prestashop_connector.guesser.prestashop_normalizer'
+            - '@pim_prestashop_connector.manager.locale'
+            - '@pim_prestashop_connector.merger.storeview_mapping'
+            - '@pim_prestashop_connector.manager.association_type'
+            - '@pim_prestashop_connector.webservice.prestashop_soap_client_parameters_registry'
+
+    pim_prestashop_connector.processor.category:
+        class: %pim_prestashop_connector.processor.category.class%
+        arguments:
+            - '@pim_prestashop_connector.guesser.prestashop_webservice'
+            - '@pim_prestashop_connector.guesser.prestashop_normalizer'
+            - '@pim_prestashop_connector.manager.locale'
+            - '@pim_prestashop_connector.merger.storeview_mapping'
+            - '@pim_prestashop_connector.merger.category_mapping'
+            - '@pim_prestashop_connector.webservice.prestashop_soap_client_parameters_registry'
+
+    pim_prestashop_connector.processor.attribute:
+        class: %pim_prestashop_connector.processor.attribute.class%
+        arguments:
+            - '@pim_prestashop_connector.guesser.prestashop_webservice'
+            - '@pim_prestashop_connector.guesser.prestashop_normalizer'
+            - '@pim_prestashop_connector.manager.locale'
+            - '@pim_prestashop_connector.merger.storeview_mapping'
+            - '@pim_prestashop_connector.merger.attribute_code_mapping'
+            - '@pim_prestashop_connector.webservice.prestashop_soap_client_parameters_registry'
+            - '@pim_prestashop_connector.manager.group'
+
+    pim_prestashop_connector.processor.option:
+        class: %pim_prestashop_connector.processor.option.class%
+        arguments:
+            - '@pim_prestashop_connector.guesser.prestashop_webservice'
+            - '@pim_prestashop_connector.guesser.prestashop_normalizer'
+            - '@pim_prestashop_connector.manager.locale'
+            - '@pim_prestashop_connector.merger.storeview_mapping'
+            - '@pim_prestashop_connector.merger.attribute_code_mapping'
+            - '@pim_prestashop_connector.webservice.prestashop_soap_client_parameters_registry'
+
+    pim_prestashop_connector.processor.family:
+        class: %pim_prestashop_connector.processor.family.class%
+        arguments:
+            - '@pim_prestashop_connector.guesser.prestashop_webservice'
+            - '@pim_prestashop_connector.guesser.prestashop_normalizer'
+            - '@pim_prestashop_connector.manager.locale'
+            - '@pim_prestashop_connector.merger.storeview_mapping'
+            - '@pim_prestashop_connector.webservice.prestashop_soap_client_parameters_registry'
+
+    pim_prestashop_connector.processor.mapping:
+        class: %pim_prestashop_connector.processor.mapping.class%

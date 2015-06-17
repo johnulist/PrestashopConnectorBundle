@@ -1,0 +1,2 @@
+ALTER TABLE pim_delta_product_export RENAME TO pim_prestashop_delta_product_export;
+ALTER TABLE pim_prestashop_delta_product_export CHANGE date last_export DATETIME NOT NULL;

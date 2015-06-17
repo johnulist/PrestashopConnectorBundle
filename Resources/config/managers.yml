@@ -1,0 +1,91 @@
+parameters:
+    pim_prestashop_connector.manager.locale.class:                    Pim\Bundle\PrestashopConnectorBundle\Manager\LocaleManager
+    pim_prestashop_connector.manager.currency.class:                  Pim\Bundle\PrestashopConnectorBundle\Manager\CurrencyManager
+    pim_prestashop_connector.manager.category_mapping.class:          Pim\Bundle\PrestashopConnectorBundle\Manager\CategoryMappingManager
+    pim_prestashop_connector.manager.family_mapping.class:            Pim\Bundle\PrestashopConnectorBundle\Manager\FamilyMappingManager
+    pim_prestashop_connector.manager.group_mapping.class:             Pim\Bundle\PrestashopConnectorBundle\Manager\AttributeGroupMappingManager
+    pim_prestashop_connector.manager.attribute_mapping.class:         Pim\Bundle\PrestashopConnectorBundle\Manager\AttributeMappingManager
+    pim_prestashop_connector.manager.simple_mapping.class:            Pim\Bundle\PrestashopConnectorBundle\Manager\SimpleMappingManager
+    pim_prestashop_connector.manager.association_type.class:          Pim\Bundle\PrestashopConnectorBundle\Manager\AssociationTypeManager
+    pim_prestashop_connector.manager.attribute.class:                 Pim\Bundle\PrestashopConnectorBundle\Manager\AttributeManager
+    pim_prestashop_connector.manager.group.class:                     Pim\Bundle\PrestashopConnectorBundle\Manager\GroupManager
+    pim_prestashop_connector.manager.delta_product_export.class:      Pim\Bundle\PrestashopConnectorBundle\Manager\DeltaProductExportManager
+    pim_prestashop_connector.manager.delta_configurable_export.class: Pim\Bundle\PrestashopConnectorBundle\Manager\DeltaConfigurableExportManager
+
+services:
+    # overriden PIM managers
+    pim_prestashop_connector.manager.association_type:
+        class: %pim_prestashop_connector.manager.association_type.class%
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - %pim_catalog.entity.association_type.class%
+
+    pim_prestashop_connector.manager.group:
+        class: %pim_prestashop_connector.manager.group.class%
+        arguments:
+            - '@pim_catalog.manager.group'
+            - '@pim_prestashop_connector.repository.group'
+
+    pim_prestashop_connector.manager.locale:
+        class: %pim_prestashop_connector.manager.locale.class%
+        arguments:
+            - '@pim_catalog.manager.locale'
+
+    pim_prestashop_connector.manager.currency:
+        class: %pim_prestashop_connector.manager.currency.class%
+        arguments:
+            - '@pim_catalog.manager.currency'
+
+    pim_prestashop_connector.manager.attribute:
+        class: %pim_prestashop_connector.manager.attribute.class%
+        arguments:
+            - '@pim_catalog.manager.attribute'
+            - '@doctrine.orm.entity_manager'
+            - %pim_catalog.entity.attribute.class%
+
+    # mapping managers
+    pim_prestashop_connector.manager.category_mapping:
+        class: %pim_prestashop_connector.manager.category_mapping.class%
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - %pim_prestashop_connector.entity.category_mapping.class%
+
+    pim_prestashop_connector.manager.family_mapping:
+        class: %pim_prestashop_connector.manager.family_mapping.class%
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - %pim_prestashop_connector.entity.family_mapping.class%
+
+    pim_prestashop_connector.manager.group_mapping:
+        class: %pim_prestashop_connector.manager.group_mapping.class%
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - %pim_prestashop_connector.entity.group_mapping.class%
+
+    pim_prestashop_connector.manager.attribute_mapping:
+        class: %pim_prestashop_connector.manager.attribute_mapping.class%
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - %pim_prestashop_connector.entity.attribute_mapping.class%
+
+    pim_prestashop_connector.manager.simple_mapping:
+        class: %pim_prestashop_connector.manager.simple_mapping.class%
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - %pim_prestashop_connector.entity.simple_mapping.class%
+
+    # delta entities managers
+    pim_prestashop_connector.manager.delta_product_export:
+        class: %pim_prestashop_connector.manager.delta_product_export.class%
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@pim_catalog.repository.product'
+            - '@pim_prestashop_connector.builder.table_name'
+
+    pim_prestashop_connector.manager.delta_configurable_export:
+        class: %pim_prestashop_connector.manager.delta_configurable_export.class%
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@pim_prestashop_connector.repository.group'
+            - '@pim_prestashop_connector.filters.exportable_product'
+            - '@pim_prestashop_connector.builder.table_name'

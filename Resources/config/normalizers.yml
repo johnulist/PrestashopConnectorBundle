@@ -1,0 +1,30 @@
+parameters:
+    pim_prestashop_connector.normalizer.value.class:  Pim\Bundle\PrestashopConnectorBundle\Normalizer\ProductValueNormalizer
+    pim_prestashop_connector.normalizer.attribute.class: Pim\Bundle\PrestashopConnectorBundle\Normalizer\AttributeNormalizer
+    pim_prestashop_connector.normalizer.category.class: Pim\Bundle\PrestashopConnectorBundle\Normalizer\CategoryNormalizer
+    pim_prestashop_connector.normalizer.family.class: Pim\Bundle\PrestashopConnectorBundle\Normalizer\FamilyNormalizer
+    pim_prestashop_connector.normalizer.option.class: Pim\Bundle\PrestashopConnectorBundle\Normalizer\OptionNormalizer
+
+services:
+    pim_prestashop_connector.normalizer.value:
+        class: %pim_prestashop_connector.normalizer.value.class%
+
+    pim_prestashop_connector.normalizer.attribute:
+        class: %pim_prestashop_connector.normalizer.attribute.class%
+        arguments:
+            - '@pim_prestashop_connector.normalizer.value'
+
+    pim_prestashop_connector.normalizer.category:
+        class: %pim_prestashop_connector.normalizer.category.class%
+        arguments:
+            - '@pim_catalog.manager.channel'
+            - '@pim_prestashop_connector.manager.category_mapping'
+            - '@pim_prestashop_connector.repository.category'
+
+    pim_prestashop_connector.normalizer.family:
+        class: %pim_prestashop_connector.normalizer.family.class%
+
+    pim_prestashop_connector.normalizer.option:
+        class: %pim_prestashop_connector.normalizer.option.class%
+        arguments:
+            - '@pim_catalog.manager.channel'

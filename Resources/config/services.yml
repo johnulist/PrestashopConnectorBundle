@@ -1,0 +1,18 @@
+parameters:
+    pim_prestashop_connector.step.prune.class:                   Pim\Bundle\PrestashopConnectorBundle\Step\PruneStep
+    pim_prestashop_connector.item.prestashop_item_step.class:    Pim\Bundle\PrestashopConnectorBundle\Item\PrestashopItemStep
+    pim_prestashop_connector.twig.configuration_extension.class: Pim\Bundle\PrestashopConnectorBundle\Twig\ConfigurationExtension
+
+services:
+    pim_prestashop_connector.twig.configuration_extension:
+        class: '%pim_prestashop_connector.twig.configuration_extension.class%'
+        arguments:
+            name: @file_locator
+        tags:
+            - { name: twig.extension }
+
+    pim_prestashop_connector.item.prestashop_item_step:
+        class: '%pim_prestashop_connector.item.prestashop_item_step.class%'
+        abstract: true
+        calls:
+            - [setEventDispatcher, [@event_dispatcher]]

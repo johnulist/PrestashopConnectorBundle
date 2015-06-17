@@ -1,0 +1,11 @@
+parameters:
+    pim_prestashop_connector.event_subscriber.cascade_delete_delta.class: Pim\Bundle\PrestashopConnectorBundle\EventSubscriber\CascadeDeleteDeltaSubscriber
+
+services:
+    pim_prestashop_connector.event_subscriber.cascade_delete_delta:
+        class: %pim_prestashop_connector.event_subscriber.cascade_delete_delta.class%
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@pim_prestashop_connector.builder.table_name'
+        tags:
+            - { name: kernel.event_subscriber }

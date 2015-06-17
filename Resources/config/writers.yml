@@ -1,0 +1,79 @@
+parameters:
+    pim_prestashop_connector.writer.product.class:                   Pim\Bundle\PrestashopConnectorBundle\Writer\ProductWriter
+    pim_prestashop_connector.writer.product_delta.class:             Pim\Bundle\PrestashopConnectorBundle\Writer\DeltaProductWriter
+    pim_prestashop_connector.writer.category.class:                  Pim\Bundle\PrestashopConnectorBundle\Writer\CategoryWriter
+    pim_prestashop_connector.writer.product_association.class:       Pim\Bundle\PrestashopConnectorBundle\Writer\ProductAssociationWriter
+    pim_prestashop_connector.writer.option.class:                    Pim\Bundle\PrestashopConnectorBundle\Writer\OptionWriter
+    pim_prestashop_connector.writer.attribute.class:                 Pim\Bundle\PrestashopConnectorBundle\Writer\AttributeWriter
+    pim_prestashop_connector.writer.family.class:                    Pim\Bundle\PrestashopConnectorBundle\Writer\AttributeSetWriter
+    pim_prestashop_connector.writer.delta_product_association.class: Pim\Bundle\PrestashopConnectorBundle\Writer\DeltaProductAssociationWriter
+    pim_prestashop_connector.writer.delta_configurable.class:        Pim\Bundle\PrestashopConnectorBundle\Writer\DeltaConfigurableWriter
+
+services:
+    pim_prestashop_connector.writer.product:
+        class: %pim_prestashop_connector.writer.product.class%
+        parent: pim_prestashop_connector.item.prestashop_item_step
+        arguments:
+            - '@pim_prestashop_connector.guesser.prestashop_webservice'
+            - '@pim_catalog.manager.channel'
+            - '@pim_prestashop_connector.webservice.prestashop_soap_client_parameters_registry'
+
+    pim_prestashop_connector.writer.product_delta:
+        class: %pim_prestashop_connector.writer.product_delta.class%
+        parent: pim_prestashop_connector.writer.product
+        arguments:
+            - '@pim_prestashop_connector.manager.delta_product_export'
+        calls:
+            - [setEventDispatcher, [@event_dispatcher]]
+
+    pim_prestashop_connector.writer.delta_product_association:
+        class: %pim_prestashop_connector.writer.delta_product_association.class%
+        arguments:
+            - '@pim_prestashop_connector.guesser.prestashop_webservice'
+            - '@pim_prestashop_connector.webservice.prestashop_soap_client_parameters_registry'
+            - '@pim_prestashop_connector.manager.delta_product_export'
+
+    pim_prestashop_connector.writer.delta_configurable:
+        class: %pim_prestashop_connector.writer.delta_configurable.class%
+        parent: pim_prestashop_connector.writer.product
+        arguments:
+            - '@pim_prestashop_connector.manager.delta_configurable_export'
+        calls:
+            - [setEventDispatcher, [@event_dispatcher]]
+
+    pim_prestashop_connector.writer.product_association:
+        class: %pim_prestashop_connector.writer.product_association.class%
+        arguments:
+            - '@pim_prestashop_connector.guesser.prestashop_webservice'
+            - '@pim_prestashop_connector.webservice.prestashop_soap_client_parameters_registry'
+
+    pim_prestashop_connector.writer.category:
+        class: %pim_prestashop_connector.writer.category.class%
+        arguments:
+            - '@pim_prestashop_connector.guesser.prestashop_webservice'
+            - '@pim_prestashop_connector.manager.category_mapping'
+            - '@pim_prestashop_connector.webservice.prestashop_soap_client_parameters_registry'
+
+    pim_prestashop_connector.writer.option:
+        class: %pim_prestashop_connector.writer.option.class%
+        arguments:
+            - '@pim_prestashop_connector.guesser.prestashop_webservice'
+            - '@pim_prestashop_connector.webservice.prestashop_soap_client_parameters_registry'
+
+    pim_prestashop_connector.writer.attribute:
+        class: %pim_prestashop_connector.writer.attribute.class%
+        arguments:
+            - '@pim_prestashop_connector.guesser.prestashop_webservice'
+            - '@pim_prestashop_connector.manager.family_mapping'
+            - '@pim_prestashop_connector.manager.attribute_mapping'
+            - '@pim_prestashop_connector.manager.group_mapping'
+            - '@pim_prestashop_connector.merger.attribute_id_mapping'
+            - '@pim_prestashop_connector.webservice.prestashop_soap_client_parameters_registry'
+
+    pim_prestashop_connector.writer.family:
+        class: %pim_prestashop_connector.writer.family.class%
+        arguments:
+            - '@pim_prestashop_connector.guesser.prestashop_webservice'
+            - '@pim_prestashop_connector.manager.family_mapping'
+            - '@pim_prestashop_connector.manager.attribute_mapping'
+            - '@pim_prestashop_connector.webservice.prestashop_soap_client_parameters_registry'

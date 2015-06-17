@@ -1,0 +1,48 @@
+parameters:
+    pim_prestashop_connector.cleaner.configurable.class: Pim\Bundle\PrestashopConnectorBundle\Cleaner\ConfigurableCleaner
+    pim_prestashop_connector.cleaner.category.class:     Pim\Bundle\PrestashopConnectorBundle\Cleaner\CategoryCleaner
+    pim_prestashop_connector.cleaner.option.class:       Pim\Bundle\PrestashopConnectorBundle\Cleaner\OptionCleaner
+    pim_prestashop_connector.cleaner.attribute.class:    Pim\Bundle\PrestashopConnectorBundle\Cleaner\AttributeCleaner
+    pim_prestashop_connector.cleaner.family.class:       Pim\Bundle\PrestashopConnectorBundle\Cleaner\FamilyCleaner
+
+services:
+    pim_prestashop_connector.cleaner.configurable:
+        class: %pim_prestashop_connector.cleaner.configurable.class%
+        arguments:
+            - '@pim_prestashop_connector.guesser.prestashop_webservice'
+            - '@pim_prestashop_connector.webservice.prestashop_soap_client_parameters_registry'
+            - '@pim_catalog.manager.channel'
+            - '@pim_catalog.manager.product'
+            - '@pim_prestashop_connector.manager.group'
+
+    pim_prestashop_connector.cleaner.category:
+        class: %pim_prestashop_connector.cleaner.category.class%
+        arguments:
+            - '@pim_prestashop_connector.guesser.prestashop_webservice'
+            - '@pim_prestashop_connector.manager.category_mapping'
+            - '@pim_prestashop_connector.webservice.prestashop_soap_client_parameters_registry'
+
+    pim_prestashop_connector.cleaner.option:
+        class: %pim_prestashop_connector.cleaner.option.class%
+        arguments:
+            - '@pim_prestashop_connector.guesser.prestashop_webservice'
+            - '@doctrine.orm.entity_manager'
+            - '%pim_catalog.entity.attribute.class%'
+            - '%pim_catalog.entity.attribute_option.class%'
+            - '@pim_prestashop_connector.webservice.prestashop_soap_client_parameters_registry'
+
+    pim_prestashop_connector.cleaner.attribute:
+        class: %pim_prestashop_connector.cleaner.attribute.class%
+        arguments:
+            - '@pim_prestashop_connector.guesser.prestashop_webservice'
+            - '@pim_prestashop_connector.merger.attribute_code_mapping'
+            - '@doctrine.orm.entity_manager'
+            - '%pim_catalog.entity.attribute.class%'
+            - '@pim_prestashop_connector.webservice.prestashop_soap_client_parameters_registry'
+
+    pim_prestashop_connector.cleaner.family:
+        class: %pim_prestashop_connector.cleaner.family.class%
+        arguments:
+            - '@pim_prestashop_connector.guesser.prestashop_webservice'
+            - '@pim_prestashop_connector.manager.family_mapping'
+            - '@pim_prestashop_connector.webservice.prestashop_soap_client_parameters_registry'

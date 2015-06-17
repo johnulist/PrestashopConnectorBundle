@@ -1,0 +1,24 @@
+parameters:
+    pim_prestashop_connector.guesser.prestashop_webservice.class: Pim\Bundle\PrestashopConnectorBundle\Guesser\WebserviceGuesser
+    pim_prestashop_connector.guesser.prestashop_normalizer.class: Pim\Bundle\PrestashopConnectorBundle\Guesser\NormalizerGuesser
+
+services:
+    pim_prestashop_connector.guesser.prestashop_webservice:
+        class: %pim_prestashop_connector.guesser.prestashop_webservice.class%
+        arguments:
+            - '@pim_prestashop_connector.factory.prestashop_soap_client'
+
+    pim_prestashop_connector.guesser.prestashop_normalizer:
+        class: %pim_prestashop_connector.guesser.prestashop_normalizer.class%
+        arguments:
+            - '@pim_prestashop_connector.factory.prestashop_soap_client'
+            - '@pim_catalog.manager.channel'
+            - '@pim_catalog.manager.media'
+            - '@pim_prestashop_connector.normalizer.value'
+            - '@pim_prestashop_connector.manager.category_mapping'
+            - '@pim_prestashop_connector.manager.association_type'
+            - '@pim_prestashop_connector.normalizer.attribute'
+            - '@pim_prestashop_connector.normalizer.category'
+            - '@pim_prestashop_connector.normalizer.family'
+            - '@pim_prestashop_connector.normalizer.option'
+            - '@pim_prestashop_connector.filters.exportable_locale'

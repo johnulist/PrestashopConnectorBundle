@@ -1,0 +1,18 @@
+pim_connector_mapping:
+    mapping:
+        attribute:
+            source: Akeneo attribute
+            target: Prestashop attribute
+        storeview:
+            source: Akeneo locale
+            target: Prestashop store view
+        category:
+            source: Akeneo category
+            target: Prestashop category
+            placeholder: 'Please select a category'
+            empty: 'To start, please create a root category on Prestashop'
+        add: Add
+        not_blank: This field is required
+        attributeCode:
+            source: Akeneo attribute code
+            target: Prestashop attribute code

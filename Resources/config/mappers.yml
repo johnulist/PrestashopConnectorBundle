@@ -1,0 +1,73 @@
+parameters:
+    pim_prestashop_connector.mapper.prestashop_attribute_code.class: Pim\Bundle\PrestashopConnectorBundle\Mapper\PrestashopAttributeCodeMapper
+    pim_prestashop_connector.mapper.prestashop_storeview.class:      Pim\Bundle\PrestashopConnectorBundle\Mapper\PrestashopStoreViewMapper
+    pim_prestashop_connector.mapper.prestashop_category.class:       Pim\Bundle\PrestashopConnectorBundle\Mapper\PrestashopCategoryMapper
+    pim_prestashop_connector.mapper.prestashop_attribute_id.class:   Pim\Bundle\PrestashopConnectorBundle\Mapper\PrestashopAttributeIdMapper
+    pim_prestashop_connector.mapper.orm_attribute_code.class:     Pim\Bundle\PrestashopConnectorBundle\Mapper\ORMAttributeCodeMapper
+    pim_prestashop_connector.mapper.orm_storeview.class:          Pim\Bundle\PrestashopConnectorBundle\Mapper\ORMStoreViewMapper
+    pim_prestashop_connector.mapper.orm_category.class:           Pim\Bundle\PrestashopConnectorBundle\Mapper\ORMCategoryMapper
+    pim_prestashop_connector.mapper.orm_exported_attribute.class: Pim\Bundle\PrestashopConnectorBundle\Mapper\ORMExportedAttributeMapper
+    pim_prestashop_connector.mapper.orm.class:                    Pim\Bundle\PrestashopConnectorBundle\Mapper\ORMMapper
+
+services:
+    pim_prestashop_connector.mapper.prestashop_attribute_code:
+        class: %pim_prestashop_connector.mapper.prestashop_attribute_code.class%
+        arguments:
+            - '@pim_prestashop_connector.validator.has_valid_credentials'
+            - '@pim_prestashop_connector.guesser.prestashop_webservice'
+
+    pim_prestashop_connector.mapper.prestashop_attribute_id:
+        class: %pim_prestashop_connector.mapper.prestashop_attribute_id.class%
+        arguments:
+            - '@pim_prestashop_connector.validator.has_valid_credentials'
+            - '@pim_prestashop_connector.guesser.prestashop_webservice'
+
+    pim_prestashop_connector.mapper.prestashop_storeview:
+        class: %pim_prestashop_connector.mapper.prestashop_storeview.class%
+        arguments:
+            - '@pim_prestashop_connector.validator.has_valid_credentials'
+            - '@pim_prestashop_connector.guesser.prestashop_webservice'
+
+    pim_prestashop_connector.mapper.prestashop_category:
+        class: %pim_prestashop_connector.mapper.prestashop_category.class%
+        arguments:
+            - '@pim_prestashop_connector.validator.has_valid_credentials'
+            - '@pim_prestashop_connector.guesser.prestashop_webservice'
+
+    pim_prestashop_connector.mapper.orm_attribute_code:
+        class: %pim_prestashop_connector.mapper.orm_attribute_code.class%
+        arguments:
+            - '@pim_prestashop_connector.validator.has_valid_credentials'
+            - '@pim_prestashop_connector.manager.simple_mapping'
+            - 'attribute'
+            - '@pim_prestashop_connector.manager.attribute'
+
+    pim_prestashop_connector.mapper.orm_storeview:
+        class: %pim_prestashop_connector.mapper.orm_storeview.class%
+        arguments:
+            - '@pim_prestashop_connector.validator.has_valid_credentials'
+            - '@pim_prestashop_connector.manager.simple_mapping'
+            - 'storeview'
+            - '@pim_prestashop_connector.manager.locale'
+
+    pim_prestashop_connector.mapper.orm_category:
+        class: %pim_prestashop_connector.mapper.orm_category.class%
+        arguments:
+            - '@pim_prestashop_connector.validator.has_valid_credentials'
+            - '@pim_prestashop_connector.manager.simple_mapping'
+            - 'category'
+            - '@pim_catalog.manager.category'
+
+    pim_prestashop_connector.mapper.orm_exported_attribute:
+        class: %pim_prestashop_connector.mapper.orm_exported_attribute.class%
+        arguments:
+            - '@pim_prestashop_connector.validator.has_valid_credentials'
+            - '@pim_prestashop_connector.manager.attribute_mapping'
+            - '@pim_prestashop_connector.merger.attribute_code_mapping'
+            - 'attribute_id'
+
+    pim_prestashop_connector.mapper.orm_product:
+        class: %pim_prestashop_connector.mapper.orm.class%
+        arguments:
+            - '@pim_prestashop_connector.manager.simple_mapping'
+            - 'product'

@@ -1,0 +1,46 @@
+parameters:
+    pim_prestashop_connector.reader.orm.bulk_entity.class:               Pim\Bundle\PrestashopConnectorBundle\Reader\ORM\BulkEntityReader
+    pim_prestashop_connector.reader.orm.category.class:                  Pim\Bundle\PrestashopConnectorBundle\Reader\ORM\CategoryReader
+    pim_prestashop_connector.reader.orm.grouped_option.class:            Pim\Bundle\PrestashopConnectorBundle\Reader\ORM\GroupedOptionReader
+    pim_prestashop_connector.reader.orm.attribute.class:                 Pim\Bundle\PrestashopConnectorBundle\Reader\ORM\AttributeReader
+
+services:
+    pim_prestashop_connector.reader.doctrine.bulk_simple_product:
+        parent: pim_base_connector.reader.doctrine.product
+        class: %pim_base_connector.reader.doctrine.bulk_product.class%
+
+    pim_prestashop_connector.reader.doctrine.bulk_configurable_product:
+        parent: pim_base_connector.reader.doctrine.product
+        class: %pim_base_connector.reader.doctrine.bulk_product.class%
+
+    pim_prestashop_connector.reader.doctrine.bulk_product_association:
+        parent: pim_base_connector.reader.doctrine.product
+        class: %pim_base_connector.reader.doctrine.bulk_product.class%
+
+    pim_prestashop_connector.reader.orm.category:
+        class: %pim_prestashop_connector.reader.orm.category.class%
+        arguments:
+            - '@doctrine.orm.default_entity_manager'
+            - %pim_catalog.entity.category.class%
+            - '@pim_prestashop_connector.repository.category'
+            - '@pim_catalog.manager.channel'
+
+    pim_prestashop_connector.reader.orm.grouped_option:
+        class: %pim_prestashop_connector.reader.orm.grouped_option.class%
+        arguments:
+            - '@doctrine.orm.default_entity_manager'
+            - %pim_catalog.entity.attribute_option.class%
+
+    pim_prestashop_connector.reader.orm.attribute:
+        class: %pim_prestashop_connector.reader.orm.attribute.class%
+        arguments:
+            - '@doctrine.orm.default_entity_manager'
+            - %pim_catalog.entity.attribute.class%
+            - '@pim_prestashop_connector.merger.attribute_code_mapping'
+
+    pim_prestashop_connector.reader.orm.family:
+        class: %pim_base_connector.reader.orm.entity.class%
+        arguments:
+            - '@doctrine.orm.default_entity_manager'
+            - %pim_catalog.entity.family.class%
+            - '@pim_prestashop_connector.merger.attribute_code_mapping'

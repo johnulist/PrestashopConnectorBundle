@@ -1,0 +1,180 @@
+pim_base_connector:
+    jobs:
+        prestashop_attribute_export:
+            title: Prestashop attribute export
+        prestashop_category_export:
+            title: Prestashop category export
+        prestashop_product_export:
+            title: Prestashop product export delta
+
+General properties.title: General properties
+History.title: History
+
+pim_prestashop_connector:
+    jobs:
+        product_export_delta.title: Delta export on products
+        category_export.title: Export categories to Prestashop
+        attribute_export.title: Export attribute and attribute sets to Prestashop
+    steps:
+        simple_product_export.export.title: Simple product export
+        configurable_product_export.export.title: Configurable product export
+        association_product_export.export.title: Product association export
+        simple_product_clean.clean.title: Product clean
+        configurable_product_clean.clean.title: Configurable product clean
+        category_export.export.title: Category export
+        category_clean.clean.title: Category clean
+        attribute_export.export.title: Attribute export
+        attribute_clean.clean.title: Attribute clean
+        option_export.export.title: Option export
+        option_clean.clean.title: Option clean
+
+        product_processor.title: Product processor
+        attribute_processor.title: Attribute processor
+        category_processor.title: Category processor
+        configurable_processor.title: Configurable processor
+        option_processor.title: Option processor
+        product_association_processor.title: Product association processor
+        attribute_writer.title: Attribute writer
+        category_writer.title: Catgeory writer
+        option_writer.title: Option writer
+        product_association_writer.title: Product association writer
+        product_writer.title: Product writer
+        attribute_cleaner.title: Attribute cleaner
+        category_cleaner.title: Category cleaner
+        configurable_cleaner.title: Configurable cleaner
+        option_cleaner.title: Option cleaner
+        product_cleaner.title: Product cleaner
+        attributeset_export.export.title: Family export
+        family_clean.clean.title: Family cleaner
+        group_clean.clean.title: Group cleaner
+        family_cleaner.title: Family cleaner
+    export:
+        soapUsername:
+            label: Soap Username
+            help: Your soap username on Prestashop
+        soapApiKey:
+            label: Soap api key
+            help: Your soap api key on Prestashop
+        prestashopUrl:
+            label: Prestashop url
+            help: Your Prestashop installation url
+        wsdlUrl:
+            label: Wsdl url
+            help: Provide here your wsdl relative path. If you are not sure leave this field by default (/api/soap/?wsdl)
+        httpLogin:
+            label: Http login
+            help: If you have an http authentication on your server, provide here your http login
+        httpPassword:
+            label: Http password
+            help: If you have an http authentication on your server, provide here your http password
+        defaultStoreView:
+            label: Default store view
+            help: Provide here your default store view
+        channel:
+            label: Channel
+            help:
+        defaultLocale:
+            label: Default locale
+            help: The default locale to apply on admin storeView
+        enabled:
+            label: Status on Prestashop
+            help:
+        visibility:
+            label: Visibility on Prestashop
+            help: 1: Not visibible individually, 2: Catalog, 3: Search, 4: Catalog, Search
+        variant_member_visibility:
+            label: Visibility for configurables members
+            help: 1: Not visibible individually, 2: Catalog, 3: Search, 4: Catalog, Search.  Applies only for products members of configurable products
+        website:
+            label: Website
+            help: The website to which the products will be sent
+        currency:
+            label: Currency
+            help: The currency to send to Prestashop
+        storeviewMapping:
+            label: Storeview mapping
+            help:  You can map storeviews to locales in PIM
+        categoryMapping:
+            label: Category mapping
+            help:  Mapping between category on Prestashop and Pim categories
+        pimGrouped:
+            label: Association type for grouped products
+            help:  Association type corresponding to grouped products
+        pimUpSell:
+            label: Association type for up-sell products
+            help:  Association type corresponding to up-sell products
+        pimCrossSell:
+            label: Association type for cross-sell products
+            help:  Association type corresponding to cross-sell products
+        pimRelated:
+            label: Association type for related products
+            help:  Association type corresponding to related products
+        attributeCodeMapping:
+            label: Attribute code mapping
+            help:  Map attribute code between Akeneo PIM and Prestashop
+        notInPimAnymoreAction:
+            label: Action for item not in PIM anymore
+            help:  What to do on Prestashop if an item is not in the Pim anymore ?
+        notCompleteAnymoreAction:
+            label: Action for item not complete anymore
+            help:  What to do on Prestashop if an item is not complete in Akeneo anymore ?
+        delete:
+            label: Delete it
+        do_nothing:
+            label: Do nothing
+        disable:
+            label: Disable it
+        validator:
+            url_syntax_not_valid: Url syntax is not valid
+            url_not_reachable: Url can not be resolved
+            rest_url_not_valid: Api REST url is not valid
+            xml_not_valid: Prestashop XML is not valid
+            authentication_failed: The given prestashop api username is invalid or prestashop user has no rights to access the soap api
+        smallImageAttribute:
+            label: Small image attribute
+            help: Choose the Akeneo attribute which is corresponding to small image of the product in Prestashop
+        baseImageAttribute:
+            label: Base image attribute
+            help: Choose the Akeneo attribute which is corresponding to base image of the product in Prestashop
+        thumbnailAttribute:
+            label: Thumbnail image attribute
+            help: Choose the Akeneo attribute which is corresponding to thumbnail image of the product in Prestashop
+        isAnchor:
+            label: Is Anchor attribute
+            help: Choose if your category is anchored or not
+        forceAttributeSetRemoval:
+            label: Force attribute set removing
+            help: Choose if you want to remove attribute sets that have products and these products, or only empty attribute sets
+        urlKey:
+            label: Let Prestashop handle url_key generation
+            help: Caution: if you let Prestashop handle url_key generation, you could face duplications
+        removeProductsNotHandledByPim:
+            label: Delete/disable products not handled by PIM
+            help: Choose if you want to delete/disable products handled only by Prestashop (Virtual, Bundle, Downloadable)
+        skuFirst:
+            label: Set sku at the beginning of the url key
+            help: The product code (sku) will be set at the beginning of the url key rather than at the end
+
+job_execution.summary:
+    attribute_created:         Attributes created
+    attribute_deleted:         Attributes deleted
+    attribute_updated:         Attributes updated
+    category_created:          Categories created
+    category_deleted:          Categories deleted
+    category_disabled:         Categories disabled
+    category_moved:            Categories moved
+    category_translation_sent: Categories translations sent
+    category_updated:          Categories updated
+    family_created:            Families created
+    family_deleted:            Families deleted
+    family_exists:             Families already in prestashop
+    option_created:            Options created
+    option_deleted:            Options deleted
+    product_deleted:           Products deleted
+    product_disabled:          Products disabled
+    product_not_removed:       Products not removed from Prestashop
+    product_linked:            Products linked
+    product_image_sent:        Products images sent
+    product_sent:              Products sent
+    product_translation_sent:  Products images sent
+    displayed:                 Warnings

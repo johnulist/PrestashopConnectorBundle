@@ -1,0 +1,28 @@
+Pim\Bundle\PrestashopConnectorBundle\Entity\PrestashopCategoryMapping:
+    type: entity
+    table: pim_prestashop_category_mapping
+    uniqueConstraints:
+        pim_prestashop_category_mapping_uc:
+            columns:
+                - category_id
+                - prestashop_url
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        prestashopUrl:
+            type: string
+            length: 255
+            column: prestashop_url
+        prestashopCategoryId:
+            type: integer
+            column: prestashop_category_id
+    manyToOne:
+        category:
+            targetEntity: Pim\Bundle\CatalogBundle\Entity\Category
+            inversedBy: prestashopCategoryMappings
+            joinColumn:
+                name: category_id
+                referencedColumnName: id
+                onDelete: 'CASCADE'

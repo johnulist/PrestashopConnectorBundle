@@ -1,0 +1,10 @@
+parameters:
+    pim_prestashop_connector.filters.exportable_product.class: Pim\Bundle\PrestashopConnectorBundle\Filter\ExportableProductFilter
+    pim_prestashop_connector.filters.exportable_locale.class:  Pim\Bundle\PrestashopConnectorBundle\Filter\ExportableLocaleFilter
+
+services:
+    pim_prestashop_connector.filters.exportable_product:
+        class: %pim_prestashop_connector.filters.exportable_product.class%
+
+    pim_prestashop_connector.filters.exportable_locale:
+        class: %pim_prestashop_connector.filters.exportable_locale.class%

@@ -1,0 +1,28 @@
+Pim\Bundle\PrestashopConnectorBundle\Entity\PrestashopAttributeMapping:
+    type: entity
+    table: pim_prestashop_attribute_mapping
+    uniqueConstraints:
+        pim_prestashop_attribute_mapping_uc:
+            columns:
+                - attribute_id
+                - prestashop_url
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        prestashopUrl:
+            type: string
+            length: 255
+            column: prestashop_url
+        prestashopAttributeId:
+            type: integer
+            column: prestashop_attribute_id
+    manyToOne:
+        attribute:
+            targetEntity: Pim\Bundle\CatalogBundle\Entity\Attribute
+            inversedBy: prestashopAttributeMappings
+            joinColumn:
+                name: attribute_id
+                referencedColumnName: id
+                onDelete: 'CASCADE'

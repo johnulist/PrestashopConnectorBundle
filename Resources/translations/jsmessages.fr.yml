@@ -1,0 +1,18 @@
+pim_connector_mapping:
+    mapping:
+        attribute:
+            source: Attribut Akeneo
+            target: Attribut Prestashop
+        storeview:
+            source: Locale Akeneo
+            target: Store view Prestashop
+        category:
+            source: Categorie Akeneo
+            target: Categorie Prestashop
+            placeholder: 'Selectionnez une categorie'
+            empty: 'Pour commencer, créez une catégorie principale sur Prestashop'
+        add: Ajouter
+        not_blank: Ce champs est requis
+        attributeCode:
+            source: Code d'attribut Akeneo
+            target: Code d'attribut Prestashop

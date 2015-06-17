@@ -1,0 +1,9 @@
+parameters:
+    pim_prestashop_connector.builder.table_name.class: Pim\Bundle\PrestashopConnectorBundle\Builder\TableNameBuilder
+
+services:
+    pim_prestashop_connector.builder.table_name:
+        class: %pim_prestashop_connector.builder.table_name.class%
+        arguments:
+            - '@service_container'
+            - '@pim_catalog.doctrine.smart_manager_registry'

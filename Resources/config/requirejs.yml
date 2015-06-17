@@ -1,0 +1,4 @@
+config:
+    paths:
+        mapping-field: pimprestashopconnector/js/mapping-field
+        mapping-view: pimprestashopconnector/js/mapping-view

@@ -1,0 +1,115 @@
+connector:
+    name: Prestashop Connector
+    jobs:
+        prestashop_product_export:
+            title: pim_prestashop_connector.jobs.product_export_delta.title
+            type:  export
+            templates:
+                show: 'PimPrestashopConnectorBundle:Export:show.html.twig'
+                edit: 'PimPrestashopConnectorBundle:Export:edit.html.twig'
+            steps:
+                export_simple_products:
+                    title:     pim_prestashop_connector.steps.simple_product_export.export.title
+                    services:
+                        reader:    pim_prestashop_connector.reader.product_delta
+                        processor: pim_prestashop_connector.processor.product
+                        writer:    pim_prestashop_connector.writer.product_delta
+                    parameters:
+                        batch_size: 1
+                export_configurable_product:
+                    title:     pim_prestashop_connector.steps.configurable_product_export.export.title
+                    services:
+                        reader:    pim_prestashop_connector.reader.delta_configurable
+                        processor: pim_prestashop_connector.processor.configurable
+                        writer:    pim_prestashop_connector.writer.delta_configurable
+                    parameters:
+                        batch_size: 1
+                export_product_association:
+                    title:     pim_prestashop_connector.steps.association_product_export.export.title
+                    services:
+                        reader:    pim_prestashop_connector.reader.delta_product_association
+                        processor: pim_prestashop_connector.processor.product_association
+                        writer:    pim_prestashop_connector.writer.delta_product_association
+                    parameters:
+                        batch_size: 1
+                prune_simple_products:
+                    title: pim_prestashop_connector.steps.simple_product_clean.clean.title
+                    class: "%pim_prestashop_connector.step.prune.class%"
+                    services:
+                        cleaner: pim_prestashop_connector.cleaner.product
+                prune_configurable_products:
+                    title: pim_prestashop_connector.steps.configurable_product_clean.clean.title
+                    class: "%pim_prestashop_connector.step.prune.class%"
+                    services:
+                        cleaner: pim_prestashop_connector.cleaner.configurable
+
+        prestashop_category_export:
+            title: pim_prestashop_connector.jobs.category_export.title
+            type:  export
+            templates:
+                show: 'PimPrestashopConnectorBundle:Export:show.html.twig'
+                edit: 'PimPrestashopConnectorBundle:Export:edit.html.twig'
+            steps:
+                export_categories:
+                    title:     pim_prestashop_connector.steps.category_export.export.title
+                    services:
+                        reader:    pim_prestashop_connector.reader.orm.category
+                        processor: pim_prestashop_connector.processor.category
+                        writer:    pim_prestashop_connector.writer.category
+                    parameters:
+                        batch_size: 1
+                prune_categories:
+                    title: pim_prestashop_connector.steps.category_clean.clean.title
+                    class: "%pim_prestashop_connector.step.prune.class%"
+                    services:
+                        cleaner: pim_prestashop_connector.cleaner.category
+
+        prestashop_attribute_export:
+            title: pim_prestashop_connector.jobs.attribute_export.title
+            type:  export
+            templates:
+                show: 'PimPrestashopConnectorBundle:Export:show.html.twig'
+                edit: 'PimPrestashopConnectorBundle:Export:edit.html.twig'
+            steps:
+                #attribute set
+                export_attributesets:
+                     title:     pim_prestashop_connector.steps.attributeset_export.export.title
+                     services:
+                         reader:    pim_prestashop_connector.reader.orm.family
+                         processor: pim_prestashop_connector.processor.family
+                         writer:    pim_prestashop_connector.writer.family
+                     parameters:
+                         batch_size: 1
+                prune_attributeset:
+                    title: pim_prestashop_connector.steps.family_clean.clean.title
+                    class: "%pim_prestashop_connector.step.prune.class%"
+                    services:
+                        cleaner: pim_prestashop_connector.cleaner.family
+                #attribute
+                export_attributes:
+                    title:     pim_prestashop_connector.steps.attribute_export.export.title
+                    services:
+                        reader:    pim_prestashop_connector.reader.orm.attribute
+                        processor: pim_prestashop_connector.processor.attribute
+                        writer:    pim_prestashop_connector.writer.attribute
+                    parameters:
+                        batch_size: 1
+                prune_attributes:
+                    title: pim_prestashop_connector.steps.attribute_clean.clean.title
+                    class: "%pim_prestashop_connector.step.prune.class%"
+                    services:
+                        cleaner: pim_prestashop_connector.cleaner.attribute
+                #option
+                export_options:
+                    title:     pim_prestashop_connector.steps.option_export.export.title
+                    services:
+                        reader:    pim_prestashop_connector.reader.orm.grouped_option
+                        processor: pim_prestashop_connector.processor.option
+                        writer:    pim_prestashop_connector.writer.option
+                    parameters:
+                        batch_size: 1
+                prune_options:
+                    title: pim_prestashop_connector.steps.option_clean.clean.title
+                    class: "%pim_prestashop_connector.step.prune.class%"
+                    services:
+                        cleaner: pim_prestashop_connector.cleaner.option

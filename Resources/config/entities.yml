@@ -1,0 +1,9 @@
+parameters:
+    pim_prestashop_connector.entity.category_mapping.class:                 Pim\Bundle\PrestashopConnectorBundle\Entity\PrestashopCategoryMapping
+    pim_prestashop_connector.entity.family_mapping.class:                   Pim\Bundle\PrestashopConnectorBundle\Entity\PrestashopFamilyMapping
+    pim_prestashop_connector.entity.group_mapping.class:                    Pim\Bundle\PrestashopConnectorBundle\Entity\PrestashopGroupMapping
+    pim_prestashop_connector.entity.attribute_mapping.class:                Pim\Bundle\PrestashopConnectorBundle\Entity\PrestashopAttributeMapping
+    pim_prestashop_connector.entity.simple_mapping.class:                   Pim\Bundle\PrestashopConnectorBundle\Entity\SimpleMapping
+    pim_prestashop_connector.entity.delta_product_export.class:             Pim\Bundle\PrestashopConnectorBundle\Entity\DeltaProductExport
+    pim_prestashop_connector.entity.delta_product_association_export.class: Pim\Bundle\PrestashopConnectorBundle\Entity\DeltaProductAssociationExport
+    pim_prestashop_connector.entity.delta_configurable_export.class:        Pim\Bundle\PrestashopConnectorBundle\Entity\DeltaConfigurableExport

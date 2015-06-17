@@ -1,0 +1,37 @@
+parameters:
+    pim_prestashop_connector.merger.mapping.class:        Pim\Bundle\PrestashopConnectorBundle\Merger\PrestashopMappingMerger
+    pim_prestashop_connector.merger.addition_not_allowed: false
+    pim_prestashop_connector.merger.addition_allowed:     true
+
+services:
+    pim_prestashop_connector.merger.attribute_code_mapping:
+        class: %pim_prestashop_connector.merger.mapping.class%
+        arguments:
+            - ['@pim_prestashop_connector.mapper.prestashop_attribute_code', '@pim_prestashop_connector.mapper.orm_attribute_code']
+            - 'attributeCode'
+            - 'export'
+            - %pim_prestashop_connector.merger.addition_allowed%
+
+    pim_prestashop_connector.merger.attribute_id_mapping:
+        class: %pim_prestashop_connector.merger.mapping.class%
+        arguments:
+            - ['@pim_prestashop_connector.mapper.prestashop_attribute_id', '@pim_prestashop_connector.mapper.orm_exported_attribute']
+            - 'attributeId'
+            - 'export'
+            - %pim_prestashop_connector.merger.addition_not_allowed%
+
+    pim_prestashop_connector.merger.storeview_mapping:
+        class: %pim_prestashop_connector.merger.mapping.class%
+        arguments:
+            - ['@pim_prestashop_connector.mapper.prestashop_storeview', '@pim_prestashop_connector.mapper.orm_storeview']
+            - 'storeview'
+            - 'export'
+            - %pim_prestashop_connector.merger.addition_allowed%
+
+    pim_prestashop_connector.merger.category_mapping:
+        class: %pim_prestashop_connector.merger.mapping.class%
+        arguments:
+            - ['@pim_prestashop_connector.mapper.prestashop_category', '@pim_prestashop_connector.mapper.orm_category']
+            - 'category'
+            - 'export'
+            - %pim_prestashop_connector.merger.addition_not_allowed%

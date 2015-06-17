@@ -1,0 +1,27 @@
+Pim\Bundle\PrestashopConnectorBundle\Entity\PrestashopGroupMapping:
+    type: entity
+    table: pim_prestashop_group_mapping
+    uniqueConstraints:
+        pim_prestashop_group_mapping_uc:
+            columns:
+                - prestashop_url
+                - pim_group_code
+                - pim_family_code
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        prestashopUrl:
+            type: string
+            length: 255
+            column: prestashop_url
+        prestashopGroupId:
+            type: integer
+            column: prestashop_group_id
+        pimGroupCode:
+            type: string
+            column: pim_group_code
+        pimFamilyCode:
+            type: string
+            column: pim_family_code
