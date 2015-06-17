@@ -14,23 +14,20 @@ use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParamete
 /**
  * Prestashop product processor.
  *
- * @author    Julien Sanchez <julien@akeneo.com>
- * @copyright 2013 Akeneo SAS (http://www.akeneo.com)
- * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 class ProductAssociationProcessor extends AbstractProcessor
 {
     /** @staticvar string */
-    const MAGENTO_UP_SELL    = 'up_sell';
+    const PRESTASHOP_UP_SELL    = 'up_sell';
 
     /** @staticvar string */
-    const MAGENTO_CROSS_SELL = 'cross_sell';
+    const PRESTASHOP_CROSS_SELL = 'cross_sell';
 
     /** @staticvar string */
-    const MAGENTO_RELATED    = 'related';
+    const PRESTASHOP_RELATED    = 'related';
 
     /** @staticvar string */
-    const MAGENTO_GROUPED    = 'grouped';
+    const PRESTASHOP_GROUPED    = 'grouped';
 
     /** @var AssociationTypeManager */
     protected $associationTypeManager;
@@ -270,19 +267,19 @@ class ProductAssociationProcessor extends AbstractProcessor
         $associationCodeMapping = [];
 
         if ($this->getPimUpSell()) {
-            $associationCodeMapping[$this->getPimUpSell()] = self::MAGENTO_UP_SELL;
+            $associationCodeMapping[$this->getPimUpSell()] = self::PRESTASHOP_UP_SELL;
         }
 
         if ($this->getPimCrossSell()) {
-            $associationCodeMapping[$this->getPimCrossSell()] = self::MAGENTO_CROSS_SELL;
+            $associationCodeMapping[$this->getPimCrossSell()] = self::PRESTASHOP_CROSS_SELL;
         }
 
         if ($this->getPimRelated()) {
-            $associationCodeMapping[$this->getPimRelated()] = self::MAGENTO_RELATED;
+            $associationCodeMapping[$this->getPimRelated()] = self::PRESTASHOP_RELATED;
         }
 
         if ($this->getPimGrouped()) {
-            $associationCodeMapping[$this->getPimGrouped()] = self::MAGENTO_GROUPED;
+            $associationCodeMapping[$this->getPimGrouped()] = self::PRESTASHOP_GROUPED;
         }
 
         return $associationCodeMapping;

@@ -9,9 +9,6 @@ use Pim\Bundle\CatalogBundle\Entity\Locale;
 /**
  * A normalizer to transform a product entity into an array for Prestashop platform above 1.6.
  *
- * @author    Julien Sanchez <julien@akeneo.com>
- * @copyright 2013 Akeneo SAS (http://www.akeneo.com)
- * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 class ProductNormalizer16 extends ProductNormalizer implements ProductNormalizerInterface
 {

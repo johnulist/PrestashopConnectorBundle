@@ -11,9 +11,6 @@ use Symfony\Component\Config\FileLocator;
 /**
  * Prestashop connector bundle extension.
  *
- * @author    Santiago Díaz <santiago.diaz@me.com>
- * @copyright 2015 Santiago Díaz (http://sdiaz.es)
- * @license   http://opensource.org/licenses/mit  The MIT License (MIT)
  */
 class PimPrestashopConnectorExtension extends Extension
 {

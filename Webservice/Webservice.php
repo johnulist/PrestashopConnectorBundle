@@ -7,9 +7,6 @@ use Pim\Bundle\CatalogBundle\Model\ProductInterface;
 /**
  * A prestashop soap client to abstract interaction with the prestashop api.
  *
- * @author    Julien Sanchez <julien@akeneo.com>
- * @copyright 2014 Akeneo SAS (http://www.akeneo.com)
- * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 class Webservice
 {
@@ -146,10 +143,10 @@ class Webservice
     const CONFIGURABLE_IDENTIFIER_PATTERN                    = 'conf-%s';
 
     /** @staticvar int */
-    const MAGENTO_STATUS_DISABLE                             = 2;
+    const PRESTASHOP_STATUS_DISABLE                             = 2;
 
     /** @staticvar int */
-    const MAGENTO_PRODUCT_UPDATE_USELESS                     = 2;
+    const PRESTASHOP_PRODUCT_UPDATE_USELESS                     = 2;
 
     /** @staticvar int */
     const ADMIN_STOREVIEW                                    = 0;
@@ -636,7 +633,7 @@ class Webservice
             [
                 $productSku,
                 [
-                    'status' => self::MAGENTO_STATUS_DISABLE,
+                    'status' => self::PRESTASHOP_STATUS_DISABLE,
                 ],
             ]
         );
@@ -1011,7 +1008,7 @@ class Webservice
     protected function updateProductInMultipleStoreViews(array $productPart)
     {
         $productPartToUpdate = array_merge(
-            array_slice($productPart, static::MAGENTO_PRODUCT_UPDATE_USELESS),
+            array_slice($productPart, static::PRESTASHOP_PRODUCT_UPDATE_USELESS),
             ['sku']
         );
         $this->updateProductPart($productPartToUpdate);

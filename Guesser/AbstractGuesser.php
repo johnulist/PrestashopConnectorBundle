@@ -8,44 +8,41 @@ use Pim\Bundle\PrestashopConnectorBundle\Webservice\SoapCallException;
 /**
  * A prestashop guesser abstract class.
  *
- * @author    Julien Sanchez <julien@akeneo.com>
- * @copyright 2013 Akeneo SAS (http://www.akeneo.com)
- * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 abstract class AbstractGuesser
 {
     /** @staticvar string */
-    const MAGENTO_VERSION_1_14 = '1.14';
+    const PRESTASHOP_VERSION_1_14 = '1.14';
 
     /** @staticvar string */
-    const MAGENTO_VERSION_1_13 = '1.13';
+    const PRESTASHOP_VERSION_1_13 = '1.13';
 
     /** @staticvar string */
-    const MAGENTO_VERSION_1_12 = '1.12';
+    const PRESTASHOP_VERSION_1_12 = '1.12';
 
     /** @staticvar string */
-    const MAGENTO_VERSION_1_11 = '1.11';
+    const PRESTASHOP_VERSION_1_11 = '1.11';
 
     /** @staticvar string */
-    const MAGENTO_VERSION_1_9  = '1.9';
+    const PRESTASHOP_VERSION_1_9  = '1.9';
 
     /** @staticvar string */
-    const MAGENTO_VERSION_1_8  = '1.8';
+    const PRESTASHOP_VERSION_1_8  = '1.8';
 
     /** @staticvar string */
-    const MAGENTO_VERSION_1_7  = '1.7';
+    const PRESTASHOP_VERSION_1_7  = '1.7';
 
     /** @staticvar string */
-    const MAGENTO_VERSION_1_6  = '1.6';
+    const PRESTASHOP_VERSION_1_6  = '1.6';
 
     /** @staticvar string */
-    const MAGENTO_CORE_ACCESS_DENIED = 'Access denied.';
+    const PRESTASHOP_CORE_ACCESS_DENIED = 'Access denied.';
 
     /** @staticvar string */
     const UNKNOWN_VERSION = 'unknown_version';
 
     /** @staticvar string */
-    const MAGENTO_VERSION_NOT_SUPPORTED_MESSAGE = 'Your Prestashop version is not supported yet.';
+    const PRESTASHOP_VERSION_NOT_SUPPORTED_MESSAGE = 'Your Prestashop version is not supported yet.';
 
     /** @var string */
     protected $version = null;
@@ -67,7 +64,7 @@ abstract class AbstractGuesser
             try {
                 $prestashopVersion = $client->call('core_prestashop.info')['prestashop_version'];
             } catch (\SoapFault $e) {
-                return self::MAGENTO_VERSION_1_6;
+                return self::PRESTASHOP_VERSION_1_6;
             } catch (SoapCallException $e) {
                 throw $e;
             }

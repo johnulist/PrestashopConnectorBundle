@@ -10,9 +10,6 @@ use Pim\Bundle\CatalogBundle\Model\ProductInterface;
 /**
  * Filter which locale is exportable for a given product and a given channel.
  *
- * @author    Willy Mesnage <willy.mesnage@akeneo.com>
- * @copyright 2015 Akeneo SAS (http://www.akeneo.com)
- * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 class ExportableLocaleFilter
 {

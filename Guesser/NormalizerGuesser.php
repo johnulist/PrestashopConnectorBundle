@@ -24,9 +24,6 @@ use Pim\Bundle\PrestashopConnectorBundle\Normalizer\AttributeNormalizer;
 /**
  * A prestashop guesser to get the proper normalizer.
  *
- * @author    Julien Sanchez <julien@akeneo.com>
- * @copyright 2013 Akeneo SAS (http://www.akeneo.com)
- * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 class NormalizerGuesser extends AbstractGuesser
 {
@@ -122,13 +119,13 @@ class NormalizerGuesser extends AbstractGuesser
         $prestashopVersion = $this->getPrestashopVersion($client);
 
         switch ($prestashopVersion) {
-            case AbstractGuesser::MAGENTO_VERSION_1_14:
-            case AbstractGuesser::MAGENTO_VERSION_1_13:
-            case AbstractGuesser::MAGENTO_VERSION_1_12:
-            case AbstractGuesser::MAGENTO_VERSION_1_11:
-            case AbstractGuesser::MAGENTO_VERSION_1_9:
-            case AbstractGuesser::MAGENTO_VERSION_1_8:
-            case AbstractGuesser::MAGENTO_VERSION_1_7:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_14:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_13:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_12:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_11:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_9:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_8:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_7:
                 return new ProductNormalizer(
                     $this->channelManager,
                     $this->mediaManager,
@@ -142,7 +139,7 @@ class NormalizerGuesser extends AbstractGuesser
                     $currencyCode,
                     $clientParameters->getSoapUrl()
                 );
-            case AbstractGuesser::MAGENTO_VERSION_1_6:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_6:
                 return new ProductNormalizer16(
                     $this->channelManager,
                     $this->mediaManager,
@@ -157,7 +154,7 @@ class NormalizerGuesser extends AbstractGuesser
                     $clientParameters->getSoapUrl()
                 );
             default:
-                throw new NotSupportedVersionException(AbstractGuesser::MAGENTO_VERSION_NOT_SUPPORTED_MESSAGE);
+                throw new NotSupportedVersionException(AbstractGuesser::PRESTASHOP_VERSION_NOT_SUPPORTED_MESSAGE);
         }
     }
 
@@ -183,14 +180,14 @@ class NormalizerGuesser extends AbstractGuesser
         $prestashopVersion = $this->getPrestashopVersion($client);
 
         switch ($prestashopVersion) {
-            case AbstractGuesser::MAGENTO_VERSION_1_14:
-            case AbstractGuesser::MAGENTO_VERSION_1_13:
-            case AbstractGuesser::MAGENTO_VERSION_1_12:
-            case AbstractGuesser::MAGENTO_VERSION_1_11:
-            case AbstractGuesser::MAGENTO_VERSION_1_9:
-            case AbstractGuesser::MAGENTO_VERSION_1_8:
-            case AbstractGuesser::MAGENTO_VERSION_1_7:
-            case AbstractGuesser::MAGENTO_VERSION_1_6:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_14:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_13:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_12:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_11:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_9:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_8:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_7:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_6:
                 return new ConfigurableNormalizer(
                     $this->channelManager,
                     $productNormalizer,
@@ -198,7 +195,7 @@ class NormalizerGuesser extends AbstractGuesser
                     $visibility
                 );
             default:
-                throw new NotSupportedVersionException(AbstractGuesser::MAGENTO_VERSION_NOT_SUPPORTED_MESSAGE);
+                throw new NotSupportedVersionException(AbstractGuesser::PRESTASHOP_VERSION_NOT_SUPPORTED_MESSAGE);
         }
     }
 
@@ -217,17 +214,17 @@ class NormalizerGuesser extends AbstractGuesser
         $prestashopVersion = $this->getPrestashopVersion($client);
 
         switch ($prestashopVersion) {
-            case AbstractGuesser::MAGENTO_VERSION_1_14:
-            case AbstractGuesser::MAGENTO_VERSION_1_13:
-            case AbstractGuesser::MAGENTO_VERSION_1_12:
-            case AbstractGuesser::MAGENTO_VERSION_1_11:
-            case AbstractGuesser::MAGENTO_VERSION_1_9:
-            case AbstractGuesser::MAGENTO_VERSION_1_8:
-            case AbstractGuesser::MAGENTO_VERSION_1_7:
-            case AbstractGuesser::MAGENTO_VERSION_1_6:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_14:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_13:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_12:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_11:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_9:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_8:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_7:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_6:
                 return $this->categoryNormalizer;
             default:
-                throw new NotSupportedVersionException(AbstractGuesser::MAGENTO_VERSION_NOT_SUPPORTED_MESSAGE);
+                throw new NotSupportedVersionException(AbstractGuesser::PRESTASHOP_VERSION_NOT_SUPPORTED_MESSAGE);
         }
     }
 
@@ -246,17 +243,17 @@ class NormalizerGuesser extends AbstractGuesser
         $prestashopVersion = $this->getPrestashopVersion($client);
 
         switch ($prestashopVersion) {
-            case AbstractGuesser::MAGENTO_VERSION_1_14:
-            case AbstractGuesser::MAGENTO_VERSION_1_13:
-            case AbstractGuesser::MAGENTO_VERSION_1_12:
-            case AbstractGuesser::MAGENTO_VERSION_1_11:
-            case AbstractGuesser::MAGENTO_VERSION_1_9:
-            case AbstractGuesser::MAGENTO_VERSION_1_8:
-            case AbstractGuesser::MAGENTO_VERSION_1_7:
-            case AbstractGuesser::MAGENTO_VERSION_1_6:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_14:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_13:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_12:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_11:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_9:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_8:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_7:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_6:
                 return $this->optionNormalizer;
             default:
-                throw new NotSupportedVersionException(AbstractGuesser::MAGENTO_VERSION_NOT_SUPPORTED_MESSAGE);
+                throw new NotSupportedVersionException(AbstractGuesser::PRESTASHOP_VERSION_NOT_SUPPORTED_MESSAGE);
         }
     }
 
@@ -275,17 +272,17 @@ class NormalizerGuesser extends AbstractGuesser
         $prestashopVersion = $this->getPrestashopVersion($client);
 
         switch ($prestashopVersion) {
-            case AbstractGuesser::MAGENTO_VERSION_1_14:
-            case AbstractGuesser::MAGENTO_VERSION_1_13:
-            case AbstractGuesser::MAGENTO_VERSION_1_12:
-            case AbstractGuesser::MAGENTO_VERSION_1_11:
-            case AbstractGuesser::MAGENTO_VERSION_1_9:
-            case AbstractGuesser::MAGENTO_VERSION_1_8:
-            case AbstractGuesser::MAGENTO_VERSION_1_7:
-            case AbstractGuesser::MAGENTO_VERSION_1_6:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_14:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_13:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_12:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_11:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_9:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_8:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_7:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_6:
                 return $this->attributeNormalizer;
             default:
-                throw new NotSupportedVersionException(AbstractGuesser::MAGENTO_VERSION_NOT_SUPPORTED_MESSAGE);
+                throw new NotSupportedVersionException(AbstractGuesser::PRESTASHOP_VERSION_NOT_SUPPORTED_MESSAGE);
         }
     }
 
@@ -304,17 +301,17 @@ class NormalizerGuesser extends AbstractGuesser
         $prestashopVersion = $this->getPrestashopVersion($client);
 
         switch ($prestashopVersion) {
-            case AbstractGuesser::MAGENTO_VERSION_1_14:
-            case AbstractGuesser::MAGENTO_VERSION_1_13:
-            case AbstractGuesser::MAGENTO_VERSION_1_12:
-            case AbstractGuesser::MAGENTO_VERSION_1_11:
-            case AbstractGuesser::MAGENTO_VERSION_1_9:
-            case AbstractGuesser::MAGENTO_VERSION_1_8:
-            case AbstractGuesser::MAGENTO_VERSION_1_7:
-            case AbstractGuesser::MAGENTO_VERSION_1_6:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_14:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_13:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_12:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_11:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_9:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_8:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_7:
+            case AbstractGuesser::PRESTASHOP_VERSION_1_6:
                 return $this->familyNormalizer;
             default:
-                throw new NotSupportedVersionException(AbstractGuesser::MAGENTO_VERSION_NOT_SUPPORTED_MESSAGE);
+                throw new NotSupportedVersionException(AbstractGuesser::PRESTASHOP_VERSION_NOT_SUPPORTED_MESSAGE);
         }
     }
 }

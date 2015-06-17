@@ -11,9 +11,6 @@ use Akeneo\Bundle\BatchBundle\Item\InvalidItemException;
 /**
  * A step to delete element that are no longer in PIM or in the channel.
  *
- * @author    Julien Sanchez <julien@akeneo.com>
- * @copyright 2014 Akeneo SAS (http://www.akeneo.com)
- * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 class PruneStep extends AbstractStep
 {

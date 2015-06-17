@@ -16,9 +16,6 @@ use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParamete
 /**
  * Prestashop option processor.
  *
- * @author    Julien Sanchez <julien@akeneo.com>
- * @copyright 2014 Akeneo SAS (http://www.akeneo.com)
- * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 class OptionProcessor extends AbstractProcessor
 {
@@ -164,7 +161,7 @@ class OptionProcessor extends AbstractProcessor
         try {
             $normalizedOption = $this->optionNormalizer->normalize(
                 $option,
-                AbstractNormalizer::MAGENTO_FORMAT,
+                AbstractNormalizer::PRESTASHOP_FORMAT,
                 $context
             );
         } catch (NormalizeException $e) {

@@ -11,41 +11,38 @@ use Pim\Bundle\CatalogBundle\Entity\Locale;
 /**
  * A normalizer to transform a product entity into an array.
  *
- * @author    Julien Sanchez <julien@akeneo.com>
- * @copyright 2013 Akeneo SAS (http://www.akeneo.com)
- * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 abstract class AbstractNormalizer implements NormalizerInterface
 {
     /** @staticvar string */
-    const MAGENTO_SIMPLE_PRODUCT_KEY       = 'simple';
+    const PRESTASHOP_SIMPLE_PRODUCT_KEY       = 'simple';
 
     /** @staticvar string */
-    const MAGENTO_CONFIGURABLE_PRODUCT_KEY = 'configurable';
+    const PRESTASHOP_CONFIGURABLE_PRODUCT_KEY = 'configurable';
 
     /** @staticvar string */
-    const MAGENTO_GROUPED_PRODUCT_KEY      = 'grouped';
+    const PRESTASHOP_GROUPED_PRODUCT_KEY      = 'grouped';
 
     /** @staticvar string */
-    const MAGENTO_BUNDLE_PRODUCT_KEY       = 'bundle';
+    const PRESTASHOP_BUNDLE_PRODUCT_KEY       = 'bundle';
 
     /** @staticvar string */
-    const MAGENTO_DOWNLOADABLE_PRODUCT_KEY = 'downloadable';
+    const PRESTASHOP_DOWNLOADABLE_PRODUCT_KEY = 'downloadable';
 
     /** @staticvar string */
-    const MAGENTO_VIRTUAL_PRODUCT_KEY      = 'virtual';
+    const PRESTASHOP_VIRTUAL_PRODUCT_KEY      = 'virtual';
 
     /** @staticvar string */
     const DATE_FORMAT                      = 'Y-m-d H:i:s';
 
     /** @staticvar string */
-    const MAGENTO_FORMAT = 'PrestashopArray';
+    const PRESTASHOP_FORMAT = 'PrestashopArray';
 
     /** @var array */
     protected $pimLocales;
 
     /** @var array */
-    protected $supportedFormats = [self::MAGENTO_FORMAT];
+    protected $supportedFormats = [self::PRESTASHOP_FORMAT];
 
     /** @var ChannelManager */
     protected $channelManager;

@@ -17,9 +17,6 @@ use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParamete
 /**
  * Abstract prestashop product processor.
  *
- * @author    Julien Sanchez <julien@akeneo.com>
- * @copyright 2014 Akeneo SAS (http://www.akeneo.com)
- * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  *
  * @HasValidDefaultLocale(groups={"Execution"})
  * @HasValidCurrency(groups={"Execution"})
@@ -27,10 +24,10 @@ use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParamete
 abstract class AbstractProductProcessor extends AbstractProcessor
 {
     /** @staticvar int */
-    const MAGENTO_VISIBILITY_CATALOG_SEARCH = 4;
+    const PRESTASHOP_VISIBILITY_CATALOG_SEARCH = 4;
 
     /** @staticvar int */
-    const MAGENTO_VISIBILITY_NONE = 1;
+    const PRESTASHOP_VISIBILITY_NONE = 1;
 
     /** @var \Pim\Bundle\PrestashopConnectorBundle\Normalizer\ProductNormalizerInterface */
     protected $productNormalizer;
@@ -56,10 +53,10 @@ abstract class AbstractProductProcessor extends AbstractProcessor
     protected $enabled;
 
     /** @var integer */
-    protected $visibility = self::MAGENTO_VISIBILITY_CATALOG_SEARCH;
+    protected $visibility = self::PRESTASHOP_VISIBILITY_CATALOG_SEARCH;
 
     /** @var integer */
-    protected $variantMemberVisibility = self::MAGENTO_VISIBILITY_NONE;
+    protected $variantMemberVisibility = self::PRESTASHOP_VISIBILITY_NONE;
 
     /** @var string */
     protected $categoryMapping;

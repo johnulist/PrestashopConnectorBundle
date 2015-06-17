@@ -12,14 +12,11 @@ use Pim\Bundle\PrestashopConnectorBundle\Mapper\MappingCollection;
 /**
  * Price mapping manager.
  *
- * @author    Julien Sanchez <julien@akeneo.com>
- * @copyright 2013 Akeneo SAS (http://www.akeneo.com)
- * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 class PriceMappingManager
 {
     /** @staticvar string Prestashop price attribute */
-    const MAGENTO_PRICE = 'price';
+    const PRESTASHOP_PRICE = 'price';
 
     /** @var string */
     protected $locale;
@@ -201,7 +198,7 @@ class PriceMappingManager
 
         $toSubstract = ($lowest * -1) * $toSubstract;
 
-        $priceAttr = $attributeMapping->getSource(self::MAGENTO_PRICE);
+        $priceAttr = $attributeMapping->getSource(self::PRESTASHOP_PRICE);
 
         $price = $product->getValue($priceAttr, $this->locale, $this->channel);
 

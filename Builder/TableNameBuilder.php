@@ -8,10 +8,7 @@ use Doctrine\Common\Persistence\ManagerRegistry;
 /**
  * Get the table name from the entity parameter name
  * Ease overriding entities managing with DBAL support avoiding hard-coded table names.
- *
- * @author    Willy Mesnage <willy.mesnage@akeneo.com>
- * @copyright 2015 Akeneo SAS (http://www.akeneo.com)
- * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+
  */
 class TableNameBuilder
 {

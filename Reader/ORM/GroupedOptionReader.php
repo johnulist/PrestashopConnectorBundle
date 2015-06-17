@@ -5,9 +5,6 @@ namespace Pim\Bundle\PrestashopConnectorBundle\Reader\ORM;
 /**
  * Reads group option for attributes at once.
  *
- * @author    Julien Sanchez <gildas@akeneo.com>
- * @copyright 2014 Akeneo SAS (http://www.akeneo.com)
- * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 class GroupedOptionReader extends BulkEntityReader
 {

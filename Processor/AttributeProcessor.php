@@ -16,9 +16,6 @@ use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParamete
 /**
  * Prestashop attributes processor.
  *
- * @author    Julien Sanchez <julien@akeneo.com>
- * @copyright 2014 Akeneo SAS (http://www.akeneo.com)
- * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 class AttributeProcessor extends AbstractProcessor
 {
@@ -159,7 +156,7 @@ class AttributeProcessor extends AbstractProcessor
         try {
             $processedItem = $this->attributeNormalizer->normalize(
                 $attribute,
-                AbstractNormalizer::MAGENTO_FORMAT,
+                AbstractNormalizer::PRESTASHOP_FORMAT,
                 $context
             );
         } catch (NormalizeException $e) {

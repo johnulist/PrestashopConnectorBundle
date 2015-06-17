@@ -8,17 +8,14 @@ use Symfony\Component\Stopwatch\Stopwatch;
 /**
  * A prestashop soap client to abstract interaction with the php soap client.
  *
- * @author    Julien Sanchez <julien@akeneo.com>
- * @copyright 2013 Akeneo SAS (http://www.akeneo.com)
- * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 class PrestashopSoapClient
 {
     /** @staticvar string */
-    const MAGENTO_BAD_CREDENTIALS     = '2';
+    const PRESTASHOP_BAD_CREDENTIALS     = '2';
 
     /** @staticvar string */
-    const MAGENTO_CLIENT_NOT_CALLABLE = 'Client';
+    const PRESTASHOP_CLIENT_NOT_CALLABLE = 'Client';
 
     /** @var string */
     protected $session;
@@ -94,7 +91,7 @@ class PrestashopSoapClient
                 $this->clientParameters->getSoapApiKey()
             );
         } catch (\SoapFault $e) {
-            if (static::MAGENTO_BAD_CREDENTIALS === $e->faultcode) {
+            if (static::PRESTASHOP_BAD_CREDENTIALS === $e->faultcode) {
                 throw new InvalidCredentialException(
                     sprintf(
                         'Error on Prestashop SOAP credentials to "%s": "%s".'.
@@ -105,7 +102,7 @@ class PrestashopSoapClient
                     $e->getCode(),
                     $e
                 );
-            } elseif (static::MAGENTO_CLIENT_NOT_CALLABLE === $e->faultcode) {
+            } elseif (static::PRESTASHOP_CLIENT_NOT_CALLABLE === $e->faultcode) {
                 $lastResponse = $this->client->__getLastResponse();
                 echo "DEBUG: Last SOAP response: ".$lastResponse."\n";
                 if (strlen($lastResponse) <= 200) {
@@ -163,9 +160,9 @@ class PrestashopSoapClient
                 $this->profiler->logCallDuration($event, $resource);
             } catch (\SoapFault $e) {
                 if ($resource === 'core_prestashop.info' && $e->getMessage()
-                    === AbstractGuesser::MAGENTO_CORE_ACCESS_DENIED) {
+                    === AbstractGuesser::PRESTASHOP_CORE_ACCESS_DENIED) {
                     $response = ['prestashop_version' => AbstractGuesser::UNKNOWN_VERSION];
-                } elseif ($e->getMessage() === AbstractGuesser::MAGENTO_CORE_ACCESS_DENIED) {
+                } elseif ($e->getMessage() === AbstractGuesser::PRESTASHOP_CORE_ACCESS_DENIED) {
                     throw new SoapCallException(
                         sprintf(
                             'Error on Prestashop soap call to "%s" : "%s" Called resource : "%s" with parameters : %s.'.

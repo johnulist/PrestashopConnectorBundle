@@ -4,15 +4,13 @@ namespace Pim\Bundle\PrestashopConnectorBundle\Mapper;
 
 use Pim\Bundle\PrestashopConnectorBundle\Guesser\WebserviceGuesser;
 use Pim\Bundle\PrestashopConnectorBundle\Validator\Constraints\HasValidCredentialsValidator;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\SoapCallException;
 
 /**
- * Prestashop storeview mapper.
+ * Prestashop family mapper.
  *
- * @author    Julien Sanchez <julien@akeneo.com>
- * @copyright 2014 Akeneo SAS (http://www.akeneo.com)
- * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
-class PrestashopStoreViewMapper extends PrestashopMapper
+class PrestashopFamilyMapper extends PrestashopMapper
 {
     /** @var WebserviceGuesser */
     protected $webserviceGuesser;
@@ -38,12 +36,14 @@ class PrestashopStoreViewMapper extends PrestashopMapper
         $targets = [];
 
         if ($this->isValid()) {
-            $storeViews = $this->webserviceGuesser->getWebservice($this->clientParameters)->getStoreViewsList();
+            try {
+                $families = $this->webserviceGuesser->getWebservice($this->clientParameters)->getAttributeSetList();
+            } catch (SoapCallException $e) {
+                return array();
+            }
 
-            foreach ($storeViews as $storeView) {
-                if ($storeView['code'] !== $this->defaultStoreView) {
-                    $targets[] = ['id' => $storeView['code'], 'text' => $storeView['code']];
-                }
+            foreach ($families as $familyId => $family) {
+                $targets[] = ['id' => $familyId, 'name' => $family['name']];
             }
         }
 
@@ -53,7 +53,7 @@ class PrestashopStoreViewMapper extends PrestashopMapper
     /**
      * {@inheritdoc}
      */
-    public function getIdentifier($rootIdentifier = 'storeview')
+    public function getIdentifier($rootIdentifier = 'family')
     {
         return parent::getIdentifier($rootIdentifier);
     }

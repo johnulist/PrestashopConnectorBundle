@@ -17,9 +17,6 @@ use Gedmo\Sluggable\Util\Urlizer;
 /**
  * A normalizer to transform a product entity into an array.
  *
- * @author    Julien Sanchez <julien@akeneo.com>
- * @copyright 2013 Akeneo SAS (http://www.akeneo.com)
- * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 class ProductNormalizer extends AbstractNormalizer implements ProductNormalizerInterface
 {
@@ -292,9 +289,9 @@ class ProductNormalizer extends AbstractNormalizer implements ProductNormalizerI
 
         if ($create) {
             if ($this->hasGroupedProduct($product, $pimGrouped)) {
-                $productType = self::MAGENTO_GROUPED_PRODUCT_KEY;
+                $productType = self::PRESTASHOP_GROUPED_PRODUCT_KEY;
             } else {
-                $productType = self::MAGENTO_SIMPLE_PRODUCT_KEY;
+                $productType = self::PRESTASHOP_SIMPLE_PRODUCT_KEY;
             }
 
             //For the default storeview we create an entire product

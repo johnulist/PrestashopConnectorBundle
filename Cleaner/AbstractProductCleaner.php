@@ -14,9 +14,6 @@ use Pim\Bundle\PrestashopConnectorBundle\Webservice\SoapCallException;
  * Prestashop product cleaner
  * Abstract class used for ORM and MongoDB support.
  *
- * @author    Julien Sanchez <julien@akeneo.com>
- * @copyright 2014 Akeneo SAS (http://www.akeneo.com)
- * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 abstract class AbstractProductCleaner extends Cleaner
 {
@@ -25,9 +22,9 @@ abstract class AbstractProductCleaner extends Cleaner
 
     /** @var array */
     protected $productTypesNotHandledByPim = [
-        AbstractNormalizer::MAGENTO_BUNDLE_PRODUCT_KEY,
-        AbstractNormalizer::MAGENTO_DOWNLOADABLE_PRODUCT_KEY,
-        AbstractNormalizer::MAGENTO_VIRTUAL_PRODUCT_KEY,
+        AbstractNormalizer::PRESTASHOP_BUNDLE_PRODUCT_KEY,
+        AbstractNormalizer::PRESTASHOP_DOWNLOADABLE_PRODUCT_KEY,
+        AbstractNormalizer::PRESTASHOP_VIRTUAL_PRODUCT_KEY,
     ];
 
     /**  @var string */
@@ -68,7 +65,7 @@ abstract class AbstractProductCleaner extends Cleaner
         foreach ($prestashopProducts as $product) {
             try {
                 if (
-                    AbstractNormalizer::MAGENTO_SIMPLE_PRODUCT_KEY === $product['type'] ||
+                    AbstractNormalizer::PRESTASHOP_SIMPLE_PRODUCT_KEY === $product['type'] ||
                     in_array($product['type'], $this->productTypesNotHandledByPim)
                 ) {
                     if (!in_array($product['sku'], $pimProducts)) {
