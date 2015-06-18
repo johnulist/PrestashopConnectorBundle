@@ -4,8 +4,6 @@ Welcome on the Akeneo PIM Prestashop connector bundle.
 
 This repository is issued to develop the Prestashop Connector for Akeneo PIM.
 
-The project is in an very early stage, not ready for production
-
 [![Build Status](https://travis-ci.org/sdiaz/PrestashopConnectorBundle.png?branch=master)](https://travis-ci.org/sdiaz/PrestashopConnectorBundle)
 
 This is a **PORT** from [MagentoConnectorBundle](https://github.com/akeneo/MagentoConnectorBundle) for Prestashop. .
@@ -18,6 +16,8 @@ Based on *MagentoConnectorBundle* contributed by :
 - Olivier Soulet <olivier.soulet@akeneo.com>
 - Romain Monceau <romain@akeneo.com>
 - Willy Mesnage <willy.mesnage@akeneo.com>
+
+The project is in an very early stage, not ready for production - **PORT STATUS** : 5%
 
 # Summary
 
