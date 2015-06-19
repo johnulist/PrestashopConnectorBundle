@@ -8,7 +8,6 @@ use Akeneo\Bundle\BatchBundle\Item\InvalidItemException;
 use Pim\Bundle\PrestashopConnectorBundle\Item\PrestashopItemStep;
 use Pim\Bundle\PrestashopConnectorBundle\Guesser\WebserviceGuesser;
 use Pim\Bundle\PrestashopConnectorBundle\Guesser\NormalizerGuesser;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\AttributeSetNotFoundException;
 use Pim\Bundle\PrestashopConnectorBundle\Manager\LocaleManager;
 use Pim\Bundle\PrestashopConnectorBundle\Merger\PrestashopMappingMerger;
 use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParametersRegistry;
@@ -167,28 +166,6 @@ abstract class AbstractProcessor extends PrestashopItemStep implements ItemProce
         $this->globalContext['defaultLocale']    = $this->defaultLocale;
         $this->globalContext['storeViewMapping'] = $this->storeViewMappingMerger->getMapping();
         $this->globalContext['defaultStoreView'] = $this->getDefaultStoreView();
-    }
-
-    /**
-     * Get the attribute set id for the given family code.
-     *
-     * @param string $familyCode
-     * @param mixed  $relatedItem
-     *
-     * @throws InvalidItemException If The attribute set doesn't exist on Prestashop
-     *
-     * @return integer
-     */
-    protected function getAttributeSetId($familyCode, $relatedItem)
-    {
-        try {
-            return $this->webservice
-                ->getAttributeSetId(
-                    $familyCode
-                );
-        } catch (AttributeSetNotFoundException $e) {
-            throw new InvalidItemException($e->getMessage(), [$relatedItem]);
-        }
     }
 
     /**
