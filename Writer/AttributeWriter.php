@@ -9,7 +9,7 @@ use Pim\Bundle\PrestashopConnectorBundle\Manager\FamilyMappingManager;
 use Pim\Bundle\PrestashopConnectorBundle\Manager\AttributeGroupMappingManager;
 use Akeneo\Bundle\BatchBundle\Item\InvalidItemException;
 use Pim\Bundle\PrestashopConnectorBundle\Merger\PrestashopMappingMerger;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\SoapCallException;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\RestCallException;
 use Pim\Bundle\CatalogBundle\Entity\Family;
 use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParametersRegistry;
 
@@ -81,7 +81,7 @@ class AttributeWriter extends AbstractWriter
                 $pimAttribute = $attribute[0];
                 $this->addGroupToAttributeSet($pimAttribute);
                 $this->handleAttribute($attribute[1], $pimAttribute);
-            } catch (SoapCallException $e) {
+            } catch (RestCallException $e) {
                 throw new InvalidItemException($e->getMessage(), [$pimAttribute]);
             }
         }
@@ -160,7 +160,7 @@ class AttributeWriter extends AbstractWriter
      * @param integer           $prestashopAttributeId
      * @param AbstractAttribute $pimAttribute
      *
-     * @throws SoapCallException
+     * @throws RestCallException
      */
     protected function addAttributeToAttributeSet($prestashopAttributeId, AbstractAttribute $pimAttribute)
     {
@@ -177,7 +177,7 @@ class AttributeWriter extends AbstractWriter
                         $prestashopGroupId
                     );
                 }
-            } catch (SoapCallException $e) {
+            } catch (RestCallException $e) {
                 if (static::SOAP_FAULT_ATTRIBUTE_ALREADY_IN_SET === $e->getPrevious()->faultcode) {
                     echo "DEBUG: Attribute ".$prestashopAttributeId.
                         " already exists in attribute set ".$prestashopFamilyId."\n";
@@ -193,7 +193,7 @@ class AttributeWriter extends AbstractWriter
      *
      * @param AbstractAttribute $pimAttribute
      *
-     * @throws SoapCallException
+     * @throws RestCallException
      */
     protected function addGroupToAttributeSet(AbstractAttribute $pimAttribute)
     {
@@ -219,7 +219,7 @@ class AttributeWriter extends AbstractWriter
                         $prestashopGroupId,
                         $this->getSoapUrl()
                     );
-                } catch (SoapCallException $e) {
+                } catch (RestCallException $e) {
                     if (static::SOAP_FAULT_GROUP_ALREADY_IN_SET === $e->getPrevious()->faultcode) {
                         echo "DEBUG: Group ".$groupName." already exists in attribute set ".$familyPrestashopId."\n";
                     } else {

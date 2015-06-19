@@ -5,7 +5,7 @@ namespace Pim\Bundle\PrestashopConnectorBundle\Writer;
 use Pim\Bundle\PrestashopConnectorBundle\Guesser\WebserviceGuesser;
 use Pim\Bundle\PrestashopConnectorBundle\Manager\CategoryMappingManager;
 use Akeneo\Bundle\BatchBundle\Item\InvalidItemException;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\SoapCallException;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\RestCallException;
 use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParametersRegistry;
 use Pim\Bundle\PrestashopConnectorBundle\Webservice\Webservice;
 
@@ -47,7 +47,7 @@ class CategoryWriter extends AbstractWriter
                 $this->handleUpdateCategory($batch);
                 $this->handleMoveCategory($batch);
                 $this->handleVariationCategory($batch);
-            } catch (SoapCallException $e) {
+            } catch (RestCallException $e) {
                 throw new InvalidItemException($e->getMessage(), []);
             }
         }

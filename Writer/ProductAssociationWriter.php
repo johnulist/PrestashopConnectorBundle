@@ -2,7 +2,7 @@
 
 namespace Pim\Bundle\PrestashopConnectorBundle\Writer;
 
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\SoapCallException;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\RestCallException;
 use Akeneo\Bundle\BatchBundle\Item\InvalidItemException;
 
 /**
@@ -36,7 +36,7 @@ class ProductAssociationWriter extends AbstractWriter
         foreach ($productAssociationCalls['remove'] as $productAssociationRemoveCall) {
             try {
                 $this->webservice->removeProductAssociation($productAssociationRemoveCall);
-            } catch (SoapCallException $e) {
+            } catch (RestCallException $e) {
                 throw new InvalidItemException(
                     sprintf(
                         'An error occured during a product association remove call. This may be due to a linked '.
@@ -51,7 +51,7 @@ class ProductAssociationWriter extends AbstractWriter
         foreach ($productAssociationCalls['create'] as $productAssociationCreateCall) {
             try {
                 $this->webservice->createProductAssociation($productAssociationCreateCall);
-            } catch (SoapCallException $e) {
+            } catch (RestCallException $e) {
                 throw new InvalidItemException(
                     sprintf(
                         'An error occured during a product association add call. This may be due to a linked '.

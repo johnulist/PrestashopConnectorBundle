@@ -80,7 +80,7 @@ class PrestashopSoapClient
      * Initialize the soap client with the local information.
      *
      * @throws InvalidCredentialException If given credentials are invalid
-     * @throws SoapCallException          If Prestashop is not accessible.
+     * @throws RestCallException          If Prestashop is not accessible.
      * @throws \SoapFault
      */
     protected function connect()
@@ -111,7 +111,7 @@ class PrestashopSoapClient
                     $truncatedLastResponse = substr(htmlentities($lastResponse), 0, 100).
                         nl2br("\n...\n").substr(htmlentities($lastResponse), -100);
                 }
-                throw new SoapCallException(
+                throw new RestCallException(
                     sprintf(
                         'Error on Prestashop client to "%s": "%s".'.
                         'Something is probably wrong in the last SOAP response:'.nl2br("\n").'"%s"',
@@ -147,7 +147,7 @@ class PrestashopSoapClient
      * @return array
      *
      * @throws NotConnectedException
-     * @throws SoapCallException
+     * @throws RestCallException
      */
     public function call($resource, $params = null)
     {
@@ -163,7 +163,7 @@ class PrestashopSoapClient
                     === AbstractGuesser::PRESTASHOP_CORE_ACCESS_DENIED) {
                     $response = ['prestashop_version' => AbstractGuesser::UNKNOWN_VERSION];
                 } elseif ($e->getMessage() === AbstractGuesser::PRESTASHOP_CORE_ACCESS_DENIED) {
-                    throw new SoapCallException(
+                    throw new RestCallException(
                         sprintf(
                             'Error on Prestashop soap call to "%s" : "%s" Called resource : "%s" with parameters : %s.'.
                             ' Soap user needs access on this resource. Please '.
@@ -178,7 +178,7 @@ class PrestashopSoapClient
                         $e
                     );
                 } else {
-                    throw new SoapCallException(
+                    throw new RestCallException(
                         sprintf(
                             'Error on Prestashop soap call to "%s" : "%s". Called resource : "%s" with parameters : %s',
                             $this->clientParameters->getSoapUrl(),
@@ -193,7 +193,7 @@ class PrestashopSoapClient
             }
 
             if (is_array($response) && isset($response['isFault']) && $response['isFault']) {
-                throw new SoapCallException(
+                throw new RestCallException(
                     sprintf(
                         'Error on Prestashop soap call to "%s" : "%s". Called resource : "%s" with parameters : %s.'.
                         'Response from API : %s',
@@ -235,7 +235,7 @@ class PrestashopSoapClient
                         $this->calls
                     );
                 } catch (\SoapFault $e) {
-                    throw new SoapCallException(
+                    throw new RestCallException(
                         sprintf(
                             'Error on Prestashop soap call : "%s". Called resources : "%s".',
                             $e->getMessage(),

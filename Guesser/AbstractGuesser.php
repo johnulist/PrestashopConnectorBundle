@@ -3,7 +3,7 @@
 namespace Pim\Bundle\PrestashopConnectorBundle\Guesser;
 
 use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClient;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\SoapCallException;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\RestCallException;
 
 /**
  * A prestashop guesser abstract class.
@@ -65,7 +65,7 @@ abstract class AbstractGuesser
                 $prestashopVersion = $client->call('core_prestashop.info')['prestashop_version'];
             } catch (\SoapFault $e) {
                 return self::PRESTASHOP_VERSION_1_6;
-            } catch (SoapCallException $e) {
+            } catch (RestCallException $e) {
                 throw $e;
             }
 

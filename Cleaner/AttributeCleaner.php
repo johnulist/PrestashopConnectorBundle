@@ -3,7 +3,7 @@
 namespace Pim\Bundle\PrestashopConnectorBundle\Cleaner;
 
 use Pim\Bundle\PrestashopConnectorBundle\Guesser\WebserviceGuesser;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\SoapCallException;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\RestCallException;
 use Pim\Bundle\PrestashopConnectorBundle\Merger\PrestashopMappingMerger;
 use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParametersRegistry;
 use Akeneo\Bundle\BatchBundle\Item\InvalidItemException;
@@ -110,7 +110,7 @@ class AttributeCleaner extends Cleaner
         ) {
             try {
                 $this->handleAttributeNotInPimAnymore($attribute);
-            } catch (SoapCallException $e) {
+            } catch (RestCallException $e) {
                 throw new InvalidItemException($e->getMessage(), [$attribute['code']]);
             }
         }

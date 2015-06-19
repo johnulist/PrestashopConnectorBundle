@@ -6,7 +6,7 @@ use Pim\Bundle\PrestashopConnectorBundle\Guesser\WebserviceGuesser;
 use Pim\Bundle\PrestashopConnectorBundle\Manager\AttributeMappingManager;
 use Pim\Bundle\PrestashopConnectorBundle\Manager\FamilyMappingManager;
 use Akeneo\Bundle\BatchBundle\Item\InvalidItemException;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\SoapCallException;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\RestCallException;
 use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParametersRegistry;
 
 /**
@@ -48,7 +48,7 @@ class AttributeSetWriter extends AbstractWriter
         foreach ($items as $item) {
             try {
                 $this->handleNewFamily($item);
-            } catch (SoapCallException $e) {
+            } catch (RestCallException $e) {
                 $this->stepExecution->incrementSummaryInfo('family_exists');
             }
         }

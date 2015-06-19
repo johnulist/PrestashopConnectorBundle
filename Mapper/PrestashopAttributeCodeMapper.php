@@ -4,7 +4,7 @@ namespace Pim\Bundle\PrestashopConnectorBundle\Mapper;
 
 use Pim\Bundle\PrestashopConnectorBundle\Guesser\WebserviceGuesser;
 use Pim\Bundle\PrestashopConnectorBundle\Validator\Constraints\HasValidCredentialsValidator;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\SoapCallException;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\RestCallException;
 
 /**
  * Prestashop attribute code mapper.
@@ -38,7 +38,7 @@ class PrestashopAttributeCodeMapper extends PrestashopMapper
         } else {
             try {
                 $attributes = $this->webserviceGuesser->getWebservice($this->clientParameters)->getAllAttributes();
-            } catch (SoapCallException $e) {
+            } catch (RestCallException $e) {
                 return new MappingCollection();
             }
 

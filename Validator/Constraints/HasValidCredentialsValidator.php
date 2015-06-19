@@ -8,7 +8,7 @@ use Pim\Bundle\PrestashopConnectorBundle\Guesser\WebserviceGuesser;
 use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParametersRegistry;
 use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParameters;
 use Pim\Bundle\PrestashopConnectorBundle\Webservice\InvalidCredentialException;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\SoapCallException;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\RestCallException;
 use Pim\Bundle\PrestashopConnectorBundle\Webservice\UrlExplorer;
 use Pim\Bundle\PrestashopConnectorBundle\Validator\Checks\XmlChecker;
 use Pim\Bundle\PrestashopConnectorBundle\Validator\Exception\NotReachableUrlException;
@@ -100,7 +100,7 @@ class HasValidCredentialsValidator extends ConstraintValidator
             } catch (InvalidCredentialException $e) {
                 $clientParameters->setValidation(false);
                 $this->context->addViolationAt('soapUsername', $constraint->messageUsername);
-            } catch (SoapCallException $e) {
+            } catch (RestCallException $e) {
                 $clientParameters->setValidation(false);
                 $this->context->addViolationAt('soapUsername', $e->getMessage());
             } catch (\Exception $e) {

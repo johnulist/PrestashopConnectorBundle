@@ -3,7 +3,7 @@
 namespace Pim\Bundle\PrestashopConnectorBundle\Cleaner;
 
 use Pim\Bundle\PrestashopConnectorBundle\Guesser\WebserviceGuesser;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\SoapCallException;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\RestCallException;
 use Akeneo\Bundle\BatchBundle\Item\InvalidItemException;
 use Pim\Bundle\CatalogBundle\Model\AbstractAttribute;
 use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParametersRegistry;
@@ -78,7 +78,7 @@ class OptionCleaner extends Cleaner
             ) {
                 try {
                     $this->handleOptionNotInPimAnymore($optionValue, $attribute->getCode());
-                } catch (SoapCallException $e) {
+                } catch (RestCallException $e) {
                     throw new InvalidItemException($e->getMessage(), [$optionLabel]);
                 }
             }
@@ -99,7 +99,7 @@ class OptionCleaner extends Cleaner
             try {
                 $this->webservice->deleteOption($optionId, $attributeCode);
                 $this->stepExecution->incrementSummaryInfo('option_deleted');
-            } catch (SoapCallException $e) {
+            } catch (RestCallException $e) {
                 throw new InvalidItemException($e->getMessage(), [$optionId]);
             }
         }

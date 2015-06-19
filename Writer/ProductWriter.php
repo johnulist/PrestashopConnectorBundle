@@ -6,7 +6,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Pim\Bundle\PrestashopConnectorBundle\Webservice\Webservice;
 use Pim\Bundle\PrestashopConnectorBundle\Guesser\WebserviceGuesser;
 use Pim\Bundle\CatalogBundle\Manager\ChannelManager;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\SoapCallException;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\RestCallException;
 use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParametersRegistry;
 
 /**
@@ -70,7 +70,7 @@ class ProductWriter extends AbstractWriter
             foreach ($batch as $product) {
                 try {
                     $this->computeProduct($product);
-                } catch (SoapCallException $e) {
+                } catch (RestCallException $e) {
                     $this->addWarning($e->getMessage(), [], $product);
                 }
             }

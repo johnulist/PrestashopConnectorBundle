@@ -3,7 +3,7 @@
 namespace Pim\Bundle\PrestashopConnectorBundle\Writer;
 
 use Akeneo\Bundle\BatchBundle\Item\InvalidItemException;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\SoapCallException;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\RestCallException;
 
 /**
  * Prestashop option writer.
@@ -23,7 +23,7 @@ class OptionWriter extends AbstractWriter
                 try {
                     $this->webservice->createOption($option);
                     $this->stepExecution->incrementSummaryInfo('option_created');
-                } catch (SoapCallException $e) {
+                } catch (RestCallException $e) {
                     throw new InvalidItemException($e->getMessage(), [json_encode($option)]);
                 }
             }

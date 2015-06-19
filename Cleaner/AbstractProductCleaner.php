@@ -8,7 +8,7 @@ use Pim\Bundle\CatalogBundle\Manager\ProductManager;
 use Pim\Bundle\PrestashopConnectorBundle\Guesser\WebserviceGuesser;
 use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParametersRegistry;
 use Pim\Bundle\PrestashopConnectorBundle\Normalizer\AbstractNormalizer;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\SoapCallException;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\RestCallException;
 
 /**
  * Prestashop product cleaner
@@ -74,7 +74,7 @@ abstract class AbstractProductCleaner extends Cleaner
                         $this->handleProductNotCompleteAnymore($product);
                     }
                 }
-            } catch (SoapCallException $e) {
+            } catch (RestCallException $e) {
                 throw new InvalidItemException($e->getMessage(), [json_encode($product)]);
             }
         }

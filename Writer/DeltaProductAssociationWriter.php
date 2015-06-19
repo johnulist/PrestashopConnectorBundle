@@ -6,7 +6,7 @@ use Akeneo\Bundle\BatchBundle\Item\InvalidItemException;
 use Pim\Bundle\PrestashopConnectorBundle\Guesser\WebserviceGuesser;
 use Pim\Bundle\PrestashopConnectorBundle\Manager\DeltaProductExportManager;
 use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParametersRegistry;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\SoapCallException;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\RestCallException;
 
 /**
  * Delta product association writer.
@@ -44,7 +44,7 @@ class DeltaProductAssociationWriter extends ProductAssociationWriter
                     $this->getJobInstance(),
                     $removeCall['product']
                 );
-            } catch (SoapCallException $e) {
+            } catch (RestCallException $e) {
                 throw new InvalidItemException(
                     sprintf(
                         'An error occured during a product association remove call. This may be due to a linked '.
@@ -63,7 +63,7 @@ class DeltaProductAssociationWriter extends ProductAssociationWriter
                     $this->getJobInstance(),
                     $createCall['product']
                 );
-            } catch (SoapCallException $e) {
+            } catch (RestCallException $e) {
                 throw new InvalidItemException(
                     sprintf(
                         'An error occured during a product association add call. This may be due to a linked '.

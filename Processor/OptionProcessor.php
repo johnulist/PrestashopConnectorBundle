@@ -5,7 +5,7 @@ namespace Pim\Bundle\PrestashopConnectorBundle\Processor;
 use Pim\Bundle\CatalogBundle\Entity\AttributeOption;
 use Akeneo\Bundle\BatchBundle\Item\InvalidItemException;
 use Pim\Bundle\PrestashopConnectorBundle\Guesser\WebserviceGuesser;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\SoapCallException;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\RestCallException;
 use Pim\Bundle\PrestashopConnectorBundle\Normalizer\AbstractNormalizer;
 use Pim\Bundle\PrestashopConnectorBundle\Normalizer\Exception\NormalizeException;
 use Pim\Bundle\PrestashopConnectorBundle\Guesser\NormalizerGuesser;
@@ -114,7 +114,7 @@ class OptionProcessor extends AbstractProcessor
 
         try {
             $optionsStatus = $this->webservice->getAttributeOptions($attributeCode);
-        } catch (SoapCallException $e) {
+        } catch (RestCallException $e) {
             throw new InvalidItemException(
                 sprintf(
                     'An error occurred during the retrieval of option list of the attribute "%s". This may be '.

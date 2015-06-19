@@ -4,7 +4,7 @@ namespace Pim\Bundle\PrestashopConnectorBundle\Mapper;
 
 use Pim\Bundle\PrestashopConnectorBundle\Guesser\WebserviceGuesser;
 use Pim\Bundle\PrestashopConnectorBundle\Validator\Constraints\HasValidCredentialsValidator;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\SoapCallException;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\RestCallException;
 
 /**
  * Prestashop category mapper.
@@ -41,7 +41,7 @@ class PrestashopCategoryMapper extends PrestashopMapper
         if ($this->isValid()) {
             try {
                 $categories = $this->webserviceGuesser->getWebservice($this->clientParameters)->getCategoriesStatus();
-            } catch (SoapCallException $e) {
+            } catch (RestCallException $e) {
                 return array();
             }
 

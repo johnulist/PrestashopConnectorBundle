@@ -5,7 +5,7 @@ namespace Pim\Bundle\PrestashopConnectorBundle\Cleaner;
 use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParametersRegistry;
 use Pim\Bundle\PrestashopConnectorBundle\Guesser\WebserviceGuesser;
 use Pim\Bundle\PrestashopConnectorBundle\Manager\FamilyMappingManager;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\SoapCallException;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\RestCallException;
 use Akeneo\Bundle\BatchBundle\Item\InvalidItemException;
 
 /**
@@ -67,7 +67,7 @@ class FamilyCleaner extends Cleaner
         foreach ($prestashopFamilies as $name => $id) {
             try {
                 $this->handleFamilyNotInPimAnymore($name, $id);
-            } catch (SoapCallException $e) {
+            } catch (RestCallException $e) {
                 throw new InvalidItemException($e->getMessage(), [$name]);
             }
         }
@@ -94,7 +94,7 @@ class FamilyCleaner extends Cleaner
                     $this->forceAttributeSetRemoval
                 );
                 $this->stepExecution->incrementSummaryInfo('family_deleted');
-            } catch (SoapCallException $e) {
+            } catch (RestCallException $e) {
                 throw new InvalidItemException(
                     $e->getMessage(),
                     [$id],

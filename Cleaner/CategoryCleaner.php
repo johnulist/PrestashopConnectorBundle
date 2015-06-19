@@ -5,7 +5,7 @@ namespace Pim\Bundle\PrestashopConnectorBundle\Cleaner;
 use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParametersRegistry;
 use Pim\Bundle\PrestashopConnectorBundle\Guesser\WebserviceGuesser;
 use Pim\Bundle\PrestashopConnectorBundle\Manager\CategoryMappingManager;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\SoapCallException;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\RestCallException;
 use Akeneo\Bundle\BatchBundle\Item\InvalidItemException;
 
 /**
@@ -53,7 +53,7 @@ class CategoryCleaner extends Cleaner
             ) {
                 try {
                     $this->handleCategoryNotInPimAnymore($category);
-                } catch (SoapCallException $e) {
+                } catch (RestCallException $e) {
                     throw new InvalidItemException($e->getMessage(), [json_encode($category)]);
                 }
             }
@@ -66,7 +66,7 @@ class CategoryCleaner extends Cleaner
      * @param array $category
      *
      * @throws InvalidItemException
-     * @throws SoapCallException
+     * @throws RestCallException
      */
     protected function handleCategoryNotInPimAnymore(array $category)
     {
@@ -77,7 +77,7 @@ class CategoryCleaner extends Cleaner
             try {
                 $this->webservice->deleteCategory($category['category_id']);
                 $this->stepExecution->incrementSummaryInfo('category_deleted');
-            } catch (SoapCallException $e) {
+            } catch (RestCallException $e) {
                 if (static::SOAP_FAULT_NO_CATEGORY === $e->getPrevious()->faultcode) {
                     throw new InvalidItemException(
                         $e->getMessage(),
