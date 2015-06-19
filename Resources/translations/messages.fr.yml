@@ -51,7 +51,7 @@ pim_prestashop_connector:
     export:
         restApiKey:
             label: Clé d'API Prestashop
-            help: Votre clé d'API soap Prestashop
+            help: Votre clé d'API rest Prestashop
         prestashopUrl:
             label: Url Prestashop
             help: L'url de votre installation Prestashop
@@ -123,7 +123,7 @@ pim_prestashop_connector:
             url_not_reachable: "L'url prestashop n'est pas joignable"
             rest_url_not_valid: "L'url de l'api rest n'est pas valide"
             xml_not_valid: "L'xml de prestashop n'est pas valide"
-            authentication_failed: "Le nom d'utilisateur fourni n'est pas valide ou l'utilisateur prestashop n'a pas les droits d'accéder à l'api soap de Prestashop"
+            authentication_failed: "Le Api Key fourni n'est pas valide"
         smallImageAttribute:
             label: Attribut petite image
             help: Choisissez l'attribut Akeneo correspondant à la petite image du produit dans Prestashop

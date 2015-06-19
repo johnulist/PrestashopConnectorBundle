@@ -50,8 +50,8 @@ pim_prestashop_connector:
         family_cleaner.title: Family cleaner
     export:
         restApiKey:
-            label: Soap api key
-            help: Your soap api key on Prestashop
+            label: Rest api key
+            help: Your rest api key on Prestashop
         prestashopUrl:
             label: Prestashop url
             help: Your Prestashop installation url
@@ -123,7 +123,7 @@ pim_prestashop_connector:
             url_not_reachable: Url can not be resolved
             rest_url_not_valid: Api REST url is not valid
             xml_not_valid: Prestashop XML is not valid
-            authentication_failed: The given prestashop api username is invalid or prestashop user has no rights to access the soap api
+            authentication_failed: The given prestashop api key is invalid
         smallImageAttribute:
             label: Small image attribute
             help: Choose the Akeneo attribute which is corresponding to small image of the product in Prestashop
