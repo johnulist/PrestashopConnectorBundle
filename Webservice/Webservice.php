@@ -107,7 +107,7 @@ class Webservice
     const SOAP_ACTION_LINK_CREATE                            = 'catalog_product_link.assign';
 
     /** @staticvar string */
-    const SOAP_DEFAULT_STORE_VIEW                            = 'default';
+    const REST_DEFAULT_STORE_VIEW                            = 'default';
 
     /** @staticvar string */
     const IMAGES                                             = 'images';

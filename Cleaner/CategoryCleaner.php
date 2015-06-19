@@ -45,7 +45,7 @@ class CategoryCleaner extends Cleaner
         $prestashopCategories = $this->webservice->getCategoriesStatus();
 
         foreach ($prestashopCategories as $category) {
-            if (!$this->categoryMappingManager->prestashopCategoryExists($category['category_id'], $this->getSoapUrl()) &&
+            if (!$this->categoryMappingManager->prestashopCategoryExists($category['category_id'], $this->getPrestashopUrl()) &&
                 !(
                     $category['level'] === '0' ||
                     $category['level'] === '1'

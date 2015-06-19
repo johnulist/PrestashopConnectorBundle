@@ -48,7 +48,7 @@ class ORMPimMapper extends ORMMapper
     public function getIdentifier($rootIdentifier = 'generic')
     {
         if ($this->isValid()) {
-            return sha1(sprintf(self::IDENTIFIER_FORMAT, $rootIdentifier, $this->clientParameters->getSoapUrl()));
+            return sha1(sprintf(self::IDENTIFIER_FORMAT, $rootIdentifier, $this->clientParameters->getPrestashopUrl()));
         } else {
             return '';
         }

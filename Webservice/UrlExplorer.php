@@ -85,7 +85,7 @@ class UrlExplorer
                 ],
             ];
 
-            $request = $this->client->get($clientParameters->getSoapUrl(), [], $guzzleParams);
+            $request = $this->client->get($clientParameters->getPrestashopUrl(), [], $guzzleParams);
             $request->getCurlOptions()->set(CURLOPT_CONNECTTIMEOUT, self::CONNECT_TIMEOUT);
             $request->getCurlOptions()->set(CURLOPT_TIMEOUT, self::TIMEOUT);
 

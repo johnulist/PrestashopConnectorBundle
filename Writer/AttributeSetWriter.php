@@ -66,7 +66,7 @@ class AttributeSetWriter extends AbstractWriter
         if (isset($item['families_to_create'])) {
             $pimFamily       = $item['family_object'];
             $prestashopFamilyId = $this->webservice->createAttributeSet($item['families_to_create']['attributeSetName']);
-            $prestashopUrl      = $this->getSoapUrl();
+            $prestashopUrl      = $this->getPrestashopUrl();
             $this->familyMappingManager->registerFamilyMapping(
                 $pimFamily,
                 $prestashopFamilyId,

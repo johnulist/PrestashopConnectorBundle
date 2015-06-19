@@ -67,8 +67,7 @@ class HasValidCredentialsValidator extends ConstraintValidator
         }
 
         $clientParameters = $this->clientParametersRegistry->getInstance(
-            $protocol->getSoapUsername(),
-            $protocol->getSoapApiKey(),
+            $protocol->getRestApiKey(),
             $protocol->getPrestashopUrl(),
             $protocol->getDefaultStoreView(),
             $protocol->getHttpLogin(),
@@ -92,20 +91,20 @@ class HasValidCredentialsValidator extends ConstraintValidator
                 $clientParameters->setValidation(false);
                 $this->context->addViolationAt(
                     'prestashopUrl',
-                    $constraint->messageSoapNotValid.' "'.$e->getMessage().'"'
+                    $constraint->messageRestNotValid.' "'.$e->getMessage().'"'
                 );
             } catch (InvalidXmlException $e) {
                 $clientParameters->setValidation(false);
                 $this->context->addViolationAt('prestashopUrl', $constraint->messageXmlNotValid);
             } catch (InvalidCredentialException $e) {
                 $clientParameters->setValidation(false);
-                $this->context->addViolationAt('soapUsername', $constraint->messageUsername);
+                $this->context->addViolationAt('restApiKey', $constraint->messageApiKey);
             } catch (RestCallException $e) {
                 $clientParameters->setValidation(false);
-                $this->context->addViolationAt('soapUsername', $e->getMessage());
+                $this->context->addViolationAt('restApiKey', $e->getMessage());
             } catch (\Exception $e) {
                 $clientParameters->setValidation(false);
-                $this->context->addViolationAt('soapUsername', $e->getMessage());
+                $this->context->addViolationAt('restApiKey', $e->getMessage());
             }
         }
     }

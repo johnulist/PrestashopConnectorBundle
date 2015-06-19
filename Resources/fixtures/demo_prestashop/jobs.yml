@@ -5,8 +5,7 @@ jobs:
         label:     Prestashop attribute export
         type:      export
         configuration:
-            soapUsername:             soap
-            soapApiKey:               prestashop1
+            restApiKey:               prestashop1
             prestashopUrl:               http://prestashop.local
             defaultLocale:            en_US
             website:                  base
@@ -22,8 +21,7 @@ jobs:
         type:      export
         configuration:
             channel:               mobile
-            soapUsername:          soap
-            soapApiKey:            prestashop1
+            restApiKey:            prestashop1
             prestashopUrl:            http://prestashop.local
             defaultLocale:         en_US
             website:               base
@@ -40,8 +38,7 @@ jobs:
         type:      export
         configuration:
             channel:                       mobile
-            soapUsername:                  soap
-            soapApiKey:                    prestashop1
+            restApiKey:                    prestashop1
             prestashopUrl:                    http://prestashop.local
             defaultLocale:                 en_US
             website:                       base

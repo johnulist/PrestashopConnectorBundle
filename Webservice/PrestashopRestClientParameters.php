@@ -10,10 +10,7 @@ class PrestashopRestClientParameters
 {
 
     /** @var string */
-    protected $soapUsername;
-
-    /** @var string */
-    protected $soapApiKey;
+    protected $restApiKey;
 
     /** @var string Prestashop Url (only the domain) */
     protected $prestashopUrl;
@@ -31,23 +28,20 @@ class PrestashopRestClientParameters
     protected $isValid;
 
     /**
-     * @param string $soapUsername     Prestashop soap username
-     * @param string $soapApiKey       Prestashop soap api key
+     * @param string $restApiKey       Prestashop soap api key
      * @param string $prestashopUrl       Prestashop url (only the domain)
      * @param string $defaultStoreView Default store view
      * @param string $httpLogin        Login http authentication
      * @param string $httpPassword     Password http authentication
      */
     public function __construct(
-        $soapUsername,
-        $soapApiKey,
+        $restApiKey,
         $prestashopUrl,
         $defaultStoreView,
         $httpLogin = null,
         $httpPassword = null
     ) {
-        $this->soapUsername     = $soapUsername;
-        $this->soapApiKey       = $soapApiKey;
+        $this->restApiKey       = $restApiKey;
         $this->prestashopUrl       = $prestashopUrl;
         $this->defaultStoreView = $defaultStoreView;
         $this->httpLogin        = $httpLogin;
@@ -62,8 +56,7 @@ class PrestashopRestClientParameters
     public function getHash()
     {
         return md5(
-            $this->soapUsername.
-            $this->soapApiKey.
+            $this->restApiKey.
             $this->prestashopUrl.
             $this->defaultStoreView.
             $this->httpLogin.
@@ -92,27 +85,9 @@ class PrestashopRestClientParameters
     /**
      * @return string
      */
-    public function getSoapUsername()
+    public function getRestApiKey()
     {
-        return $this->soapUsername;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSoapApiKey()
-    {
-        return $this->soapApiKey;
-    }
-
-    /**
-     * Soap url is concatenation between prestashop url and wsdl url
-     *
-     * @return string
-     */
-    public function getSoapUrl()
-    {
-        return $this->prestashopUrl;
+        return $this->restApiKey;
     }
 
     /**

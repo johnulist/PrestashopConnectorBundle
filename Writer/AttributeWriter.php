@@ -110,7 +110,7 @@ class AttributeWriter extends AbstractWriter
 
             $this->stepExecution->incrementSummaryInfo('attribute_created');
 
-            $prestashopUrl = $this->getSoapUrl();
+            $prestashopUrl = $this->getPrestashopUrl();
             $this->attributeMappingManager->registerAttributeMapping(
                 $pimAttribute,
                 $prestashopAttributeId,
@@ -146,7 +146,7 @@ class AttributeWriter extends AbstractWriter
 
         if ($pimGroup !== null) {
             $prestashopGroupId = $this->attributeGroupMappingManager
-                ->getIdFromGroup($pimGroup, $pimFamily, $this->getSoapUrl());
+                ->getIdFromGroup($pimGroup, $pimFamily, $this->getPrestashopUrl());
         } else {
             $prestashopGroupId = null;
         }
@@ -168,7 +168,7 @@ class AttributeWriter extends AbstractWriter
 
         foreach ($families as $family) {
             $prestashopGroupId  = $this->getGroupId($pimAttribute, $family);
-            $prestashopFamilyId = $this->familyMappingManager->getIdFromFamily($family, $this->getSoapUrl());
+            $prestashopFamilyId = $this->familyMappingManager->getIdFromFamily($family, $this->getPrestashopUrl());
             try {
                 if (null !== $prestashopFamilyId) {
                     $this->webservice->addAttributeToAttributeSet(
@@ -204,7 +204,7 @@ class AttributeWriter extends AbstractWriter
             $groupName = $group->getCode();
 
             foreach ($families as $family) {
-                $familyPrestashopId = $this->familyMappingManager->getIdFromFamily($family, $this->getSoapUrl());
+                $familyPrestashopId = $this->familyMappingManager->getIdFromFamily($family, $this->getPrestashopUrl());
                 if (null === $familyPrestashopId) {
                     $prestashopAttributeSets = $this->webservice->getAttributeSetList();
                     if (array_key_exists($family->getCode(), $prestashopAttributeSets)) {
@@ -217,7 +217,7 @@ class AttributeWriter extends AbstractWriter
                         $group,
                         $family,
                         $prestashopGroupId,
-                        $this->getSoapUrl()
+                        $this->getPrestashopUrl()
                     );
                 } catch (RestCallException $e) {
                     if (static::SOAP_FAULT_GROUP_ALREADY_IN_SET === $e->getPrevious()->faultcode) {

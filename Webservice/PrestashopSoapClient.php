@@ -50,7 +50,7 @@ class PrestashopSoapClient
         $this->profiler         = $profiler;
 
         if (!$soapClient) {
-            $wsdlUrl     = $this->clientParameters->getSoapUrl();
+            $wsdlUrl     = $this->clientParameters->getPrestashopUrl();
             $soapOptions = [
                 'encoding'   => 'UTF-8',
                 'trace'      => true,
@@ -88,7 +88,7 @@ class PrestashopSoapClient
         try {
             $this->session = $this->client->login(
                 $this->clientParameters->getSoapUsername(),
-                $this->clientParameters->getSoapApiKey()
+                $this->clientParameters->getRestApiKey()
             );
         } catch (\SoapFault $e) {
             if (static::PRESTASHOP_BAD_CREDENTIALS === $e->faultcode) {
@@ -96,7 +96,7 @@ class PrestashopSoapClient
                     sprintf(
                         'Error on Prestashop SOAP credentials to "%s": "%s".'.
                         'You should check your login and Prestashop API key.',
-                        $this->clientParameters->getSoapUrl(),
+                        $this->clientParameters->getPrestashopUrl(),
                         $e->getMessage()
                     ),
                     $e->getCode(),
@@ -115,7 +115,7 @@ class PrestashopSoapClient
                     sprintf(
                         'Error on Prestashop client to "%s": "%s".'.
                         'Something is probably wrong in the last SOAP response:'.nl2br("\n").'"%s"',
-                        $this->clientParameters->getSoapUrl(),
+                        $this->clientParameters->getPrestashopUrl(),
                         $e->getMessage(),
                         $truncatedLastResponse
                     ),
@@ -169,7 +169,7 @@ class PrestashopSoapClient
                             ' Soap user needs access on this resource. Please '.
                             'check in your Prestashop webservice soap roles and '.
                             'users configuration.',
-                            $this->clientParameters->getSoapUrl(),
+                            $this->clientParameters->getPrestashopUrl(),
                             $e->getMessage(),
                             $resource,
                             json_encode($params)
@@ -181,7 +181,7 @@ class PrestashopSoapClient
                     throw new RestCallException(
                         sprintf(
                             'Error on Prestashop soap call to "%s" : "%s". Called resource : "%s" with parameters : %s',
-                            $this->clientParameters->getSoapUrl(),
+                            $this->clientParameters->getPrestashopUrl(),
                             $e->getMessage(),
                             $resource,
                             json_encode($params)
@@ -197,7 +197,7 @@ class PrestashopSoapClient
                     sprintf(
                         'Error on Prestashop soap call to "%s" : "%s". Called resource : "%s" with parameters : %s.'.
                         'Response from API : %s',
-                        $this->clientParameters->getSoapUrl(),
+                        $this->clientParameters->getPrestashopUrl(),
                         $e->getMessage(),
                         $resource,
                         json_encode($params),

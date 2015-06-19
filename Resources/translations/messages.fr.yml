@@ -49,10 +49,7 @@ pim_prestashop_connector:
         group_clean.clean.title: Nettoyeur de groupe
         family_cleaner.title: Nettoyeur de famille
     export:
-        soapUsername:
-            label: "Nom d'utilisateur soap"
-            help: Votre nom d'utilisateur soap Prestashop
-        soapApiKey:
+        restApiKey:
             label: Clé d'API Prestashop
             help: Votre clé d'API soap Prestashop
         prestashopUrl:

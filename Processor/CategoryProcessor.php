@@ -149,7 +149,7 @@ class CategoryProcessor extends AbstractProcessor
             $this->globalContext,
             [
                 'prestashopCategories' => $prestashopCategories,
-                'prestashopUrl'        => $this->getSoapUrl(),
+                'prestashopUrl'        => $this->getPrestashopUrl(),
                 'defaultLocale'     => $this->defaultLocale,
                 'prestashopStoreViews' => $prestashopStoreViews,
                 'categoryMapping'   => $this->categoryMappingMerger->getMapping(),

@@ -49,10 +49,7 @@ pim_prestashop_connector:
         group_clean.clean.title: Group cleaner
         family_cleaner.title: Family cleaner
     export:
-        soapUsername:
-            label: Soap Username
-            help: Your soap username on Prestashop
-        soapApiKey:
+        restApiKey:
             label: Soap api key
             help: Your soap api key on Prestashop
         prestashopUrl:

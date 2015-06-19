@@ -132,7 +132,7 @@ class AttributeReader extends EntityReader
     {
         parent::afterConfigurationSet();
 
-        $this->attributeCodeMappingMerger->setParameters($this->getClientParameters(), $this->getSoapUrl());
+        $this->attributeCodeMappingMerger->setParameters($this->getClientParameters(), $this->getPrestashopUrl());
     }
 
     /**

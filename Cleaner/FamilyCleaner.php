@@ -85,7 +85,7 @@ class FamilyCleaner extends Cleaner
     {
         if (
             $this->notInPimAnymoreAction === self::DELETE &&
-            !$this->familyMappingManager->prestashopFamilyExists($id, $this->getSoapUrl()) &&
+            !$this->familyMappingManager->prestashopFamilyExists($id, $this->getPrestashopUrl()) &&
             !in_array($name, $this->getIgnoredFamilies())
         ) {
             try {

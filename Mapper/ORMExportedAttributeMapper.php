@@ -55,7 +55,7 @@ class ORMExportedAttributeMapper extends Mapper
     public function getMapping()
     {
         $prestashopAttributeMappings = $this->attributeMappingManager
-            ->getAllPrestashopAttribute($this->clientParameters->getSoapUrl());
+            ->getAllPrestashopAttribute($this->clientParameters->getPrestashopUrl());
 
         $attributeCodeMapping = $this->attributeCodeMappingMerger->getMapping();
 
@@ -95,7 +95,7 @@ class ORMExportedAttributeMapper extends Mapper
     public function getIdentifier($rootIdentifier = 'attribute_id')
     {
         if ($this->isValid()) {
-            return sha1(sprintf(Mapper::IDENTIFIER_FORMAT, $rootIdentifier, $this->clientParameters->getSoapUrl()));
+            return sha1(sprintf(Mapper::IDENTIFIER_FORMAT, $rootIdentifier, $this->clientParameters->getPrestashopUrl()));
         } else {
             return '';
         }

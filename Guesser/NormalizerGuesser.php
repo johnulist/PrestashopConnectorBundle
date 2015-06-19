@@ -137,7 +137,7 @@ class NormalizerGuesser extends AbstractGuesser
                     $visibility,
                     $variantMemberVisibility,
                     $currencyCode,
-                    $clientParameters->getSoapUrl()
+                    $clientParameters->getPrestashopUrl()
                 );
             case AbstractGuesser::PRESTASHOP_VERSION_1_6:
                 return new ProductNormalizer16(
@@ -151,7 +151,7 @@ class NormalizerGuesser extends AbstractGuesser
                     $visibility,
                     $variantMemberVisibility,
                     $currencyCode,
-                    $clientParameters->getSoapUrl()
+                    $clientParameters->getPrestashopUrl()
                 );
             default:
                 throw new NotSupportedVersionException(AbstractGuesser::PRESTASHOP_VERSION_NOT_SUPPORTED_MESSAGE);

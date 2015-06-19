@@ -34,12 +34,7 @@ abstract class PrestashopItemStep extends AbstractConfigurableStepElement implem
     /**
      * @Assert\NotBlank(groups={"Execution"})
      */
-    protected $defaultStoreView = Webservice::SOAP_DEFAULT_STORE_VIEW;
-
-    /**
-     * @Assert\NotBlank(groups={"Execution"})
-     */
-    protected $soapUsername;
+    protected $defaultStoreView = Webservice::REST_DEFAULT_STORE_VIEW;
 
     /**
      * @Assert\NotBlank(groups={"Execution"})
@@ -50,7 +45,7 @@ abstract class PrestashopItemStep extends AbstractConfigurableStepElement implem
     /**
      * @Assert\NotBlank(groups={"Execution"})
      */
-    protected $soapApiKey;
+    protected $restApiKey;
 
     /** @var string */
     protected $httpLogin;
@@ -123,21 +118,14 @@ abstract class PrestashopItemStep extends AbstractConfigurableStepElement implem
     public function getConfigurationFields()
     {
         return [
-            'soapUsername' => [
-                'options' => [
-                    'required' => true,
-                    'help'     => 'pim_prestashop_connector.export.soapUsername.help',
-                    'label'    => 'pim_prestashop_connector.export.soapUsername.label',
-                ],
-            ],
-            'soapApiKey'   => [
+            'restApiKey'   => [
                 //Should be replaced by a password formType but which doesn't
                 //empty the field at each edit
                 'type'    => 'text',
                 'options' => [
                     'required' => true,
-                    'help'     => 'pim_prestashop_connector.export.soapApiKey.help',
-                    'label'    => 'pim_prestashop_connector.export.soapApiKey.label',
+                    'help'     => 'pim_prestashop_connector.export.restApiKey.help',
+                    'label'    => 'pim_prestashop_connector.export.restApiKey.label',
                 ],
             ],
             'prestashopUrl' => [
@@ -175,26 +163,6 @@ abstract class PrestashopItemStep extends AbstractConfigurableStepElement implem
     /**
      * @return string
      */
-    public function getSoapUsername()
-    {
-        return $this->soapUsername;
-    }
-
-    /**
-     * @param string $soapUsername
-     *
-     * @return PrestashopItemStep
-     */
-    public function setSoapUsername($soapUsername)
-    {
-        $this->soapUsername = $soapUsername;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
     public function getDefaultStoreView()
     {
         return $this->defaultStoreView;
@@ -215,19 +183,19 @@ abstract class PrestashopItemStep extends AbstractConfigurableStepElement implem
     /**
      * @return string
      */
-    public function getSoapApiKey()
+    public function getRestApiKey()
     {
-        return $this->soapApiKey;
+        return $this->restApiKey;
     }
 
     /**
-     * @param string $soapApiKey
+     * @param string $restApiKey
      *
      * @return PrestashopItemStep
      */
-    public function setSoapApiKey($soapApiKey)
+    public function setRestApiKey($restApiKey)
     {
-        $this->soapApiKey = $soapApiKey;
+        $this->restApiKey = $restApiKey;
 
         return $this;
     }
@@ -250,14 +218,6 @@ abstract class PrestashopItemStep extends AbstractConfigurableStepElement implem
         $this->prestashopUrl = $prestashopUrl;
 
         return $this;
-    }
-
-    /**
-     * @return string prestashop soap url
-     */
-    public function getSoapUrl()
-    {
-        return $this->prestashopUrl;
     }
 
     /**
@@ -329,8 +289,7 @@ abstract class PrestashopItemStep extends AbstractConfigurableStepElement implem
     protected function getClientParameters()
     {
         $this->clientParameters = $this->clientParametersRegistry->getInstance(
-            $this->soapUsername,
-            $this->soapApiKey,
+            $this->restApiKey,
             $this->prestashopUrl,
             $this->defaultStoreView,
             $this->httpLogin,

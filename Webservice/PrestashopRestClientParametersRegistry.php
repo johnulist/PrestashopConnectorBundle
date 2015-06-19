@@ -14,21 +14,19 @@ class PrestashopRestClientParametersRegistry
     /**
      * Gives PrestashopRestClientParameters which corresponding to given parameters.
      *
-     * @param array $soapParameters Associative array which contains rest parameters
+     * @param array $restParameters Associative array which contains rest parameters
      *
      * @return PrestashopRestClientParameters
      */
     public function getInstance(
-        $soapUsername,
-        $soapApiKey,
+        $restApiKey,
         $prestashopUrl,
-        $defaultStoreView = Webservice::SOAP_DEFAULT_STORE_VIEW,
+        $defaultStoreView = Webservice::REST_DEFAULT_STORE_VIEW,
         $httpLogin = null,
         $httpPassword = null
     ) {
         $hash = md5(
-            $soapUsername.
-            $soapApiKey.
+            $restApiKey.
             $prestashopUrl.
             $defaultStoreView.
             $httpLogin.
@@ -37,8 +35,7 @@ class PrestashopRestClientParametersRegistry
 
         if (!isset($this->instances[$hash])) {
             $this->instances[$hash] = new PrestashopRestClientParameters(
-                $soapUsername,
-                $soapApiKey,
+                $restApiKey,
                 $prestashopUrl,
                 $defaultStoreView,
                 $httpLogin,

@@ -64,7 +64,7 @@ class CategoryWriter extends AbstractWriter
             foreach ($batch['create'] as $newCategory) {
                 $pimCategory       = $newCategory['pimCategory'];
                 $prestashopCategoryId = $this->webservice->sendNewCategory($newCategory['prestashopCategory']);
-                $prestashopUrl        = $this->getSoapUrl();
+                $prestashopUrl        = $this->getPrestashopUrl();
 
                 $this->categoryMappingManager->registerCategoryMapping(
                     $pimCategory,
@@ -136,7 +136,7 @@ class CategoryWriter extends AbstractWriter
             foreach ($batch['variation'] as $variationCategory) {
                 $pimCategory        = $variationCategory['pimCategory'];
                 $prestashopCategoryId  = $this->categoryMappingManager
-                    ->getIdFromCategory($pimCategory, $this->getSoapUrl());
+                    ->getIdFromCategory($pimCategory, $this->getPrestashopUrl());
                 $prestashopCategory    = $variationCategory['prestashopCategory'];
                 $prestashopCategory[0] = $prestashopCategoryId;
 
