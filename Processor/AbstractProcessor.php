@@ -10,7 +10,7 @@ use Pim\Bundle\PrestashopConnectorBundle\Guesser\WebserviceGuesser;
 use Pim\Bundle\PrestashopConnectorBundle\Guesser\NormalizerGuesser;
 use Pim\Bundle\PrestashopConnectorBundle\Manager\LocaleManager;
 use Pim\Bundle\PrestashopConnectorBundle\Merger\PrestashopMappingMerger;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParametersRegistry;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParametersRegistry;
 
 /**
  * Prestashop product processor.
@@ -48,14 +48,14 @@ abstract class AbstractProcessor extends PrestashopItemStep implements ItemProce
      * @param NormalizerGuesser                   $normalizerGuesser
      * @param LocaleManager                       $localeManager
      * @param PrestashopMappingMerger                $storeViewMappingMerger
-     * @param PrestashopSoapClientParametersRegistry $clientParametersRegistry
+     * @param PrestashopRestClientParametersRegistry $clientParametersRegistry
      */
     public function __construct(
         WebserviceGuesser $webserviceGuesser,
         NormalizerGuesser $normalizerGuesser,
         LocaleManager $localeManager,
         PrestashopMappingMerger $storeViewMappingMerger,
-        PrestashopSoapClientParametersRegistry $clientParametersRegistry
+        PrestashopRestClientParametersRegistry $clientParametersRegistry
     ) {
         parent::__construct($webserviceGuesser, $clientParametersRegistry);
 

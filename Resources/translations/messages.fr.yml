@@ -58,9 +58,6 @@ pim_prestashop_connector:
         prestashopUrl:
             label: Url Prestashop
             help: L'url de votre installation Prestashop
-        wsdlUrl:
-            label: Suffix wsdl
-            help: Vous pouvez personnaliser le suffixe wsdl de l'API Soap. Si vous ne savez pas à quoi correspond ce paramètre, laissez ce paramètre inchangé.
         httpLogin:
             label: "Nom d'utilisateur http"
             help: "Si vous avez une authentification par http fournissez ici votre nom d'utilisateur de votre connection http"

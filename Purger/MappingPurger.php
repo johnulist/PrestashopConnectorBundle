@@ -59,24 +59,24 @@ class MappingPurger implements PurgerInterface
         }
 
         $rawConfiguration = $jobInstance->getRawConfiguration();
-        $soapUrl = $rawConfiguration['prestashopUrl'].$rawConfiguration['wsdlUrl'];
+        $restUrl = $rawConfiguration['prestashopUrl'];
         foreach ($this->classesToPurge as $class) {
-            $this->purgeMapping($soapUrl, $class);
+            $this->purgeMapping($restUrl, $class);
         }
     }
 
     /**
      * Execute purge.
      *
-     * @param string $soapUrl
+     * @param string $restUrl
      * @param string $class
      */
-    protected function purgeMapping($soapUrl, $class)
+    protected function purgeMapping($restUrl, $class)
     {
         $qb = $this->entityManager->createQueryBuilder();
         $qb->delete($class, 'c')
             ->where($qb->expr()->eq('c.prestashopUrl', ':prestashopUrl'))
-            ->setParameter(':prestashopUrl', $soapUrl)
+            ->setParameter(':prestashopUrl', $restUrl)
             ->getQuery()
             ->execute();
     }

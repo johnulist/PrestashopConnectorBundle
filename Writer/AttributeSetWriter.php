@@ -7,7 +7,7 @@ use Pim\Bundle\PrestashopConnectorBundle\Manager\AttributeMappingManager;
 use Pim\Bundle\PrestashopConnectorBundle\Manager\FamilyMappingManager;
 use Akeneo\Bundle\BatchBundle\Item\InvalidItemException;
 use Pim\Bundle\PrestashopConnectorBundle\Webservice\SoapCallException;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParametersRegistry;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParametersRegistry;
 
 /**
  * Prestashop attribute set writer.
@@ -25,13 +25,13 @@ class AttributeSetWriter extends AbstractWriter
      * @param WebserviceGuesser                   $webserviceGuesser
      * @param FamilyMappingManager                $familyMappingManager
      * @param AttributeMappingManager             $attributeMappingManager
-     * @param PrestashopSoapClientParametersRegistry $clientParametersRegistry
+     * @param PrestashopRestClientParametersRegistry $clientParametersRegistry
      */
     public function __construct(
         WebserviceGuesser $webserviceGuesser,
         FamilyMappingManager $familyMappingManager,
         AttributeMappingManager $attributeMappingManager,
-        PrestashopSoapClientParametersRegistry $clientParametersRegistry
+        PrestashopRestClientParametersRegistry $clientParametersRegistry
     ) {
         parent::__construct($webserviceGuesser, $clientParametersRegistry);
 

@@ -11,7 +11,7 @@ use Pim\Bundle\PrestashopConnectorBundle\Normalizer\Exception\NormalizeException
 use Pim\Bundle\PrestashopConnectorBundle\Guesser\NormalizerGuesser;
 use Pim\Bundle\PrestashopConnectorBundle\Manager\LocaleManager;
 use Pim\Bundle\PrestashopConnectorBundle\Merger\PrestashopMappingMerger;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParametersRegistry;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParametersRegistry;
 
 /**
  * Prestashop option processor.
@@ -34,7 +34,7 @@ class OptionProcessor extends AbstractProcessor
      * @param LocaleManager                       $localeManager
      * @param PrestashopMappingMerger                $storeViewMappingMerger
      * @param PrestashopMappingMerger                $attributeMappingMerger
-     * @param PrestashopSoapClientParametersRegistry $clientParametersRegistry
+     * @param PrestashopRestClientParametersRegistry $clientParametersRegistry
      */
     public function __construct(
         WebserviceGuesser $webserviceGuesser,
@@ -42,7 +42,7 @@ class OptionProcessor extends AbstractProcessor
         LocaleManager $localeManager,
         PrestashopMappingMerger $storeViewMappingMerger,
         PrestashopMappingMerger $attributeCodeMappingMerger,
-        PrestashopSoapClientParametersRegistry $clientParametersRegistry
+        PrestashopRestClientParametersRegistry $clientParametersRegistry
     ) {
         parent::__construct(
             $webserviceGuesser,

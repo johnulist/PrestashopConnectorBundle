@@ -13,7 +13,7 @@ use Pim\Bundle\PrestashopConnectorBundle\Manager\CurrencyManager;
 use Pim\Bundle\PrestashopConnectorBundle\Manager\LocaleManager;
 use Pim\Bundle\PrestashopConnectorBundle\Merger\PrestashopMappingMerger;
 use Pim\Bundle\PrestashopConnectorBundle\Normalizer\AbstractNormalizer;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParametersRegistry;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParametersRegistry;
 use Pim\Bundle\TransformBundle\Converter\MetricConverter;
 
 /**
@@ -42,7 +42,7 @@ class ProductProcessor extends AbstractProductProcessor
      * @param PrestashopMappingMerger                $attributeMappingMerger
      * @param MetricConverter                     $metricConverter
      * @param AssociationTypeManager              $associationTypeManager
-     * @param PrestashopSoapClientParametersRegistry $clientParametersRegistry
+     * @param PrestashopRestClientParametersRegistry $clientParametersRegistry
      * @param AttributeManager                    $attributeManager
      */
     public function __construct(
@@ -56,7 +56,7 @@ class ProductProcessor extends AbstractProductProcessor
         PrestashopMappingMerger $attributeMappingMerger,
         MetricConverter $metricConverter,
         AssociationTypeManager $associationTypeManager,
-        PrestashopSoapClientParametersRegistry $clientParametersRegistry,
+        PrestashopRestClientParametersRegistry $clientParametersRegistry,
         AttributeManager $attributeManager
     ) {
         parent::__construct(

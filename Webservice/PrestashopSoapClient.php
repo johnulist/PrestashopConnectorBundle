@@ -26,7 +26,7 @@ class PrestashopSoapClient
     /** @var array */
     protected $calls;
 
-    /** @var PrestashopSoapClientParameters */
+    /** @var PrestashopRestClientParameters */
     protected $clientParameters;
 
     /** @var PrestashopSoapClientProfiler */
@@ -35,14 +35,14 @@ class PrestashopSoapClient
     /**
      * Create and init the soap client.
      *
-     * @param PrestashopSoapClientParameters $clientParameters
+     * @param PrestashopRestClientParameters $clientParameters
      * @param \SoapClient                 $soapClient
      * @param PrestashopSoapClientProfiler   $profiler
      *
      * @throws ConnectionErrorException
      */
     public function __construct(
-        PrestashopSoapClientParameters $clientParameters,
+        PrestashopRestClientParameters $clientParameters,
         \SoapClient $soapClient = null,
         PrestashopSoapClientProfiler $profiler = null
     ) {

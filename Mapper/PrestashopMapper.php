@@ -3,7 +3,7 @@
 namespace Pim\Bundle\PrestashopConnectorBundle\Mapper;
 
 use Pim\Bundle\PrestashopConnectorBundle\Validator\Constraints\HasValidCredentialsValidator;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParameters;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParameters;
 
 /**
  * Prestashop mapper.
@@ -11,7 +11,7 @@ use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParamete
  */
 class PrestashopMapper extends Mapper
 {
-    /** @var PrestashopSoapClientParameters */
+    /** @var PrestashopRestClientParameters */
     protected $clientParameters = null;
 
     /** @var HasValidCredentialsValidator */
@@ -31,10 +31,10 @@ class PrestashopMapper extends Mapper
     /**
      * Set mapper parameters.
      *
-     * @param PrestashopSoapClientParameters $clientParameters
+     * @param PrestashopRestClientParameters $clientParameters
      * @param string                      $defaultStoreView
      */
-    public function setParameters(PrestashopSoapClientParameters $clientParameters, $defaultStoreView)
+    public function setParameters(PrestashopRestClientParameters $clientParameters, $defaultStoreView)
     {
         $this->clientParameters = $clientParameters;
         $this->defaultStoreView = $defaultStoreView;

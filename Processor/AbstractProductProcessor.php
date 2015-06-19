@@ -12,7 +12,7 @@ use Pim\Bundle\PrestashopConnectorBundle\Manager\CurrencyManager;
 use Pim\Bundle\PrestashopConnectorBundle\Manager\AttributeManager;
 use Pim\Bundle\PrestashopConnectorBundle\Validator\Constraints\HasValidDefaultLocale;
 use Pim\Bundle\PrestashopConnectorBundle\Validator\Constraints\HasValidCurrency;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParametersRegistry;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParametersRegistry;
 
 /**
  * Abstract prestashop product processor.
@@ -97,7 +97,7 @@ abstract class AbstractProductProcessor extends AbstractProcessor
      * @param ChannelManager                      $channelManager
      * @param PrestashopMappingMerger                $categoryMappingMerger
      * @param PrestashopMappingMerger                $attributeMappingMerger
-     * @param PrestashopSoapClientParametersRegistry $clientParametersRegistry,
+     * @param PrestashopRestClientParametersRegistry $clientParametersRegistry,
      * @param AttributeManager                    $attributeManager
      */
     public function __construct(
@@ -109,7 +109,7 @@ abstract class AbstractProductProcessor extends AbstractProcessor
         ChannelManager $channelManager,
         PrestashopMappingMerger $categoryMappingMerger,
         PrestashopMappingMerger $attributeMappingMerger,
-        PrestashopSoapClientParametersRegistry $clientParametersRegistry,
+        PrestashopRestClientParametersRegistry $clientParametersRegistry,
         AttributeManager $attributeManager
     ) {
         parent::__construct(

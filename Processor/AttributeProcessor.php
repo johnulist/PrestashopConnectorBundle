@@ -11,7 +11,7 @@ use Pim\Bundle\PrestashopConnectorBundle\Manager\LocaleManager;
 use Pim\Bundle\PrestashopConnectorBundle\Merger\PrestashopMappingMerger;
 use Pim\Bundle\PrestashopConnectorBundle\Normalizer\AbstractNormalizer;
 use Pim\Bundle\PrestashopConnectorBundle\Normalizer\Exception\NormalizeException;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParametersRegistry;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParametersRegistry;
 
 /**
  * Prestashop attributes processor.
@@ -37,7 +37,7 @@ class AttributeProcessor extends AbstractProcessor
      * @param LocaleManager                       $localeManager
      * @param PrestashopMappingMerger                $storeViewMappingMerger
      * @param PrestashopMappingMerger                $attributeMappingMerger
-     * @param PrestashopSoapClientParametersRegistry $clientParametersRegistry
+     * @param PrestashopRestClientParametersRegistry $clientParametersRegistry
      * @param GroupManager                        $groupManager
      */
     public function __construct(
@@ -46,7 +46,7 @@ class AttributeProcessor extends AbstractProcessor
         LocaleManager $localeManager,
         PrestashopMappingMerger $storeViewMappingMerger,
         PrestashopMappingMerger $attributeMappingMerger,
-        PrestashopSoapClientParametersRegistry $clientParametersRegistry,
+        PrestashopRestClientParametersRegistry $clientParametersRegistry,
         GroupManager $groupManager
     ) {
         parent::__construct(

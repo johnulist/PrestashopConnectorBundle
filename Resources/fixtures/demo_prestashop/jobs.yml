@@ -8,7 +8,6 @@ jobs:
             soapUsername:             soap
             soapApiKey:               prestashop1
             prestashopUrl:               http://prestashop.local
-            wsdlUrl:                  /api/soap/?wsdl
             defaultLocale:            en_US
             website:                  base
             storeviewMapping:         'fr_FR:fr_fr'
@@ -26,7 +25,6 @@ jobs:
             soapUsername:          soap
             soapApiKey:            prestashop1
             prestashopUrl:            http://prestashop.local
-            wsdlUrl:               /api/soap/?wsdl
             defaultLocale:         en_US
             website:               base
             storeviewMapping:      'fr_FR:fr_fr'
@@ -45,7 +43,6 @@ jobs:
             soapUsername:                  soap
             soapApiKey:                    prestashop1
             prestashopUrl:                    http://prestashop.local
-            wsdlUrl:                       /api/soap/?wsdl
             defaultLocale:                 en_US
             website:                       base
             enabled:                       true

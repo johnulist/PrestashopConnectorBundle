@@ -5,7 +5,7 @@ namespace Pim\Bundle\PrestashopConnectorBundle\Writer;
 use Akeneo\Bundle\BatchBundle\Item\InvalidItemException;
 use Pim\Bundle\PrestashopConnectorBundle\Guesser\WebserviceGuesser;
 use Pim\Bundle\PrestashopConnectorBundle\Manager\DeltaProductExportManager;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParametersRegistry;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParametersRegistry;
 use Pim\Bundle\PrestashopConnectorBundle\Webservice\SoapCallException;
 
 /**
@@ -19,12 +19,12 @@ class DeltaProductAssociationWriter extends ProductAssociationWriter
 
     /**
      * @param WebserviceGuesser                   $webserviceGuesser
-     * @param PrestashopSoapClientParametersRegistry $clientParamsRegistry
+     * @param PrestashopRestClientParametersRegistry $clientParamsRegistry
      * @param DeltaProductExportManager           $productExportManager
      */
     public function __construct(
         WebserviceGuesser $webserviceGuesser,
-        PrestashopSoapClientParametersRegistry $clientParamsRegistry,
+        PrestashopRestClientParametersRegistry $clientParamsRegistry,
         DeltaProductExportManager $productExportManager
     ) {
         parent::__construct($webserviceGuesser, $clientParamsRegistry);

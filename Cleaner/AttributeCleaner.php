@@ -5,7 +5,7 @@ namespace Pim\Bundle\PrestashopConnectorBundle\Cleaner;
 use Pim\Bundle\PrestashopConnectorBundle\Guesser\WebserviceGuesser;
 use Pim\Bundle\PrestashopConnectorBundle\Webservice\SoapCallException;
 use Pim\Bundle\PrestashopConnectorBundle\Merger\PrestashopMappingMerger;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParametersRegistry;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParametersRegistry;
 use Akeneo\Bundle\BatchBundle\Item\InvalidItemException;
 use Doctrine\ORM\EntityManager;
 
@@ -32,14 +32,14 @@ class AttributeCleaner extends Cleaner
      * @param PrestashopMappingMerger                $attributeCodeMappingMerger
      * @param EntityManager                       $em
      * @param string                              $attributeClassName
-     * @param PrestashopSoapClientParametersRegistry $clientParametersRegistry
+     * @param PrestashopRestClientParametersRegistry $clientParametersRegistry
      */
     public function __construct(
         WebserviceGuesser $webserviceGuesser,
         PrestashopMappingMerger $attributeCodeMappingMerger,
         EntityManager $em,
         $attributeClassName,
-        PrestashopSoapClientParametersRegistry $clientParametersRegistry
+        PrestashopRestClientParametersRegistry $clientParametersRegistry
     ) {
         parent::__construct($webserviceGuesser, $clientParametersRegistry);
 

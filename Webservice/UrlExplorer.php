@@ -2,7 +2,7 @@
 
 namespace Pim\Bundle\PrestashopConnectorBundle\Webservice;
 
-use Pim\Bundle\PrestashopConnectorBundle\Validator\Exception\InvalidSoapUrlException;
+use Pim\Bundle\PrestashopConnectorBundle\Validator\Exception\InvalidRestpUrlException;
 use Pim\Bundle\PrestashopConnectorBundle\Validator\Exception\NotReachableUrlException;
 use Guzzle\Http\Exception\BadResponseException;
 use Guzzle\Http\Exception\CurlException;
@@ -38,25 +38,25 @@ class UrlExplorer
     /**
      * Reaches url and get his content.
      *
-     * @param PrestashopSoapClientParameters $clientParameters
+     * @param PrestashopRestClientParameters $clientParameters
      *
      * @return string Xml content as string
      *
      * @throws NotReachableUrlException
-     * @throws InvalidSoapUrlException
+     * @throws InvalidRestUrlException
      */
-    public function getUrlContent(PrestashopSoapClientParameters $clientParameters)
+    public function getUrlContent(PrestashopRestClientParameters $clientParameters)
     {
         try {
             $response = $this->connect($clientParameters);
         } catch (CurlException $e) {
             throw new NotReachableUrlException($e->getMessage());
         } catch (BadResponseException $e) {
-            throw new InvalidSoapUrlException($e->getMessage());
+            throw new InvalidRestUrlException($e->getMessage());
         }
 
         if (false === $response->isContentType('text/xml')) {
-            throw new InvalidSoapUrlException('Content type is not XML');
+            throw new InvalidRestUrlException('Content type is not XML');
         }
 
         return $response->getBody(true);
@@ -65,7 +65,7 @@ class UrlExplorer
     /**
      * It connects to the url and give response.
      *
-     * @param PrestashopSoapClientParameters $clientParameters
+     * @param PrestashopRestClientParameters $clientParameters
      *
      * @return \Guzzle\Http\Message\Response
      *

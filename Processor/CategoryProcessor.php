@@ -10,7 +10,7 @@ use Pim\Bundle\PrestashopConnectorBundle\Merger\PrestashopMappingMerger;
 use Pim\Bundle\PrestashopConnectorBundle\Normalizer\AbstractNormalizer;
 use Pim\Bundle\PrestashopConnectorBundle\Normalizer\CategoryNormalizer;
 use Pim\Bundle\PrestashopConnectorBundle\Normalizer\Exception\NormalizeException;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParametersRegistry;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParametersRegistry;
 use Pim\Bundle\PrestashopConnectorBundle\Normalizer\Exception\CategoryNotMappedException;
 
 /**
@@ -40,7 +40,7 @@ class CategoryProcessor extends AbstractProcessor
      * @param LocaleManager                       $localeManager
      * @param PrestashopMappingMerger                $storeViewMappingMerger
      * @param PrestashopMappingMerger                $categoryMappingMerger
-     * @param PrestashopSoapClientParametersRegistry $clientParametersRegistry
+     * @param PrestashopRestClientParametersRegistry $clientParametersRegistry
      */
     public function __construct(
         WebserviceGuesser $webserviceGuesser,
@@ -48,7 +48,7 @@ class CategoryProcessor extends AbstractProcessor
         LocaleManager $localeManager,
         PrestashopMappingMerger $storeViewMappingMerger,
         PrestashopMappingMerger $categoryMappingMerger,
-        PrestashopSoapClientParametersRegistry $clientParametersRegistry
+        PrestashopRestClientParametersRegistry $clientParametersRegistry
     ) {
         parent::__construct(
             $webserviceGuesser,

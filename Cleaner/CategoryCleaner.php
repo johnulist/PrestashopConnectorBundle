@@ -2,7 +2,7 @@
 
 namespace Pim\Bundle\PrestashopConnectorBundle\Cleaner;
 
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParametersRegistry;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParametersRegistry;
 use Pim\Bundle\PrestashopConnectorBundle\Guesser\WebserviceGuesser;
 use Pim\Bundle\PrestashopConnectorBundle\Manager\CategoryMappingManager;
 use Pim\Bundle\PrestashopConnectorBundle\Webservice\SoapCallException;
@@ -23,12 +23,12 @@ class CategoryCleaner extends Cleaner
     /**
      * @param WebserviceGuesser                   $webserviceGuesser
      * @param CategoryMappingManager              $categoryMappingManager
-     * @param PrestashopSoapClientParametersRegistry $clientParametersRegistry
+     * @param PrestashopRestClientParametersRegistry $clientParametersRegistry
      */
     public function __construct(
         WebserviceGuesser $webserviceGuesser,
         CategoryMappingManager $categoryMappingManager,
-        PrestashopSoapClientParametersRegistry $clientParametersRegistry
+        PrestashopRestClientParametersRegistry $clientParametersRegistry
     ) {
         parent::__construct($webserviceGuesser, $clientParametersRegistry);
 

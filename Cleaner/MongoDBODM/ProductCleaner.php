@@ -8,7 +8,7 @@ use Pim\Bundle\CatalogBundle\Manager\ChannelManager;
 use Pim\Bundle\CatalogBundle\Manager\ProductManager;
 use Pim\Bundle\PrestashopConnectorBundle\Cleaner\AbstractProductCleaner;
 use Pim\Bundle\PrestashopConnectorBundle\Guesser\WebserviceGuesser;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParametersRegistry;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParametersRegistry;
 
 /**
  * Prestashop product cleaner for MongoDB.
@@ -21,14 +21,14 @@ class ProductCleaner extends AbstractProductCleaner
 
     /**
      * @param WebserviceGuesser                   $webserviceGuesser
-     * @param PrestashopSoapClientParametersRegistry $clientParametersRegistry
+     * @param PrestashopRestClientParametersRegistry $clientParametersRegistry
      * @param ChannelManager                      $channelManager
      * @param ProductManager                      $productManager
      * @param AttributeRepository                 $attributeRepository
      */
     public function __construct(
         WebserviceGuesser $webserviceGuesser,
-        PrestashopSoapClientParametersRegistry $clientParametersRegistry,
+        PrestashopRestClientParametersRegistry $clientParametersRegistry,
         ChannelManager $channelManager,
         ProductManager $productManager,
         AttributeRepository $attributeRepository

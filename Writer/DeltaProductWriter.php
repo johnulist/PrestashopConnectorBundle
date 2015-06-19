@@ -5,7 +5,7 @@ namespace Pim\Bundle\PrestashopConnectorBundle\Writer;
 use Pim\Bundle\PrestashopConnectorBundle\Manager\DeltaProductExportManager;
 use Pim\Bundle\CatalogBundle\Manager\ChannelManager;
 use Pim\Bundle\PrestashopConnectorBundle\Guesser\WebserviceGuesser;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParametersRegistry;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParametersRegistry;
 
 /**
  * Write delta product in Prestashop.
@@ -19,13 +19,13 @@ class DeltaProductWriter extends ProductWriter
     /**
      * @param WebserviceGuesser                   $webserviceGuesser
      * @param ChannelManager                      $channelManager
-     * @param PrestashopSoapClientParametersRegistry $clientParametersRegistry
+     * @param PrestashopRestClientParametersRegistry $clientParametersRegistry
      * @param DeltaProductExportManager           $productExportManager
      */
     public function __construct(
         WebserviceGuesser $webserviceGuesser,
         ChannelManager $channelManager,
-        PrestashopSoapClientParametersRegistry $clientParametersRegistry,
+        PrestashopRestClientParametersRegistry $clientParametersRegistry,
         DeltaProductExportManager $productExportManager
     ) {
         parent::__construct($webserviceGuesser, $channelManager, $clientParametersRegistry);

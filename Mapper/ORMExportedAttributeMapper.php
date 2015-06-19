@@ -5,7 +5,7 @@ namespace Pim\Bundle\PrestashopConnectorBundle\Mapper;
 use Pim\Bundle\PrestashopConnectorBundle\Manager\AttributeMappingManager;
 use Pim\Bundle\PrestashopConnectorBundle\Merger\PrestashopMappingMerger;
 use Pim\Bundle\PrestashopConnectorBundle\Validator\Constraints\HasValidCredentialsValidator;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParameters;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParameters;
 
 /**
  * Prestashop exported attribute mapper.
@@ -13,7 +13,7 @@ use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParamete
  */
 class ORMExportedAttributeMapper extends Mapper
 {
-    /** @var PrestashopSoapClientParameters */
+    /** @var PrestashopRestClientParameters */
     protected $clientParameters;
 
     /** @var HasValidCredentialsValidator */
@@ -78,10 +78,10 @@ class ORMExportedAttributeMapper extends Mapper
     /**
      * Set mapper parameters.
      *
-     * @param PrestashopSoapClientParameters $clientParameters
+     * @param PrestashopRestClientParameters $clientParameters
      * @param string                      $defaultStoreView
      */
-    public function setParameters(PrestashopSoapClientParameters $clientParameters, $defaultStoreView)
+    public function setParameters(PrestashopRestClientParameters $clientParameters, $defaultStoreView)
     {
         $this->clientParameters = $clientParameters;
         $this->defaultStoreView = $defaultStoreView;

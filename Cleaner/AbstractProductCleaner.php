@@ -6,7 +6,7 @@ use Akeneo\Bundle\BatchBundle\Item\InvalidItemException;
 use Pim\Bundle\CatalogBundle\Manager\ChannelManager;
 use Pim\Bundle\CatalogBundle\Manager\ProductManager;
 use Pim\Bundle\PrestashopConnectorBundle\Guesser\WebserviceGuesser;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParametersRegistry;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParametersRegistry;
 use Pim\Bundle\PrestashopConnectorBundle\Normalizer\AbstractNormalizer;
 use Pim\Bundle\PrestashopConnectorBundle\Webservice\SoapCallException;
 
@@ -35,13 +35,13 @@ abstract class AbstractProductCleaner extends Cleaner
 
     /**
      * @param WebserviceGuesser                   $webserviceGuesser
-     * @param PrestashopSoapClientParametersRegistry $clientParametersRegistry
+     * @param PrestashopRestClientParametersRegistry $clientParametersRegistry
      * @param ChannelManager                      $channelManager
      * @param ProductManager                      $productManager
      */
     public function __construct(
         WebserviceGuesser $webserviceGuesser,
-        PrestashopSoapClientParametersRegistry $clientParametersRegistry,
+        PrestashopRestClientParametersRegistry $clientParametersRegistry,
         ChannelManager $channelManager,
         ProductManager $productManager
     ) {

@@ -17,7 +17,7 @@ use Pim\Bundle\PrestashopConnectorBundle\Normalizer\AbstractNormalizer;
 use Pim\Bundle\PrestashopConnectorBundle\Manager\LocaleManager;
 use Pim\Bundle\PrestashopConnectorBundle\Merger\PrestashopMappingMerger;
 use Pim\Bundle\PrestashopConnectorBundle\Manager\CurrencyManager;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParametersRegistry;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParametersRegistry;
 
 /**
  * Prestashop configurable processor.
@@ -52,7 +52,7 @@ class ConfigurableProcessor extends AbstractProductProcessor
      * @param ChannelManager                      $channelManager
      * @param PrestashopMappingMerger                $categoryMappingMerger
      * @param PrestashopMappingMerger                $attributeMappingMerger
-     * @param PrestashopSoapClientParametersRegistry $clientParametersRegistry
+     * @param PrestashopRestClientParametersRegistry $clientParametersRegistry
      * @param AttributeManager                    $attributeManager
      * @param AssociationTypeManager              $associationTypeManager
      * @param GroupManager                        $groupManager
@@ -67,7 +67,7 @@ class ConfigurableProcessor extends AbstractProductProcessor
         ChannelManager $channelManager,
         PrestashopMappingMerger $categoryMappingMerger,
         PrestashopMappingMerger $attributeMappingMerger,
-        PrestashopSoapClientParametersRegistry $clientParametersRegistry,
+        PrestashopRestClientParametersRegistry $clientParametersRegistry,
         AttributeManager $attributeManager,
         AssociationTypeManager $associationTypeManager,
         GroupManager $groupManager,

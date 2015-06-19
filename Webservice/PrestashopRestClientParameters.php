@@ -3,22 +3,17 @@
 namespace Pim\Bundle\PrestashopConnectorBundle\Webservice;
 
 /**
- * Prestashop soap client parameters.
+ * Prestashop rest client parameters.
  *
  */
-class PrestashopSoapClientParameters
+class PrestashopRestClientParameters
 {
-    /** @staticvar string */
-    const SOAP_WSDL_URL = '/api/soap/?wsdl';
 
     /** @var string */
     protected $soapUsername;
 
     /** @var string */
     protected $soapApiKey;
-
-    /** @var string */
-    protected $wsdlUrl;
 
     /** @var string Prestashop Url (only the domain) */
     protected $prestashopUrl;
@@ -39,7 +34,6 @@ class PrestashopSoapClientParameters
      * @param string $soapUsername     Prestashop soap username
      * @param string $soapApiKey       Prestashop soap api key
      * @param string $prestashopUrl       Prestashop url (only the domain)
-     * @param string $wsdlUrl          Only wsdl soap api extension
      * @param string $defaultStoreView Default store view
      * @param string $httpLogin        Login http authentication
      * @param string $httpPassword     Password http authentication
@@ -48,7 +42,6 @@ class PrestashopSoapClientParameters
         $soapUsername,
         $soapApiKey,
         $prestashopUrl,
-        $wsdlUrl,
         $defaultStoreView,
         $httpLogin = null,
         $httpPassword = null
@@ -56,7 +49,6 @@ class PrestashopSoapClientParameters
         $this->soapUsername     = $soapUsername;
         $this->soapApiKey       = $soapApiKey;
         $this->prestashopUrl       = $prestashopUrl;
-        $this->wsdlUrl          = $wsdlUrl;
         $this->defaultStoreView = $defaultStoreView;
         $this->httpLogin        = $httpLogin;
         $this->httpPassword     = $httpPassword;
@@ -73,7 +65,6 @@ class PrestashopSoapClientParameters
             $this->soapUsername.
             $this->soapApiKey.
             $this->prestashopUrl.
-            $this->wsdlUrl.
             $this->defaultStoreView.
             $this->httpLogin.
             $this->httpPassword
@@ -121,15 +112,7 @@ class PrestashopSoapClientParameters
      */
     public function getSoapUrl()
     {
-        return $this->prestashopUrl.$this->wsdlUrl;
-    }
-
-    /**
-     * @return string
-     */
-    public function getWsdlUrl()
-    {
-        return $this->wsdlUrl;
+        return $this->prestashopUrl;
     }
 
     /**

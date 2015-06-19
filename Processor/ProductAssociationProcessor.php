@@ -9,7 +9,7 @@ use Pim\Bundle\PrestashopConnectorBundle\Guesser\WebserviceGuesser;
 use Pim\Bundle\PrestashopConnectorBundle\Guesser\NormalizerGuesser;
 use Pim\Bundle\PrestashopConnectorBundle\Manager\LocaleManager;
 use Pim\Bundle\PrestashopConnectorBundle\Merger\PrestashopMappingMerger;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParametersRegistry;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParametersRegistry;
 
 /**
  * Prestashop product processor.
@@ -50,7 +50,7 @@ class ProductAssociationProcessor extends AbstractProcessor
      * @param LocaleManager                       $localeManager
      * @param PrestashopMappingMerger                $storeViewMappingMerger
      * @param AssociationTypeManager              $associationTypeManager
-     * @param PrestashopSoapClientParametersRegistry $clientParametersRegistry
+     * @param PrestashopRestClientParametersRegistry $clientParametersRegistry
      */
     public function __construct(
         WebserviceGuesser $webserviceGuesser,
@@ -58,7 +58,7 @@ class ProductAssociationProcessor extends AbstractProcessor
         LocaleManager $localeManager,
         PrestashopMappingMerger $storeViewMappingMerger,
         AssociationTypeManager $associationTypeManager,
-        PrestashopSoapClientParametersRegistry $clientParametersRegistry
+        PrestashopRestClientParametersRegistry $clientParametersRegistry
     ) {
         parent::__construct(
             $webserviceGuesser,

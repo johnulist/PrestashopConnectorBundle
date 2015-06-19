@@ -3,7 +3,7 @@
 namespace Pim\Bundle\PrestashopConnectorBundle\Mapper;
 
 use Pim\Bundle\PrestashopConnectorBundle\Manager\SimpleMappingManager;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParameters;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParameters;
 use Pim\Bundle\PrestashopConnectorBundle\Validator\Constraints\HasValidCredentialsValidator;
 
 /**
@@ -12,7 +12,7 @@ use Pim\Bundle\PrestashopConnectorBundle\Validator\Constraints\HasValidCredentia
  */
 class ORMPimMapper extends ORMMapper
 {
-    /** @var PrestashopSoapClientParameters */
+    /** @var PrestashopRestClientParameters */
     protected $clientParameters;
 
     /** @var HasValidCredentialsValidator */
@@ -35,9 +35,9 @@ class ORMPimMapper extends ORMMapper
     /**
      * Set mapper parameters.
      *
-     * @param PrestashopSoapClientParameters $clientParameters
+     * @param PrestashopRestClientParameters $clientParameters
      */
-    public function setParameters(PrestashopSoapClientParameters $clientParameters)
+    public function setParameters(PrestashopRestClientParameters $clientParameters)
     {
         $this->clientParameters = $clientParameters;
     }

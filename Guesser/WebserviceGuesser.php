@@ -5,7 +5,7 @@ namespace Pim\Bundle\PrestashopConnectorBundle\Guesser;
 use Pim\Bundle\PrestashopConnectorBundle\Webservice\Webservice;
 use Pim\Bundle\PrestashopConnectorBundle\Webservice\Webservice16;
 use Pim\Bundle\PrestashopConnectorBundle\Webservice\WebserviceEE;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParameters;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParameters;
 use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientFactory;
 
 /**
@@ -31,13 +31,13 @@ class WebserviceGuesser extends AbstractGuesser
     /**
      * Get the Webservice corresponding to the given Prestashop parameters.
      *
-     * @param PrestashopSoapClientParameters $clientParameters
+     * @param PrestashopRestClientParameters $clientParameters
      *
      * @throws NotSupportedVersionException If the prestashop version is not supported
      *
      * @return Webservice
      */
-    public function getWebservice(PrestashopSoapClientParameters $clientParameters)
+    public function getWebservice(PrestashopRestClientParameters $clientParameters)
     {
         if (!$this->webservice) {
             $client         = $this->prestashopSoapClientFactory->getPrestashopSoapClient($clientParameters);

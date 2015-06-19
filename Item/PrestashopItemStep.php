@@ -6,8 +6,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Akeneo\Bundle\BatchBundle\Item\AbstractConfigurableStepElement;
 use Pim\Bundle\PrestashopConnectorBundle\Guesser\WebserviceGuesser;
 use Pim\Bundle\PrestashopConnectorBundle\Validator\Constraints\HasValidCredentials;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParametersRegistry;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParameters;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParametersRegistry;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParameters;
 use Pim\Bundle\PrestashopConnectorBundle\Webservice\Webservice;
 use Akeneo\Bundle\BatchBundle\Step\StepExecutionAwareInterface;
 use Akeneo\Bundle\BatchBundle\Entity\StepExecution;
@@ -43,11 +43,6 @@ abstract class PrestashopItemStep extends AbstractConfigurableStepElement implem
 
     /**
      * @Assert\NotBlank(groups={"Execution"})
-     */
-    protected $wsdlUrl = PrestashopSoapClientParameters::SOAP_WSDL_URL;
-
-    /**
-     * @Assert\NotBlank(groups={"Execution"})
      * @Assert\Url(groups={"Execution"})
      */
     protected $prestashopUrl;
@@ -63,10 +58,10 @@ abstract class PrestashopItemStep extends AbstractConfigurableStepElement implem
     /** @var string */
     protected $httpPassword;
 
-    /** @var PrestashopSoapClientParameters */
+    /** @var PrestashopRestClientParameters */
     protected $clientParameters;
 
-    /** @var PrestashopSoapClientParametersRegistry */
+    /** @var PrestashopRestClientParametersRegistry */
     protected $clientParametersRegistry;
 
     /** @var boolean */
@@ -80,11 +75,11 @@ abstract class PrestashopItemStep extends AbstractConfigurableStepElement implem
 
     /**
      * @param WebserviceGuesser                   $webserviceGuesser
-     * @param PrestashopSoapClientParametersRegistry $clientParametersRegistry
+     * @param PrestashopRestClientParametersRegistry $clientParametersRegistry
      */
     public function __construct(
         WebserviceGuesser $webserviceGuesser,
-        PrestashopSoapClientParametersRegistry $clientParametersRegistry
+        PrestashopRestClientParametersRegistry $clientParametersRegistry
     ) {
         $this->clientParametersRegistry = $clientParametersRegistry;
         $this->webserviceGuesser        = $webserviceGuesser;
@@ -150,14 +145,6 @@ abstract class PrestashopItemStep extends AbstractConfigurableStepElement implem
                     'required' => true,
                     'help'     => 'pim_prestashop_connector.export.prestashopUrl.help',
                     'label'    => 'pim_prestashop_connector.export.prestashopUrl.label',
-                ],
-            ],
-            'wsdlUrl' => [
-                'options' => [
-                    'required' => true,
-                    'help'     => 'pim_prestashop_connector.export.wsdlUrl.help',
-                    'label'    => 'pim_prestashop_connector.export.wsdlUrl.label',
-                    'data'     => $this->getWsdlUrl(),
                 ],
             ],
             'httpLogin' => [
@@ -248,26 +235,6 @@ abstract class PrestashopItemStep extends AbstractConfigurableStepElement implem
     /**
      * @return string
      */
-    public function getWsdlUrl()
-    {
-        return $this->wsdlUrl;
-    }
-
-    /**
-     * @param string $wsdlUrl
-     *
-     * @return PrestashopItemStep
-     */
-    public function setWsdlUrl($wsdlUrl)
-    {
-        $this->wsdlUrl = $wsdlUrl;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
     public function getPrestashopUrl()
     {
         return $this->prestashopUrl;
@@ -290,7 +257,7 @@ abstract class PrestashopItemStep extends AbstractConfigurableStepElement implem
      */
     public function getSoapUrl()
     {
-        return $this->prestashopUrl.$this->wsdlUrl;
+        return $this->prestashopUrl;
     }
 
     /**
@@ -357,7 +324,7 @@ abstract class PrestashopItemStep extends AbstractConfigurableStepElement implem
     /**
      * Get the prestashop soap client parameters.
      *
-     * @return PrestashopSoapClientParameters
+     * @return PrestashopRestClientParameters
      */
     protected function getClientParameters()
     {
@@ -365,7 +332,6 @@ abstract class PrestashopItemStep extends AbstractConfigurableStepElement implem
             $this->soapUsername,
             $this->soapApiKey,
             $this->prestashopUrl,
-            $this->wsdlUrl,
             $this->defaultStoreView,
             $this->httpLogin,
             $this->httpPassword

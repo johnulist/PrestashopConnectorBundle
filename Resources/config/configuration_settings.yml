@@ -4,7 +4,6 @@ show_configuration:
         elements:
             prestashopUrl:
                 type: 'url'
-            wsdlUrl: ~
             soapUsername: ~
     -
         title: General
@@ -34,7 +33,6 @@ edit_configuration:
         title: Connection
         elements:
             prestashopUrl: ~
-            wsdlUrl: ~
             soapUsername: ~
     -
         title: General

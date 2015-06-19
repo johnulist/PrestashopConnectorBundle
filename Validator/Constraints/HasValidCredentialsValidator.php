@@ -5,14 +5,14 @@ namespace Pim\Bundle\PrestashopConnectorBundle\Validator\Constraints;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Pim\Bundle\PrestashopConnectorBundle\Guesser\WebserviceGuesser;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParametersRegistry;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParameters;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParametersRegistry;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParameters;
 use Pim\Bundle\PrestashopConnectorBundle\Webservice\InvalidCredentialException;
 use Pim\Bundle\PrestashopConnectorBundle\Webservice\SoapCallException;
 use Pim\Bundle\PrestashopConnectorBundle\Webservice\UrlExplorer;
 use Pim\Bundle\PrestashopConnectorBundle\Validator\Checks\XmlChecker;
 use Pim\Bundle\PrestashopConnectorBundle\Validator\Exception\NotReachableUrlException;
-use Pim\Bundle\PrestashopConnectorBundle\Validator\Exception\InvalidSoapUrlException;
+use Pim\Bundle\PrestashopConnectorBundle\Validator\Exception\InvalidRestUrlException;
 use Pim\Bundle\PrestashopConnectorBundle\Validator\Exception\InvalidXmlException;
 use Pim\Bundle\PrestashopConnectorBundle\Item\PrestashopItemStep;
 
@@ -31,20 +31,20 @@ class HasValidCredentialsValidator extends ConstraintValidator
     /** @var XmlChecker */
     protected $xmlChecker;
 
-    /** @var PrestashopSoapClientParametersRegistry */
+    /** @var PrestashopRestClientParametersRegistry */
     protected $clientParametersRegistry;
 
     /**
      * @param WebserviceGuesser                   $webserviceGuesser
      * @param UrlExplorer                         $urlExplorer
      * @param XmlChecker                          $xmlChecker
-     * @param PrestashopSoapClientParametersRegistry $clientParametersRegistry
+     * @param PrestashopRestClientParametersRegistry $clientParametersRegistry
      */
     public function __construct(
         WebserviceGuesser $webserviceGuesser,
         UrlExplorer $urlExplorer,
         XmlChecker $xmlChecker,
-        PrestashopSoapClientParametersRegistry $clientParametersRegistry
+        PrestashopRestClientParametersRegistry $clientParametersRegistry
     ) {
         $this->webserviceGuesser        = $webserviceGuesser;
         $this->urlExplorer              = $urlExplorer;
@@ -70,7 +70,6 @@ class HasValidCredentialsValidator extends ConstraintValidator
             $protocol->getSoapUsername(),
             $protocol->getSoapApiKey(),
             $protocol->getPrestashopUrl(),
-            $protocol->getWsdlUrl(),
             $protocol->getDefaultStoreView(),
             $protocol->getHttpLogin(),
             $protocol->getHttpPassword()
@@ -86,18 +85,18 @@ class HasValidCredentialsValidator extends ConstraintValidator
             } catch (NotReachableUrlException $e) {
                 $clientParameters->setValidation(false);
                 $this->context->addViolationAt(
-                    'wsdlUrl',
+                    'prestashopUrl',
                     $constraint->messageUrlNotReachable.' "'.$e->getMessage().'"'
                 );
-            } catch (InvalidSoapUrlException $e) {
+            } catch (InvalidRestUrlException $e) {
                 $clientParameters->setValidation(false);
                 $this->context->addViolationAt(
-                    'wsdlUrl',
+                    'prestashopUrl',
                     $constraint->messageSoapNotValid.' "'.$e->getMessage().'"'
                 );
             } catch (InvalidXmlException $e) {
                 $clientParameters->setValidation(false);
-                $this->context->addViolationAt('wsdlUrl', $constraint->messageXmlNotValid);
+                $this->context->addViolationAt('prestashopUrl', $constraint->messageXmlNotValid);
             } catch (InvalidCredentialException $e) {
                 $clientParameters->setValidation(false);
                 $this->context->addViolationAt('soapUsername', $constraint->messageUsername);
@@ -114,11 +113,11 @@ class HasValidCredentialsValidator extends ConstraintValidator
     /**
      * Are the given parameters valid ?
      *
-     * @param PrestashopSoapClientParameters $clientParameters
+     * @param PrestashopRestClientParameters $clientParameters
      *
      * @return boolean
      */
-    public function areValidSoapCredentials(PrestashopSoapClientParameters $clientParameters)
+    public function areValidSoapCredentials(PrestashopRestClientParameters $clientParameters)
     {
         if (null === $clientParameters->isValid()) {
             try {

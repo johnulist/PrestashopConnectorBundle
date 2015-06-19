@@ -58,9 +58,6 @@ pim_prestashop_connector:
         prestashopUrl:
             label: Prestashop url
             help: Your Prestashop installation url
-        wsdlUrl:
-            label: Wsdl url
-            help: Provide here your wsdl relative path. If you are not sure leave this field by default (/api/soap/?wsdl)
         httpLogin:
             label: Http login
             help: If you have an http authentication on your server, provide here your http login

@@ -7,7 +7,7 @@ use Pim\Bundle\PrestashopConnectorBundle\Normalizer\AbstractNormalizer;
 use Pim\Bundle\PrestashopConnectorBundle\Normalizer\ProductNormalizer;
 use Pim\Bundle\PrestashopConnectorBundle\Normalizer\ProductNormalizer16;
 use Pim\Bundle\PrestashopConnectorBundle\Normalizer\ConfigurableNormalizer;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParameters;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParameters;
 use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientFactory;
 use Pim\Bundle\CatalogBundle\Manager\ChannelManager;
 use Pim\Bundle\CatalogBundle\Manager\MediaManager;
@@ -98,7 +98,7 @@ class NormalizerGuesser extends AbstractGuesser
     /**
      * Get the product normalizer corresponding to the given Prestashop parameters.
      *
-     * @param PrestashopSoapClientParameters $clientParameters
+     * @param PrestashopRestClientParameters $clientParameters
      * @param boolean                     $enabled
      * @param boolean                     $visibility
      * @param boolean                     $variantMemberVisibility
@@ -109,7 +109,7 @@ class NormalizerGuesser extends AbstractGuesser
      * @return AbstractNormalizer
      */
     public function getProductNormalizer(
-        PrestashopSoapClientParameters $clientParameters,
+        PrestashopRestClientParameters $clientParameters,
         $enabled,
         $visibility,
         $variantMemberVisibility,
@@ -161,7 +161,7 @@ class NormalizerGuesser extends AbstractGuesser
     /**
      * Get the configurable normalizer corresponding to the given Prestashop parameters.
      *
-     * @param PrestashopSoapClientParameters $clientParameters
+     * @param PrestashopRestClientParameters $clientParameters
      * @param ProductNormalizerInterface  $productNormalizer
      * @param PriceMappingManager         $priceMappingManager
      * @param boolean                     $visibility
@@ -171,7 +171,7 @@ class NormalizerGuesser extends AbstractGuesser
      * @throws NotSupportedVersionException
      */
     public function getConfigurableNormalizer(
-        PrestashopSoapClientParameters $clientParameters,
+        PrestashopRestClientParameters $clientParameters,
         ProductNormalizerInterface $productNormalizer,
         PriceMappingManager $priceMappingManager,
         $visibility
@@ -202,13 +202,13 @@ class NormalizerGuesser extends AbstractGuesser
     /**
      * Get the Category normalizer corresponding to the given Prestashop parameters.
      *
-     * @param PrestashopSoapClientParameters $clientParameters
+     * @param PrestashopRestClientParameters $clientParameters
      *
      * @return AbstractNormalizer
      *
      * @throws NotSupportedVersionException
      */
-    public function getCategoryNormalizer(PrestashopSoapClientParameters $clientParameters)
+    public function getCategoryNormalizer(PrestashopRestClientParameters $clientParameters)
     {
         $client         = $this->prestashopSoapClientFactory->getPrestashopSoapClient($clientParameters);
         $prestashopVersion = $this->getPrestashopVersion($client);
@@ -231,13 +231,13 @@ class NormalizerGuesser extends AbstractGuesser
     /**
      * Get the option normalizer corresponding to the given Prestashop parameters.
      *
-     * @param PrestashopSoapClientParameters $clientParameters
+     * @param PrestashopRestClientParameters $clientParameters
      *
      * @return AbstractNormalizer
      *
      * @throws NotSupportedVersionException
      */
-    public function getOptionNormalizer(PrestashopSoapClientParameters $clientParameters)
+    public function getOptionNormalizer(PrestashopRestClientParameters $clientParameters)
     {
         $client         = $this->prestashopSoapClientFactory->getPrestashopSoapClient($clientParameters);
         $prestashopVersion = $this->getPrestashopVersion($client);
@@ -260,13 +260,13 @@ class NormalizerGuesser extends AbstractGuesser
     /**
      * Get the attribute normalizer corresponding to the given Prestashop parameters.
      *
-     * @param PrestashopSoapClientParameters $clientParameters
+     * @param PrestashopRestClientParameters $clientParameters
      *
      * @return AbstractNormalizer
      *
      * @throws NotSupportedVersionException
      */
-    public function getAttributeNormalizer(PrestashopSoapClientParameters $clientParameters)
+    public function getAttributeNormalizer(PrestashopRestClientParameters $clientParameters)
     {
         $client         = $this->prestashopSoapClientFactory->getPrestashopSoapClient($clientParameters);
         $prestashopVersion = $this->getPrestashopVersion($client);
@@ -289,13 +289,13 @@ class NormalizerGuesser extends AbstractGuesser
     /**
      * Get the family normalizer corresponding to the given Prestashop parameters.
      *
-     * @param PrestashopSoapClientParameters $clientParameters
+     * @param PrestashopRestClientParameters $clientParameters
      *
      * @throws NotSupportedVersionException
      *
      * @return FamilyNormalizer
      */
-    public function getFamilyNormalizer(PrestashopSoapClientParameters $clientParameters)
+    public function getFamilyNormalizer(PrestashopRestClientParameters $clientParameters)
     {
         $client         = $this->prestashopSoapClientFactory->getPrestashopSoapClient($clientParameters);
         $prestashopVersion = $this->getPrestashopVersion($client);

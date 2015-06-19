@@ -2,27 +2,26 @@
 
 namespace Pim\Bundle\PrestashopConnectorBundle\Webservice;
 
-class PrestashopSoapClientParametersRegistry
+class PrestashopRestClientParametersRegistry
 {
     /**
-     * Array of all PrestashopSoapClientParameters instances.
+     * Array of all PrestashopRestClientParameters instances.
      *
      * @var array
      */
     protected $instances;
 
     /**
-     * Gives PrestashopSoapClientParameters which corresponding to given parameters.
+     * Gives PrestashopRestClientParameters which corresponding to given parameters.
      *
-     * @param array $soapParameters Associative array which contains soap parameters
+     * @param array $soapParameters Associative array which contains rest parameters
      *
-     * @return PrestashopSoapClientParameters
+     * @return PrestashopRestClientParameters
      */
     public function getInstance(
         $soapUsername,
         $soapApiKey,
         $prestashopUrl,
-        $wsdlUrl,
         $defaultStoreView = Webservice::SOAP_DEFAULT_STORE_VIEW,
         $httpLogin = null,
         $httpPassword = null
@@ -31,18 +30,16 @@ class PrestashopSoapClientParametersRegistry
             $soapUsername.
             $soapApiKey.
             $prestashopUrl.
-            $wsdlUrl.
             $defaultStoreView.
             $httpLogin.
             $httpPassword
         );
 
         if (!isset($this->instances[$hash])) {
-            $this->instances[$hash] = new PrestashopSoapClientParameters(
+            $this->instances[$hash] = new PrestashopRestClientParameters(
                 $soapUsername,
                 $soapApiKey,
                 $prestashopUrl,
-                $wsdlUrl,
                 $defaultStoreView,
                 $httpLogin,
                 $httpPassword

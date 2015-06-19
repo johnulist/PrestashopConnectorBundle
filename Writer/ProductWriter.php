@@ -7,7 +7,7 @@ use Pim\Bundle\PrestashopConnectorBundle\Webservice\Webservice;
 use Pim\Bundle\PrestashopConnectorBundle\Guesser\WebserviceGuesser;
 use Pim\Bundle\CatalogBundle\Manager\ChannelManager;
 use Pim\Bundle\PrestashopConnectorBundle\Webservice\SoapCallException;
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParametersRegistry;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParametersRegistry;
 
 /**
  * Prestashop product writer.
@@ -26,12 +26,12 @@ class ProductWriter extends AbstractWriter
     /**
      * @param WebserviceGuesser                   $webserviceGuesser
      * @param ChannelManager                      $channelManager
-     * @param PrestashopSoapClientParametersRegistry $clientParametersRegistry
+     * @param PrestashopRestClientParametersRegistry $clientParametersRegistry
      */
     public function __construct(
         WebserviceGuesser $webserviceGuesser,
         ChannelManager $channelManager,
-        PrestashopSoapClientParametersRegistry $clientParametersRegistry
+        PrestashopRestClientParametersRegistry $clientParametersRegistry
     ) {
         parent::__construct($webserviceGuesser, $clientParametersRegistry);
 

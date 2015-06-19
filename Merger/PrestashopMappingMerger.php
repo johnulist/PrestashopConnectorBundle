@@ -2,7 +2,7 @@
 
 namespace Pim\Bundle\PrestashopConnectorBundle\Merger;
 
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParameters;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParameters;
 
 /**
  * Prestashop mapping merger.
@@ -13,10 +13,10 @@ class PrestashopMappingMerger extends MappingMerger
     /**
      * Set parameters of all mappers.
      *
-     * @param PrestashopSoapClientParameters $clientParameters
+     * @param PrestashopRestClientParameters $clientParameters
      * @param string                      $defaultStoreView
      */
-    public function setParameters(PrestashopSoapClientParameters $clientParameters, $defaultStoreView)
+    public function setParameters(PrestashopRestClientParameters $clientParameters, $defaultStoreView)
     {
         foreach ($this->getOrderedMappers() as $mapper) {
             $mapper->setParameters($clientParameters, $defaultStoreView);

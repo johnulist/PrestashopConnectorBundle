@@ -14,11 +14,11 @@ class PrestashopSoapClientFactory
     /**
      * Get a new prestashop soap client.
      *
-     * @param PrestashopSoapClientParameters $clientParameters
+     * @param PrestashopRestClientParameters $clientParameters
      *
      * @return PrestashopSoapClient
      */
-    public function getPrestashopSoapClient(PrestashopSoapClientParameters $clientParameters)
+    public function getPrestashopSoapClient(PrestashopRestClientParameters $clientParameters)
     {
         return new PrestashopSoapClient($clientParameters, null, $this->profiler);
     }

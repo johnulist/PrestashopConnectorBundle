@@ -2,7 +2,7 @@
 
 namespace Pim\Bundle\PrestashopConnectorBundle\Cleaner;
 
-use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopSoapClientParametersRegistry;
+use Pim\Bundle\PrestashopConnectorBundle\Webservice\PrestashopRestClientParametersRegistry;
 use Pim\Bundle\CatalogBundle\Manager\ChannelManager;
 use Pim\Bundle\PrestashopConnectorBundle\Guesser\WebserviceGuesser;
 use Pim\Bundle\CatalogBundle\Manager\ProductManager;
@@ -20,14 +20,14 @@ class ConfigurableCleaner extends AbstractProductCleaner
 
     /**
      * @param WebserviceGuesser                   $webserviceGuesser
-     * @param PrestashopSoapClientParametersRegistry $clientParametersRegistry
+     * @param PrestashopRestClientParametersRegistry $clientParametersRegistry
      * @param ChannelManager                      $channelManager
      * @param ProductManager                      $productManager
      * @param GroupManager                        $groupManager
      */
     public function __construct(
         WebserviceGuesser $webserviceGuesser,
-        PrestashopSoapClientParametersRegistry $clientParametersRegistry,
+        PrestashopRestClientParametersRegistry $clientParametersRegistry,
         ChannelManager $channelManager,
         ProductManager $productManager,
         GroupManager $groupManager
