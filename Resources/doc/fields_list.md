@@ -10,8 +10,8 @@ These are the basic configuration fields that allow to configure the connection 
 
 Here you have to complete the information allowing the Prestashop connector to access your Prestashop:
 
-- the soap user and the Soap api key you've defined in Prestashop,
-- the url of your Prestashop and the Wsdl url (this last one should already be completed at the profile creation),
+- the REST api key you've defined in Prestashop,
+- the url of your Prestashop,
 - optional: the http login and password protecting the acces of your Prestashop (if there is any, of course),
 - the default Prestashop store view (which is name `default` on Prestashop first install),
 - the default Akeneo locale you want to map to this default storeview,
@@ -35,7 +35,7 @@ Choose if you want the Prestashop connector to delete attributes and attribute s
 
 ![Force attribute set removing](./images/fields/attribute-force-removing.png)
 
-If an attribute set is deleted from Akeneo, then you can let the connector delete it in Mangento. However, if there still is products attached to this attribute set, then you have to force Prestashop to delete these products with it, or the attribute set will remain intact.
+If an attribute set is deleted from Akeneo, then you can let the connector delete it in Prestashop. However, if there still is products attached to this attribute set, then you have to force Prestashop to delete these products with it, or the attribute set will remain intact.
 
 **Attribute mapping:**
 
