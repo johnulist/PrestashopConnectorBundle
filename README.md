@@ -99,7 +99,7 @@ In order to export products to Prestashop, a Webservice token has to be created 
 
 For that, in the Prestashop Admin Panel, access `Advanced Parameters > Webservice`, then click on `+` button. Create a key, and add set the resource permissions for the key by selecting `All` in resources permissions.
 
-Finally enable PrestaShop's webservice.
+Finally enable Prestashop's webservice.
 
 After that you can go to `Spread > Export profiles` on Akeneo PIM and create your first Prestashop export job. For more informations, go take a look to the [user guide](./Resources/doc/userguide.md).
 

@@ -44,20 +44,12 @@ class WebserviceGuesser extends AbstractGuesser
             $prestashopVersion = $this->getPrestashopVersion($client);
 
             switch ($prestashopVersion) {
+                case AbstractGuesser::UNKNOWN_VERSION:
                 case AbstractGuesser::PRESTASHOP_VERSION_1_14:
                 case AbstractGuesser::PRESTASHOP_VERSION_1_13:
                 case AbstractGuesser::PRESTASHOP_VERSION_1_12:
                 case AbstractGuesser::PRESTASHOP_VERSION_1_11:
-                    $this->webservice = new WebserviceEE($client);
-                    break;
-                case AbstractGuesser::UNKNOWN_VERSION:
-                case AbstractGuesser::PRESTASHOP_VERSION_1_9:
-                case AbstractGuesser::PRESTASHOP_VERSION_1_8:
-                case AbstractGuesser::PRESTASHOP_VERSION_1_7:
-                    $this->webservice = new Webservice($client);
-                    break;
-                case AbstractGuesser::PRESTASHOP_VERSION_1_6:
-                    $this->webservice = new Webservice16($client);
+                    $this->webservice = new PrestashopWebservice($client);
                     break;
                 default:
                     throw new NotSupportedVersionException(AbstractGuesser::PRESTASHOP_VERSION_NOT_SUPPORTED_MESSAGE);
